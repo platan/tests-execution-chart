@@ -20,7 +20,7 @@ cd tests-execution-chart
 Artifacts were published to `../local-plugin-repository` directory.
 
 `settings.gradle` (set proper path instead of `/path-to`):
-```groovy
+```gradle
 pluginManagement {
     repositories {
         maven {
@@ -32,7 +32,7 @@ pluginManagement {
 
 ```
 `build.gradle`:
-```groovy
+```gradle
 plugins {
     id 'com.github.platan.tests-execution-chart' version '0.0.1-SNAPSHOT'
 }
@@ -55,7 +55,7 @@ plugins {
 [//]: # (Gradle + Groovy:)
 
 [//]: # ()
-[//]: # (```groovy)
+[//]: # (```gradle)
 
 [//]: # (plugins {)
 
@@ -104,7 +104,7 @@ configure<com.github.platan.testsganttchart.CreateTestGanttChartExtension> {
 
 Gradle + Groovy:
 
-```groovy
+```gradle
 createTestGanttChart {
     formats {
         json {
