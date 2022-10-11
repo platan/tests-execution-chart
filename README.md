@@ -9,9 +9,9 @@
 ## Usage
 
 > **Warning**
-> This project is under development and has not yet been published in the Gradle Plugin Portal.
+> This project is under development and has not yet been published to the Gradle Plugin Portal.
 
-Since this project has not been published in the Gradle Plugin Portal you have to publish it locally to use it:
+Since this project has not been published to the Gradle Plugin Portal you have to publish it locally to use it:
 
 ```sh
 cd tests-execution-chart
