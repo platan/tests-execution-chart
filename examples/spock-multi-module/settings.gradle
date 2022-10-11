@@ -1,0 +1,6 @@
+rootProject.name = 'spock-multi-module'
+
+include 'module1'
+include 'module2'
+
+includeBuild('../..')

@@ -1,0 +1,55 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'com.github.platan.tests-execution-chart'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// based on https://docs.gradle.org/current/userguide/java_testing.html#sec:configuring_java_integration_tests
+sourceSets {
+    intTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    intTestImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+    intTestImplementation platform("org.spockframework:spock-bom:2.1-groovy-3.0")
+    intTestImplementation "org.spockframework:spock-core"
+}
+
+tasks.register('integrationTest', Test) {
+    description = 'Runs integration tests.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    shouldRunAfter test
+
+    useJUnitPlatform()
+}
+
+check.dependsOn integrationTest
+
+createTestGanttChart {
+    formats {
+        html {
+            enabled = true
+            script {
+                src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js'
+                embed = true
+            }
+        }
+        json { enabled = true }
+        mermaid { enabled = true }
+    }
+}

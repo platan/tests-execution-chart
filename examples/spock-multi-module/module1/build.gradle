@@ -1,0 +1,30 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'com.github.platan.tests-execution-chart'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+    testImplementation platform("org.spockframework:spock-bom:2.1-groovy-3.0")
+    testImplementation "org.spockframework:spock-core"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+createTestGanttChart {
+    formats {
+        html {
+            enabled = true
+            script { src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js' }
+        }
+        json { enabled = true }
+        mermaid { enabled = true }
+    }
+}

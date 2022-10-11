@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.platan.tests-execution-chart'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+createTestGanttChart {
+    formats {
+        html {
+            enabled = true
+            script { src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js' }
+        }
+        json { enabled = true }
+        mermaid { enabled = true }
+    }
+}

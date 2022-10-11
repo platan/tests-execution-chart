@@ -1,0 +1,3 @@
+rootProject.name = 'junit5-single-module'
+
+includeBuild('../..')
