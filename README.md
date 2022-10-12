@@ -1,4 +1,5 @@
-# tests-execution-chart
+tests-execution-chart
+===
 
 <p align="center">
     <img src="src/etc/logo/logo.svg" height="140">
@@ -6,7 +7,7 @@
 
 **Gradle plugin that visualises tests execution schedule**
 
-## Usage
+# Usage
 
 > **Warning**
 > This project is under development and has not yet been published to the Gradle Plugin Portal.
