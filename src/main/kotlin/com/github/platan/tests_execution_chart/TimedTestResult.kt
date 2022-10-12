@@ -1,6 +1,6 @@
-package com.github.platan.testsganttchart
+package com.github.platan.tests_execution_chart
 
-data class MyTestResult(
+data class TimedTestResult(
     var className: String?,
     var testName: String,
     var startTime: Long,

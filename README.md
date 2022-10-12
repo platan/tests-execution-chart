@@ -83,7 +83,7 @@ Example result (HTML report):
 Gradle + Kotlin:
 
 ```kotlin
-configure<com.github.platan.testsganttchart.CreateTestsExecutionReportExtension> {
+configure<com.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             enabled.set(true)

@@ -1,12 +1,11 @@
-package com.github.platan.testsganttchart.reporters.json
+package com.github.platan.tests_execution_chart.reporters.json
 
 import groovy.json.JsonOutput
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.testing.Test
-import com.github.platan.testsganttchart.TestExecutionScheduleReport
-import com.github.platan.testsganttchart.config.Json
-import com.github.platan.testsganttchart.reporters.GanttDiagramReporter
-import java.io.File
+import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
+import com.github.platan.tests_execution_chart.config.Json
+import com.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 
 class JsonReporter(private val config: Json, private val logger: Logger) : GanttDiagramReporter() {
 
@@ -16,6 +15,6 @@ class JsonReporter(private val config: Json, private val logger: Logger) : Gantt
     ) {
         val jsonReport = JsonOutput.prettyPrint(JsonOutput.toJson(report))
         val reportFile = save(task, jsonReport, config.outputLocation.get(), "json")
-        logger.lifecycle("Gantt chart for test execution schedule saved to ${reportFile.absolutePath} file.")
+        logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
 }

@@ -1,11 +1,11 @@
-package com.github.platan.testsganttchart.reporters.html
+package com.github.platan.tests_execution_chart.reporters.html
 
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.testing.Test
-import com.github.platan.testsganttchart.TestExecutionScheduleReport
-import com.github.platan.testsganttchart.config.Html
-import com.github.platan.testsganttchart.reporters.GanttDiagramReporter
-import com.github.platan.testsganttchart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
+import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
+import com.github.platan.tests_execution_chart.config.Html
+import com.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
+import com.github.platan.tests_execution_chart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -36,7 +36,7 @@ internal class HtmlGanttDiagramReporter(private val config: Html, private val lo
             .replace(MERMAID_SRC_PLACEHOLDER, src)
 
         val reportFile = save(task, htmlReport, config.outputLocation.get(), "html")
-        logger.lifecycle("Gantt chart for test execution schedule saved to ${reportFile.absolutePath} file.")
+        logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
 
     private fun downloadFile(url: URL, path: String) {

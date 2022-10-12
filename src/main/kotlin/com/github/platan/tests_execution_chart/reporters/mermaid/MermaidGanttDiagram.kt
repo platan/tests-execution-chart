@@ -1,4 +1,4 @@
-package com.github.platan.testsganttchart.reporters.mermaid
+package com.github.platan.tests_execution_chart.reporters.mermaid
 
 data class MermaidGanttDiagram(val dateFormat: String, val axisFormat: String, val sections: List<Section>) {
     data class Section(val name: String, val rows: List<Row>) {

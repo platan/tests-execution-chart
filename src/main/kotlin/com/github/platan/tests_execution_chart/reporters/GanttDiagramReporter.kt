@@ -1,7 +1,7 @@
-package com.github.platan.testsganttchart.reporters
+package com.github.platan.tests_execution_chart.reporters
 
 import org.gradle.api.tasks.testing.Test
-import com.github.platan.testsganttchart.TestExecutionScheduleReport
+import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import java.io.File
 
 abstract class GanttDiagramReporter {

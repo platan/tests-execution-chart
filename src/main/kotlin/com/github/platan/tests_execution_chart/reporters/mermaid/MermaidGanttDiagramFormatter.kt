@@ -1,4 +1,4 @@
-package com.github.platan.testsganttchart.reporters.mermaid
+package com.github.platan.tests_execution_chart.reporters.mermaid
 
 import java.text.SimpleDateFormat
 import java.util.*

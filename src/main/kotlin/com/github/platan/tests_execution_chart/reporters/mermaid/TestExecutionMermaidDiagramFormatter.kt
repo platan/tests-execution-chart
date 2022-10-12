@@ -1,6 +1,6 @@
-package com.github.platan.testsganttchart.reporters.mermaid
+package com.github.platan.tests_execution_chart.reporters.mermaid
 
-import com.github.platan.testsganttchart.TestExecutionScheduleReport
+import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
 
 class TestExecutionMermaidDiagramFormatter {
 

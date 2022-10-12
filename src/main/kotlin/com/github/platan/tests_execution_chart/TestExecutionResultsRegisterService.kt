@@ -1,4 +1,4 @@
-package com.github.platan.testsganttchart
+package com.github.platan.tests_execution_chart
 
 import org.gradle.api.services.BuildService
 import org.gradle.api.services.BuildServiceParameters

@@ -1,4 +1,4 @@
-package com.github.platan.testsganttchart.config
+package com.github.platan.tests_execution_chart.config
 
 import org.gradle.api.model.ObjectFactory
 import javax.inject.Inject

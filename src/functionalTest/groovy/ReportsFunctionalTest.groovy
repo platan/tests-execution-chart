@@ -56,13 +56,13 @@ class ReportsFunctionalTest extends Specification {
 
         then:
         result.task(":createTestsExecutionReport").outcome == SUCCESS
-        result.output.contains("Gantt chart for test execution schedule for task 'test'")
+        result.output.contains("Tests execution schedule report for task 'test'")
         // @TempDir creates directories in /var, but on macOS /var is a link to /private/var
         // so we have to use toRealPath to get a real path which is logged
         def projectDirRealPath = testProjectDir.toPath().toRealPath()
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/mermaid/test.txt file.")
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/json/test.json file.")
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/html/test.html file.")
+        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/mermaid/test.txt file.")
+        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/json/test.json file.")
+        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/html/test.html file.")
         result.output.contains('BUILD SUCCESSFUL')
 
         and:

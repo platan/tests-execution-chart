@@ -1,4 +1,4 @@
-package com.github.platan.testsganttchart
+package com.github.platan.tests_execution_chart
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -6,7 +6,7 @@ import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.testing.Test
 
 
-class TestsGanttChartPlugin : Plugin<Project> {
+class TestsExecutionReportPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val serviceProvider: Provider<TestExecutionResultsRegisterService> =
             project.gradle.sharedServices.registerIfAbsent(
@@ -14,8 +14,8 @@ class TestsGanttChartPlugin : Plugin<Project> {
             ) {}
 
         val createTestsExecutionReportExtension =
-            project.extensions.create("createTestsExecutionReport", com.github.platan.testsganttchart.CreateTestsExecutionReportExtension::class.java)
-        project.tasks.register("createTestsExecutionReport", com.github.platan.testsganttchart.CreateTestsExecutionReportTask::class.java) { task ->
+            project.extensions.create("createTestsExecutionReport", com.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension::class.java)
+        project.tasks.register("createTestsExecutionReport", com.github.platan.tests_execution_chart.CreateTestsExecutionReportTask::class.java) { task ->
             configure(task, createTestsExecutionReportExtension)
             task.getRegisterService().set(serviceProvider)
             task.usesService(serviceProvider)
@@ -28,8 +28,8 @@ class TestsGanttChartPlugin : Plugin<Project> {
     }
 
     private fun configure(
-        task: com.github.platan.testsganttchart.CreateTestsExecutionReportTask,
-        createTestsExecutionReportExtension: com.github.platan.testsganttchart.CreateTestsExecutionReportExtension
+        task: com.github.platan.tests_execution_chart.CreateTestsExecutionReportTask,
+        createTestsExecutionReportExtension: com.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension
     ) {
         task.getFormats().getHtml().outputLocation
             .set(createTestsExecutionReportExtension.getFormats().getHtml().outputLocation)
