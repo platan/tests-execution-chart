@@ -5,6 +5,6 @@ set -x
 for dir in examples/*
 do
   cd "$dir" || exit
-  ./gradlew "$@"
+  ./gradlew "$@" || exit
   cd - || exit
 done
