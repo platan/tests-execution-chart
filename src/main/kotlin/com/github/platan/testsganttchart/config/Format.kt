@@ -13,5 +13,5 @@ abstract class Format @Inject constructor(objectFactory: ObjectFactory, name: St
 
     @get:OutputDirectory
     val outputLocation: Property<String> =
-        objectFactory.property(String::class.java).convention("reports/tests-gantt/$name")
+        objectFactory.property(String::class.java).convention("reports/tests-execution/$name")
 }

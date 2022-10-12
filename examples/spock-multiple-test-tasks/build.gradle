@@ -40,7 +40,7 @@ tasks.register('integrationTest', Test) {
 
 check.dependsOn integrationTest
 
-createTestGanttChart {
+createTestsExecutionReport {
     formats {
         html {
             enabled = true

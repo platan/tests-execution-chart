@@ -17,7 +17,7 @@ test {
     useJUnitPlatform()
 }
 
-createTestGanttChart {
+createTestsExecutionReport {
     formats {
         html {
             enabled = true

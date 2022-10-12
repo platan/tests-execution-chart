@@ -66,7 +66,7 @@ plugins {
 [//]: # (```)
 
 ```sh
-./gradlew test createTestGanttChart
+./gradlew test createTestsExecutionReport
 ```
 
 Example result (HTML report):
@@ -83,7 +83,7 @@ Example result (HTML report):
 Gradle + Kotlin:
 
 ```kotlin
-configure<com.github.platan.testsganttchart.CreateTestGanttChartExtension> {
+configure<com.github.platan.testsganttchart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             enabled.set(true)
@@ -105,7 +105,7 @@ configure<com.github.platan.testsganttchart.CreateTestGanttChartExtension> {
 Gradle + Groovy:
 
 ```gradle
-createTestGanttChart {
+createTestsExecutionReport {
     formats {
         json {
             enabled = false

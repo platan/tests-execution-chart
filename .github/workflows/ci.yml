@@ -24,4 +24,4 @@ jobs:
       with:
         arguments: build
     - name: Create tests execution report for all examples
-      run: ./examples.sh createTestGanttChart
+      run: ./examples.sh createTestsExecutionReport

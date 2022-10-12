@@ -5,7 +5,7 @@ import org.gradle.api.tasks.Nested
 import com.github.platan.testsganttchart.config.Formats
 
 
-abstract class CreateTestGanttChartExtension {
+abstract class CreateTestsExecutionReportExtension {
 
     @Nested
     abstract fun getFormats(): Formats

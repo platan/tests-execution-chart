@@ -19,7 +19,7 @@ tasks.test {
 }
 
 
-configure<com.github.platan.testsganttchart.CreateTestGanttChartExtension> {
+configure<com.github.platan.testsganttchart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             script {

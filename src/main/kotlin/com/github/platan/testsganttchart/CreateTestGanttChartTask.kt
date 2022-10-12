@@ -11,7 +11,7 @@ import com.github.platan.testsganttchart.reporters.json.JsonReporter
 import com.github.platan.testsganttchart.reporters.mermaid.MermaidTestsReporter
 
 
-abstract class CreateTestGanttChartTask : DefaultTask() {
+abstract class CreateTestsExecutionReportTask : DefaultTask() {
 
     @Internal
     abstract fun getRegisterService(): Property<com.github.platan.testsganttchart.TestExecutionResultsRegisterService>

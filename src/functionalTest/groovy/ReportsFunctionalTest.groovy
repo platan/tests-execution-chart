@@ -26,7 +26,7 @@ class ReportsFunctionalTest extends Specification {
                 id 'groovy'
                 id 'com.github.platan.tests-execution-chart'
             }
-            createTestGanttChart {
+            createTestsExecutionReport {
                 formats {
                     html { enabled = true }
                     json { enabled = true }
@@ -50,24 +50,24 @@ class ReportsFunctionalTest extends Specification {
         when:
         def result = GradleRunner.create()
                 .withProjectDir(testProjectDir)
-                .withArguments('test', 'createTestGanttChart')
+                .withArguments('test', 'createTestsExecutionReport')
                 .withPluginClasspath()
                 .build()
 
         then:
-        result.task(":createTestGanttChart").outcome == SUCCESS
+        result.task(":createTestsExecutionReport").outcome == SUCCESS
         result.output.contains("Gantt chart for test execution schedule for task 'test'")
         // @TempDir creates directories in /var, but on macOS /var is a link to /private/var
         // so we have to use toRealPath to get a real path which is logged
         def projectDirRealPath = testProjectDir.toPath().toRealPath()
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-gantt/mermaid/test.txt file.")
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-gantt/json/test.json file.")
-        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-gantt/html/test.html file.")
+        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/mermaid/test.txt file.")
+        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/json/test.json file.")
+        result.output.contains("Gantt chart for test execution schedule saved to $projectDirRealPath/build/reports/tests-execution/html/test.html file.")
         result.output.contains('BUILD SUCCESSFUL')
 
         and:
-        new File("$projectDirRealPath/build/reports/tests-gantt/mermaid/test.txt").exists()
-        new File("$projectDirRealPath/build/reports/tests-gantt/json/test.json").exists()
-        new File("$projectDirRealPath/build/reports/tests-gantt/html/test.html").exists()
+        new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt").exists()
+        new File("$projectDirRealPath/build/reports/tests-execution/json/test.json").exists()
+        new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").exists()
     }
 }

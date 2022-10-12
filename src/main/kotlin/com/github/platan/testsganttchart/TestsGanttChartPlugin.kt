@@ -13,10 +13,10 @@ class TestsGanttChartPlugin : Plugin<Project> {
                 "testExecutionResultsRegisterService", TestExecutionResultsRegisterService::class.java
             ) {}
 
-        val createTestGanttChartExtension =
-            project.extensions.create("createTestGanttChart", com.github.platan.testsganttchart.CreateTestGanttChartExtension::class.java)
-        project.tasks.register("createTestGanttChart", com.github.platan.testsganttchart.CreateTestGanttChartTask::class.java) { task ->
-            configure(task, createTestGanttChartExtension)
+        val createTestsExecutionReportExtension =
+            project.extensions.create("createTestsExecutionReport", com.github.platan.testsganttchart.CreateTestsExecutionReportExtension::class.java)
+        project.tasks.register("createTestsExecutionReport", com.github.platan.testsganttchart.CreateTestsExecutionReportTask::class.java) { task ->
+            configure(task, createTestsExecutionReportExtension)
             task.getRegisterService().set(serviceProvider)
             task.usesService(serviceProvider)
             task.outputs.upToDateWhen { false }
@@ -28,22 +28,22 @@ class TestsGanttChartPlugin : Plugin<Project> {
     }
 
     private fun configure(
-        task: com.github.platan.testsganttchart.CreateTestGanttChartTask,
-        createTestGanttChartExtension: com.github.platan.testsganttchart.CreateTestGanttChartExtension
+        task: com.github.platan.testsganttchart.CreateTestsExecutionReportTask,
+        createTestsExecutionReportExtension: com.github.platan.testsganttchart.CreateTestsExecutionReportExtension
     ) {
         task.getFormats().getHtml().outputLocation
-            .set(createTestGanttChartExtension.getFormats().getHtml().outputLocation)
+            .set(createTestsExecutionReportExtension.getFormats().getHtml().outputLocation)
         task.getFormats().getHtml().getScript().src
-            .set(createTestGanttChartExtension.getFormats().getHtml().getScript().src)
+            .set(createTestsExecutionReportExtension.getFormats().getHtml().getScript().src)
         task.getFormats().getHtml().getScript().embed
-            .set(createTestGanttChartExtension.getFormats().getHtml().getScript().embed)
+            .set(createTestsExecutionReportExtension.getFormats().getHtml().getScript().embed)
         task.getFormats().getJson().outputLocation
-            .set(createTestGanttChartExtension.getFormats().getJson().outputLocation)
+            .set(createTestsExecutionReportExtension.getFormats().getJson().outputLocation)
         task.getFormats().getJson().enabled
-            .set(createTestGanttChartExtension.getFormats().getJson().enabled)
+            .set(createTestsExecutionReportExtension.getFormats().getJson().enabled)
         task.getFormats().getMermaid().enabled
-            .set(createTestGanttChartExtension.getFormats().getMermaid().enabled)
+            .set(createTestsExecutionReportExtension.getFormats().getMermaid().enabled)
         task.getFormats().getMermaid().outputLocation
-            .set(createTestGanttChartExtension.getFormats().getMermaid().outputLocation)
+            .set(createTestsExecutionReportExtension.getFormats().getMermaid().outputLocation)
     }
 }
