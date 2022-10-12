@@ -69,6 +69,12 @@ plugins {
 
 ```sh
 ./gradlew test createTestsExecutionReport
+
+#...
+
+Tests execution schedule report saved to /my-project/build/reports/tests-execution/mermaid/test.txt file.
+Tests execution schedule report saved to /my-project/build/reports/tests-execution/json/test.json file.
+Tests execution schedule report saved to /my-project/build/reports/tests-execution/html/test.html file.
 ```
 
 Example result (HTML report):
