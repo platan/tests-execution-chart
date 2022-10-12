@@ -17,7 +17,9 @@ Since this project has not been published to the Gradle Plugin Portal you have t
 cd tests-execution-chart
 ./gradlew publish
 ```
-Artifacts were published to `../local-plugin-repository` directory.
+Artifacts are published to `../local-plugin-repository` directory.
+
+Configure your project:
 
 `settings.gradle` (set proper path instead of `/path-to`):
 ```gradle
