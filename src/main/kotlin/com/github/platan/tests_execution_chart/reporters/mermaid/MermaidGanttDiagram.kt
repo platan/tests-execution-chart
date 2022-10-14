@@ -30,7 +30,7 @@ data class MermaidGanttDiagram(val dateFormat: String, val axisFormat: String, v
         }
 
         private fun generateNameWithDuration(row: Section.Row): String {
-            return row.name + " - " + row.end.minus(row.start) + " ms"
+            return "${row.name} - ${row.end.minus(row.start)} ms"
         }
     }
 }
