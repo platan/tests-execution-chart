@@ -33,11 +33,10 @@ tasks.register('integrationTest', Test) {
 
     testClassesDirs = sourceSets.intTest.output.classesDirs
     classpath = sourceSets.intTest.runtimeClasspath
-    shouldRunAfter test
-
     useJUnitPlatform()
 }
 
+test.dependsOn integrationTest
 check.dependsOn integrationTest
 
 createTestsExecutionReport {
