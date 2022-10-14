@@ -35,6 +35,5 @@ jobs:
          examples/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
          examples/kotest-single-module/build/reports/tests-execution/html/test.html,
          examples/kotest-single-module/build/reports/tests-execution/json/test.json, 
-         examples/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
-         
+         examples/kotest-single-module/build/reports/tests-execution/mermaid/test.txt
          "
