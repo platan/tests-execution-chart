@@ -7,6 +7,6 @@ data class TimedTestResult(
     var endTime: Long,
     var resultType: String,
 ) {
-    val duration: Long
+    val durationMs: Long
         get() = this.endTime - this.startTime
 }
