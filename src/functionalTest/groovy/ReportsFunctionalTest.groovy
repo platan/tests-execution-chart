@@ -70,4 +70,72 @@ class ReportsFunctionalTest extends Specification {
         new File("$projectDirRealPath/build/reports/tests-execution/json/test.json").exists()
         new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").exists()
     }
+
+    def "should replace minority sign and colon characters in test names"() {
+        given:
+        settingsFile << "rootProject.name = 'hello-world'"
+        buildFile << """
+            plugins {
+                id 'groovy'
+                id 'com.github.platan.tests-execution-chart'
+            }
+            createTestsExecutionReport {
+                formats {
+                    html { enabled = true }
+                    json { enabled = true }
+                    mermaid { enabled = true }
+                }
+            }
+            repositories {
+                mavenCentral()
+            }
+            dependencies {
+                testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+                testImplementation platform('org.spockframework:spock-bom:2.1-groovy-3.0')
+                testImplementation 'org.spockframework:spock-core'
+            }
+            test {
+                useJUnitPlatform()
+            }
+        """
+
+        specFile << """
+            import spock.lang.Specification
+
+            class Test1Spec extends Specification {
+            
+                private static final int sleepDuration = 10
+            
+                def "test with <"() {
+                    sleep sleepDuration
+                    expect:
+                    true
+                }
+                def "test with :"() {
+                    sleep sleepDuration
+                    expect:
+                    true
+                }
+
+            }        
+        """
+
+        when:
+        def result = GradleRunner.create()
+            .withProjectDir(testProjectDir)
+            .withArguments('test', 'createTestsExecutionReport')
+            .withPluginClasspath()
+            .build()
+
+        then:
+        result.task(":createTestsExecutionReport").outcome == SUCCESS
+        def projectDirRealPath = testProjectDir.toPath().toRealPath()
+        def body = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
+
+        and:
+        body.contains("test with &lt;")
+        body.contains("test with #colon;")
+        !body.contains("test with <")
+        !body.contains("test with :")
+    }
 }
