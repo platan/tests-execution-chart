@@ -11,7 +11,7 @@ class TestExecutionMermaidDiagramFormatter {
     fun format(report: TestExecutionScheduleReport): String {
         val diagramBuilder = MermaidGanttDiagram.MermaidGanttDiagramBuilder()
         report.results.forEach {
-            val testNameWithDuration = "${it.className} - ${it.endTime.minus(it.startTime)} ms"
+            val testNameWithDuration = "${it.testName} - ${it.endTime.minus(it.startTime)} ms"
             diagramBuilder.add(it.className!!, testNameWithDuration, types[it.resultType], it.startTime, it.endTime)
         }
         val diagram = diagramBuilder.build("YYYY-MM-DD\\THH\\:mm\\:ss\\.SSSZ", "%H:%M:%S.%L")
