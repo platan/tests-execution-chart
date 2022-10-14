@@ -25,3 +25,7 @@ jobs:
         arguments: build
     - name: Create tests execution report for all examples
       run: ./examples.sh test createTestsExecutionReport
+    - name: Check reports were created
+      uses: andstor/file-existence-action@v1
+      with:
+        files: "examples/junit5-single-module/build/test-executions/html/test.html"
