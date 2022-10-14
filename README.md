@@ -132,7 +132,7 @@ createTestsExecutionReport {
     }
 }
 ```
-| Key                       | Value   | Description                                                        | Default                                                  |
+| Key                       | Type    | Description                                                        | Default                                                  |
 |---------------------------|---------|--------------------------------------------------------------------|----------------------------------------------------------|
 | formats.json.enabled      | boolean | Generate report in json format                                     | true                                                     |
 | formats.html.enabled      | boolean | Generate report in html format                                     | true                                                     |
