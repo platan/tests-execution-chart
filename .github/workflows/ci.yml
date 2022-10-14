@@ -28,4 +28,5 @@ jobs:
     - name: Check reports were created
       uses: andstor/file-existence-action@v1
       with:
-        files: "examples/junit5-single-module/build/test-executions/html/test.html"
+        allow_failure: true
+        files: "examples/junit5-single-module/build/reports/tests-execution/html/test.html"
