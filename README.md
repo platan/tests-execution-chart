@@ -69,7 +69,7 @@ plugins {
 [//]: # (```)
 
 ```sh
-./gradlew test createTestsExecutionReport
+./gradlew test createTestsExecutionReport --rerun-tasks
 
 #...
 
