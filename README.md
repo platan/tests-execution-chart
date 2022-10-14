@@ -1,11 +1,12 @@
-tests-execution-chart
-===
+
 
 <p align="center">
     <img src="src/etc/logo/logo.svg" height="140">
 </p>
 
 **Gradle plugin that visualises tests execution schedule**
+
+[![build status](https://img.shields.io/github/workflow/status/platan/tests-execution-chart/CI)](https://github.com/platan/tests-execution-chart/actions/workflows/ci.yml)
 
 # Usage
 
