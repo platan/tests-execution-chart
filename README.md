@@ -132,6 +132,13 @@ createTestsExecutionReport {
     }
 }
 ```
+| Key                       | Value   | Description                                                        | Default                                                  |
+|---------------------------|---------|--------------------------------------------------------------------|----------------------------------------------------------|
+| formats.json.enabled      | boolean | Generate report in json format                                     | true                                                     |
+| formats.html.enabled      | boolean | Generate report in html format                                     | true                                                     |
+| formats.html.script.src   | url     | Url to mermaid witch should be used to generate html report        | https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js |
+| formats.html.script.embed | boolean | If true mermaid source will be downloaded and used locally in html | false                                                    |
+| formats.mermaid.enabled   | boolean | Generate report in mermaid text format                             | true                                                     |
 
 # Changelog
 
