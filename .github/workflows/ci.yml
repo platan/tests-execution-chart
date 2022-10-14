@@ -45,9 +45,9 @@ jobs:
          examples/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
          examples/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
          examples/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/html/test.html,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/json/test.json, 
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/test.txt,
+         examples/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
+         examples/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
+         examples/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
          examples/spock-single-module/build/reports/tests-execution/html/test.html,
          examples/spock-single-module/build/reports/tests-execution/json/test.json, 
          examples/spock-single-module/build/reports/tests-execution/mermaid/test.txt
