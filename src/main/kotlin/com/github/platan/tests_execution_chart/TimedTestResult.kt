@@ -5,5 +5,6 @@ data class TimedTestResult(
     var testName: String,
     var startTime: Long,
     var endTime: Long,
+    var duration: Long,
     var resultType: String
 )

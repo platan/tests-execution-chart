@@ -19,7 +19,7 @@ data class MermaidGanttDiagram(val dateFormat: String, val axisFormat: String, v
                     sectionEntry.key,
                     sectionEntry.value.map { row ->
                         Section.Row(
-                            row.name,
+                            generateNameWithDuration(row),
                             row.type,
                             row.start,
                             row.end
@@ -27,6 +27,10 @@ data class MermaidGanttDiagram(val dateFormat: String, val axisFormat: String, v
                     })
             }
             )
+        }
+
+        private fun generateNameWithDuration(row: Section.Row): String {
+            return row.name + " - " + row.end.minus(row.start) + " ms"
         }
     }
 }
