@@ -1,7 +1,7 @@
 package com.github.platan.tests_execution_chart.reporters.mermaid
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 internal class MermaidGanttDiagramFormatter {
 
@@ -20,9 +20,15 @@ internal class MermaidGanttDiagramFormatter {
                 }
                 val end = format.format(Date(row.end))
                 val start = format.format(Date(row.start))
-                ganttDiagram.append("${row.name} :${status}$start, $end\n")
+                ganttDiagram.append("${escape(row.name)} :${status}$start, $end\n")
             }
         }
         return ganttDiagram.toString()
+    }
+
+    private fun escape(str: String): String {
+        return str
+            .replace(":", "#colon;") // https://github.com/mermaid-js/mermaid/issues/742
+            .replace("<", "&lt;")
     }
 }

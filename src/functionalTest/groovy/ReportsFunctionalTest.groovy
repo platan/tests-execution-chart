@@ -71,7 +71,7 @@ class ReportsFunctionalTest extends Specification {
         new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").exists()
     }
 
-    def "should replace minority sign and colon characters in test names"() {
+    def "should replace special characters in test names"() {
         given:
         settingsFile << "rootProject.name = 'hello-world'"
         buildFile << """
@@ -104,15 +104,11 @@ class ReportsFunctionalTest extends Specification {
 
             class Test1Spec extends Specification {
             
-                private static final int sleepDuration = 10
-            
-                def "test with <"() {
-                    sleep sleepDuration
+                def "test with <a"() {
                     expect:
                     true
                 }
                 def "test with :"() {
-                    sleep sleepDuration
                     expect:
                     true
                 }
@@ -129,11 +125,11 @@ class ReportsFunctionalTest extends Specification {
 
         then:
         result.task(":createTestsExecutionReport").outcome == SUCCESS
-        def projectDirRealPath = testProjectDir.toPath().toRealPath()
-        def body = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
 
         and:
-        body.contains("test with &lt;")
+        def projectDirRealPath = testProjectDir.toPath().toRealPath()
+        def body = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
+        body.contains("test with &lt;a")
         body.contains("test with #colon;")
         !body.contains("test with <")
         !body.contains("test with :")

@@ -11,16 +11,10 @@ class TestExecutionMermaidDiagramFormatter {
     fun format(report: TestExecutionScheduleReport): String {
         val diagramBuilder = MermaidGanttDiagram.MermaidGanttDiagramBuilder()
         report.results.forEach {
-            val testNameWithDuration = "${escape(it.testName)} - ${it.endTime.minus(it.startTime)} ms"
+            val testNameWithDuration = "${it.testName} - ${it.endTime.minus(it.startTime)} ms"
             diagramBuilder.add(it.className!!, testNameWithDuration, types[it.resultType], it.startTime, it.endTime)
         }
         val diagram = diagramBuilder.build("YYYY-MM-DD\\THH\\:mm\\:ss\\.SSSZ", "%H:%M:%S.%L")
         return MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-    }
-
-    private fun escape(str: String): String {
-        return str
-            .replace(":", "#colon;") // https://github.com/mermaid-js/mermaid/issues/742
-            .replace("<", "&lt;")
     }
 }
