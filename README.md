@@ -1,11 +1,12 @@
-tests-execution-chart
-===
+
 
 <p align="center">
     <img src="src/etc/logo/logo.svg" height="140">
 </p>
 
 **Gradle plugin that visualises tests execution schedule**
+
+[![build status](https://img.shields.io/github/workflow/status/platan/tests-execution-chart/CI)](https://github.com/platan/tests-execution-chart/actions/workflows/ci.yml)
 
 # Usage
 
@@ -69,7 +70,7 @@ plugins {
 [//]: # (```)
 
 ```sh
-./gradlew test createTestsExecutionReport
+./gradlew test createTestsExecutionReport --rerun-tasks
 
 #...
 
@@ -88,6 +89,17 @@ Example result (HTML report):
 </p>
 
 # Configuration
+
+Options:
+
+| Key                       | Type    | Description                                                        | Default                                                  |
+|---------------------------|---------|--------------------------------------------------------------------|----------------------------------------------------------|
+| `formats.json.enabled`      | boolean | Generate report in json format                                     | `true`                                                     |
+| `formats.html.enabled`      | boolean | Generate report in html format                                     | `true`                                                     |
+| `formats.html.script.src`   | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js` |
+| `formats.html.script.embed` | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                    |
+| `formats.mermaid.enabled`   | boolean | Generate report in mermaid text format                             | `true`                                                     |
+
 
 Gradle + Kotlin:
 
@@ -132,13 +144,6 @@ createTestsExecutionReport {
     }
 }
 ```
-| Key                       | Type    | Description                                                        | Default                                                  |
-|---------------------------|---------|--------------------------------------------------------------------|----------------------------------------------------------|
-| formats.json.enabled      | boolean | Generate report in json format                                     | true                                                     |
-| formats.html.enabled      | boolean | Generate report in html format                                     | true                                                     |
-| formats.html.script.src   | url     | Url to mermaid which should be used to generate html report        | https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js |
-| formats.html.script.embed | boolean | If true mermaid source will be downloaded and used locally in html | false                                                    |
-| formats.mermaid.enabled   | boolean | Generate report in mermaid text format                             | true                                                     |
 
 # Changelog
 
