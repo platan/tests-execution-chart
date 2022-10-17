@@ -13,9 +13,21 @@ repositories {
     mavenCentral()
 }
 
+val functionalTest = sourceSets.create("functionalTest") {
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+}
+
+val functionalTestImplementation by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
+configurations["functionalTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
+    functionalTestImplementation("org.apache.commons:commons-text:1.10.0")
 }
 
 gradlePlugin {
@@ -35,7 +47,6 @@ pluginBundle {
     tags = listOf("tests", "execution", "schedule", "report", "gantt", "chart")
 }
 
-val functionalTest = sourceSets.create("functionalTest")
 val functionalTestTask = tasks.register<Test>("functionalTest") {
     group = "verification"
     testClassesDirs = functionalTest.output.classesDirs
