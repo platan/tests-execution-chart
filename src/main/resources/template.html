@@ -3,29 +3,31 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="@MERMAID_SRC@"></script>
+    <title>Test execution chart</title>
     <style>
-        @media (prefers-color-scheme:dark) {
+        @media (prefers-color-scheme: dark) {
             body {
                 background: #232323;
-                color: white;
             }
         }
     </style>
+    <script src="@MERMAID_SRC@"></script>
 </head>
 
 <body>
-    <div class="mermaid">
-        @GRAPH_PLACEHOLDER@
-    </div>
-    <script>
-        const darkModeEnabled = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const options = { startOnLoad: true };
-        if (darkModeEnabled) {
-            options.theme = 'dark';
-        }
-        mermaid.initialize(options);
-    </script>
+<div id="chart-container"></div>
+<script>
+    const graphData = `@GRAPH_PLACEHOLDER@`
+    const darkModeEnabled = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const getTheme = (darkModeEnabled) => darkModeEnabled ? 'dark' : 'default'
+    const renderCallback = (svgChart) => document.getElementById("chart-container").innerHTML = svgChart;
+    const options = {theme: getTheme(darkModeEnabled)};
+    mermaid.initialize(options);
+    mermaid.render("chart", graphData, renderCallback);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        mermaid.render("chart", "%%{init: {'theme':'" + getTheme(event.matches) + "'}}%%\n" + graphData, renderCallback);
+    })
+</script>
 </body>
 
 </html>
