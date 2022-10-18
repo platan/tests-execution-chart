@@ -1,7 +1,7 @@
 package com.github.platan.tests_execution_chart.reporters.mermaid
 
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 internal class MermaidGanttDiagramFormatter {
 
@@ -12,7 +12,7 @@ internal class MermaidGanttDiagramFormatter {
         ganttDiagram.append("axisFormat ${diagram.axisFormat}\n")
         val format = SimpleDateFormat(dateFormat)
         diagram.sections.forEach { section ->
-            ganttDiagram.append("section ${section.name}\n")
+            ganttDiagram.append("section ${escape(section.name)}\n")
             section.rows.forEach { row ->
                 var status = ""
                 if (row.type != null) {
@@ -28,7 +28,10 @@ internal class MermaidGanttDiagramFormatter {
 
     private fun escape(str: String): String {
         return str
+            // remove # before replacing other characters with entity containing #
+            .replace("#", "")
+            // replace ; before replacing other characters with entity containing ;
+            .replace(";", "#semi;")
             .replace(":", "#colon;") // https://github.com/mermaid-js/mermaid/issues/742
-            .replace("<", "&lt;")
     }
 }

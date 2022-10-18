@@ -103,11 +103,11 @@ class ReportsFunctionalTest extends Specification {
 
             class Test1Spec extends Specification {
             
-                def "test with <a"() {
+                def "test with # character"() {
                     expect:
                     true
                 }
-                def "test with :"() {
+                def "test with : character"() {
                     expect:
                     true
                 }
@@ -127,10 +127,10 @@ class ReportsFunctionalTest extends Specification {
 
         and:
         def body = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
-        body.contains("test with &lt;a")
-        body.contains("test with #colon;")
-        !body.contains("test with <")
-        !body.contains("test with :")
+        !body.contains("test with # character")
+        !body.contains("test with : character")
+        body.contains("test with  character")
+        body.contains("test with #colon; character")
     }
 
     def "display info about the lack of reports"() {
