@@ -70,7 +70,7 @@ class ReportsFunctionalTest extends Specification {
         new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").exists()
     }
 
-    def "should replace special characters in test names"() {
+    def "should replace special characters in mermaid graph test names"() {
         given:
         settingsFile << "rootProject.name = 'hello-world'"
         buildFile << """
@@ -126,11 +126,12 @@ class ReportsFunctionalTest extends Specification {
         result.task(":createTestsExecutionReport").outcome == SUCCESS
 
         and:
-        def body = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
-        !body.contains("test with # character")
-        !body.contains("test with : character")
-        body.contains("test with  character")
-        body.contains("test with #colon; character")
+        def file = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
+        def mermaidGraph = file.find("(?<=graphData = `)(?s:.*)(?=`)")
+        !mermaidGraph.contains("test with # character")
+        !mermaidGraph.contains("test with : character")
+        mermaidGraph.contains("test with  character")
+        mermaidGraph.contains("test with #colon; character")
     }
 
     def "display info about the lack of reports"() {
