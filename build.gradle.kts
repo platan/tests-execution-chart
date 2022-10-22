@@ -91,7 +91,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         ktlint().editorConfigOverride(
             mapOf(
                 "indent_size" to "4",
-                "disabled_rules" to "package-name, filename"
+                "disabled_rules" to "package-name"
             )
         )
     }
