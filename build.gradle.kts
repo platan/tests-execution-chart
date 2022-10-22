@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.0.0"
+    id("com.diffplug.spotless") version "6.11.0"
 }
 
 group = "com.github.platan"
@@ -83,4 +84,22 @@ publishing {
             url = uri("../local-plugin-repository")
         }
     }
+}
+
+configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+    kotlin {
+        ktlint().editorConfigOverride(
+            mapOf(
+                "indent_size" to "4",
+                "disabled_rules" to "package-name, filename"
+            )
+        )
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint().editorConfigOverride(
+            mapOf("indent_size" to "4")
+        )
+    }
+    isEnforceCheck = false
 }
