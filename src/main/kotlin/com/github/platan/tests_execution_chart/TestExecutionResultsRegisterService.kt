@@ -5,7 +5,6 @@ import org.gradle.api.services.BuildServiceParameters
 import org.gradle.api.tasks.testing.Test
 import org.gradle.util.Path
 
-
 abstract class TestExecutionResultsRegisterService : BuildService<BuildServiceParameters.None> {
 
     private val register = RegisterClass()
@@ -32,5 +31,4 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
     fun getResults(module: Path?): Map<Test, TestExecutionScheduleReport> {
         return if (module == null) register.results else register.results.filterKeys { it.identityPath.parent == module }
     }
-
 }

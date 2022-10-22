@@ -1,7 +1,7 @@
 package com.github.platan.tests_execution_chart.reporters.mermaid
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 internal class MermaidGanttDiagramFormatter {
 

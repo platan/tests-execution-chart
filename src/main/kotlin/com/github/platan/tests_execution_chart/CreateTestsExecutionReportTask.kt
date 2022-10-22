@@ -10,13 +10,12 @@ import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.TaskAction
 
-
 private const val NO_REPORTS_MESSAGE =
     "Task was run but it hasn't created any reports. Possible reasons:\n" +
-            "- 'test' task was not run together with 'createTestsExecutionReport' task\n" +
-            "- there were no tests in module\n" +
-            "- plugin 'tests-execution-chart' was not added to module with tests\n" +
-            "- tests weren't run (were up-to-date) - force running tests by '--rerun-tasks' Gradle option"
+        "- 'test' task was not run together with 'createTestsExecutionReport' task\n" +
+        "- there were no tests in module\n" +
+        "- plugin 'tests-execution-chart' was not added to module with tests\n" +
+        "- tests weren't run (were up-to-date) - force running tests by '--rerun-tasks' Gradle option"
 
 abstract class CreateTestsExecutionReportTask : DefaultTask() {
 
@@ -46,5 +45,4 @@ abstract class CreateTestsExecutionReportTask : DefaultTask() {
             }
         }
     }
-
 }
