@@ -126,8 +126,7 @@ class ReportsFunctionalTest extends Specification {
         result.task(":createTestsExecutionReport").outcome == SUCCESS
 
         and:
-        def file = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
-        def mermaidGraph = file.find("(?<=graphData = `)(?s:.*)(?=`)")
+        def mermaidGraph = new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt").text
         !mermaidGraph.contains("test with # character")
         !mermaidGraph.contains("test with : character")
         mermaidGraph.contains("test with  character")
