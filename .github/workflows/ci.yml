@@ -50,5 +50,8 @@ jobs:
          examples/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
          examples/spock-single-module/build/reports/tests-execution/html/test.html,
          examples/spock-single-module/build/reports/tests-execution/json/test.json, 
-         examples/spock-single-module/build/reports/tests-execution/mermaid/test.txt
+         examples/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
+         examples/testNG-single-module/build/reports/tests-execution/html/test.html,
+         examples/testNG-single-module/build/reports/tests-execution/json/test.json,
+         examples/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
          "
