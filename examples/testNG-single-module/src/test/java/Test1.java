@@ -1,3 +1,4 @@
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
@@ -13,6 +14,7 @@ public class Test1 {
         assertTrue(true);
     }
 
+    @Ignore
     @Test
     public void test2() throws InterruptedException {
         Thread.sleep(sleepDurationMs);
