@@ -2,23 +2,23 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
 
+@Test(groups = {"parallel"})
 public class Test2 {
-    @Test(groups = {"group1", "group2"})
+
+    private static final int sleepDurationMs = 300;
 
     public void test1() throws InterruptedException {
-        Thread.sleep(20);
+        Thread.sleep(sleepDurationMs);
         assertTrue(true);
     }
 
-    @Test(groups = {"ignored"})
     public void test2() throws InterruptedException {
-        Thread.sleep(10);
+        Thread.sleep(sleepDurationMs);
         assertTrue(true);
     }
 
-    @Test(groups = {"group1"})
     public void test3() throws InterruptedException {
-        Thread.sleep(30);
+        Thread.sleep(sleepDurationMs);
         assertTrue(true);
     }
 }

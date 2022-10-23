@@ -9,7 +9,7 @@ repositories {
 
 test {
     useTestNG() {
-        suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testng-parallel.xml', 'src/test/resources/testng-isolated.xml'
     }
 }
 
