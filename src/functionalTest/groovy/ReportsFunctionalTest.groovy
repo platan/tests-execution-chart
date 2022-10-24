@@ -133,6 +133,61 @@ class ReportsFunctionalTest extends Specification {
         mermaidGraph.contains("test with #colon; character")
     }
 
+    def "should escape special characters in html table test names"() {
+        given:
+        settingsFile << "rootProject.name = 'hello-world'"
+        buildFile << """
+            plugins {
+                id 'groovy'
+                id 'com.github.platan.tests-execution-chart'
+            }
+            createTestsExecutionReport {
+                formats {
+                    html { enabled = true }
+                    json { enabled = false }
+                    mermaid { enabled = false }
+                }
+            }
+            repositories {
+                mavenCentral()
+            }
+            dependencies {
+                testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+                testImplementation platform('org.spockframework:spock-bom:2.1-groovy-3.0')
+                testImplementation 'org.spockframework:spock-core'
+            }
+            test {
+                useJUnitPlatform()
+            }
+        """
+
+        specFile << """
+            import spock.lang.Specification
+
+            class Test1Spec extends Specification {
+                def "test with <tag/> character"() {
+                    expect:
+                    true
+                }
+            }        
+        """
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(testProjectDir)
+                .withArguments('test', 'createTestsExecutionReport')
+                .withPluginClasspath()
+                .build()
+
+        then:
+        result.task(":createTestsExecutionReport").outcome == SUCCESS
+
+        and:
+        def html = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").text
+        html.contains("&lt;tag/&gt;")
+        !html.contains("<tag/>>")
+    }
+
     def "display info about the lack of reports"() {
         given:
         settingsFile << "rootProject.name = 'hello-world'"

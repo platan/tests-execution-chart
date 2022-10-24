@@ -1,5 +1,6 @@
 package com.github.platan.tests_execution_chart.reporters.html
 
+import org.apache.commons.text.StringEscapeUtils.escapeHtml4
 import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
 
 class HtmlTableFormatter {
@@ -8,7 +9,7 @@ class HtmlTableFormatter {
         val tbody = StringBuilder()
         report.results.sortedByDescending { it.durationMs }.map {
             tbody.append(
-                """<tr><td>${it.testName}</td>
+                """<tr><td>${escapeHtml4(it.testName)}</td>
                    <td>${it.className}</td>
                    <td>${it.resultType}</td>
                    <td>${it.durationMs}</td></tr>"""
@@ -20,7 +21,7 @@ class HtmlTableFormatter {
                     <td>Test name</td>
                     <td>Class name</td>
                     <td>Result</td>
-                    <td class="selected order-desc">Duration (ms)</td>
+                    <td>Duration (ms)</td>
                 </tr>
             </thead>
             <tbody>

@@ -14,7 +14,7 @@ private const val TEMPLATE_HTML_FILE = "template.html"
 private const val GRAPH_PLACEHOLDER = "@GRAPH_PLACEHOLDER@"
 private const val MERMAID_JS_FILE_NAME = "mermaid.min.js"
 private const val MERMAID_SRC_PLACEHOLDER = "@MERMAID_SRC@"
-private const val TABLE_SRC_PLACEHOLDER = "@TABLE_SRC@"
+private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
 internal class HtmlGanttDiagramReporter(private val config: Html, private val logger: Logger) : GanttDiagramReporter() {
     override fun report(report: TestExecutionScheduleReport, task: Test) {
