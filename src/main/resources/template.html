@@ -5,55 +5,26 @@
     <meta charset="utf-8">
     <title>Test execution chart</title>
     <style>
-        * {
-            font-family: Arial, sans-serif;
-        }
-
         table {
             width: calc(100% - 35px);
         }
 
-        table, table > thead > tr > td, table > tbody > tr > td, table > tfoot > tr > td {
+        table, table td {
             border: 1px solid black;
             border-collapse: collapse;
             padding: 5px 10px;
         }
 
         table > tbody > tr:nth-child(odd) {
-            background-color: rgba(102, 102, 255, 0.1);
+            background-color: #6666FF19;
         }
 
         table > tbody > tr:hover {
-            background-color: rgba(255, 244, 0, 0.2);
+            background-color: #FFF40033;
         }
 
         table > thead > tr {
-            white-space: nowrap;
-            background-color: #bec7ff;
-        }
-
-        table > thead > tr > td {
-            font-weight: bold;
-            padding-right: 15px;
-            cursor: pointer;
-        }
-
-        table > thead > tr > td.selected {
-            padding-right: 0;
-        }
-
-        .selected.order-asc:after {
-            display: inline-block;
-            text-align: center;
-            width: 15px;
-            content: '\25B2';
-        }
-
-        .selected.order-desc:after {
-            display: inline-block;
-            text-align: center;
-            width: 15px;
-            content: '\25BC';
+            background-color: #BEC7FF;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -62,7 +33,7 @@
             }
 
             table {
-                color: #ddd
+                color: #DDD;
             }
 
             table > tbody > tr:nth-child(odd) {
@@ -70,7 +41,7 @@
             }
 
             table > thead > tr {
-                background-color: rgba(180, 172, 118, 0.2);
+                background-color: #B4AC7633;
             }
 
             table > tbody > tr:hover {
@@ -95,33 +66,6 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
         mermaid.render("chart", "%%{init: {'theme':'" + getTheme(event.matches) + "'}}%%\n" + graphData, renderCallback);
     })
-
-    const getValue = (cell) => cell.dataset.value !== undefined ?
-        cell.dataset.value : cell.textContent.match(/^-?\d+$/) ? parseInt(cell.textContent) : cell.textContent;
-    document.addEventListener('click', event => {
-        const tbody = document.getElementById("table").tBodies[0];
-        const element = event.target;
-        let cellIndex = 0;
-        if (element.parentNode?.parentNode?.nodeName === "THEAD") {
-            [].forEach.call(element.parentNode.cells, (cell, index) => {
-                if (cell !== element) {
-                    cell.classList.remove('selected', 'order-asc', 'order-desc');
-                    delete cell.dataset.order;
-                } else cellIndex = index;
-            });
-            element.classList.add('selected');
-            let order = (element.dataset.order === undefined) ? 'desc' : element.dataset.order;
-            element.classList.remove('order-' + order);
-            order = (order === 'asc') ? 'desc' : 'asc';
-            element.classList.add('order-' + order);
-            [].slice.call(tbody.rows).sort((a, b) => {
-                const aVal = (order === 'asc') ? getValue(a.cells[cellIndex]) : getValue(b.cells[cellIndex]);
-                const bVal = (order === 'asc') ? getValue(b.cells[cellIndex]) : getValue(a.cells[cellIndex]);
-                return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
-            }).forEach(row => tbody.appendChild(row));
-            element.dataset.order = order;
-        }
-    });
 </script>
 </body>
 <style>
