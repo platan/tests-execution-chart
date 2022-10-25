@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Isolated" verbose="1">
+    <test name="Isolated">
+        <groups>
+            <run>
+                <include name="isolated"/>
+            </run>
+        </groups>
+        <packages>
+            <package name=".*"/>
+        </packages>
+    </test>
+</suite>
