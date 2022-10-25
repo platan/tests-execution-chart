@@ -31,7 +31,6 @@ public class Test2 {
     @Test(dataProvider = "data-provider")
     public void test3(int x) throws InterruptedException {
         Thread.sleep(sleepDurationMs);
-        System.out.println("x = " + x);
         assertTrue(true);
     }
 }
