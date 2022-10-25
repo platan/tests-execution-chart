@@ -5,9 +5,47 @@
     <meta charset="utf-8">
     <title>Test execution chart</title>
     <style>
+        table {
+            width: calc(100% - 35px);
+        }
+
+        table, table td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px 10px;
+        }
+
+        table > tbody > tr:nth-child(odd) {
+            background-color: #6666FF19;
+        }
+
+        table > tbody > tr:hover {
+            background-color: #FFF40033;
+        }
+
+        table > thead > tr {
+            background-color: #BEC7FF;
+        }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background: #232323;
+            }
+
+            table {
+                color: #DDD;
+            }
+
+            table > tbody > tr:nth-child(odd) {
+                background-color: #363636;
+            }
+
+            table > thead > tr {
+                background-color: #B4AC7633;
+            }
+
+            table > tbody > tr:hover {
+                background-color: #191919;
             }
         }
     </style>
@@ -16,6 +54,7 @@
 
 <body>
 <div id="chart-container"></div>
+<div id="table-container">@TABLE@</div>
 <script>
     const graphData = `@GRAPH_PLACEHOLDER@`
     const darkModeEnabled = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -29,5 +68,11 @@
     })
 </script>
 </body>
-
+<style>
+    @media (prefers-color-scheme: dark) {
+        #chart .taskText {
+            fill: #333 !important;
+        }
+    }
+</style>
 </html>
