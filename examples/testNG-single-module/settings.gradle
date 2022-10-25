@@ -1,0 +1,3 @@
+rootProject.name = 'testNG-single-module'
+
+includeBuild('../..')
