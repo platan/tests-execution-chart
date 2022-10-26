@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# To apply spotless for every commit copy this file to folder .git/hooks/
+# or add below line to existing .git/hooks/commit-msg
+./gradlew spotlessCheck
