@@ -88,7 +88,10 @@ publishing {
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
-        ktlint().editorConfigOverride(
+        // New versions of ktlint display:
+        // "Property 'disabled_rules' is deprecated: Rename property 'disabled_rules' to 'ktlint_disabled_rules' in all '.editorconfig' files."
+        // but .editorconfig file is ignored (Similar issue: https://github.com/pinterest/ktlint/issues/1599 )
+        ktlint("0.46.0").editorConfigOverride(
             mapOf(
                 "disabled_rules" to "package-name"
             )
@@ -100,5 +103,4 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             mapOf("indent_size" to "4")
         )
     }
-    isEnforceCheck = false
 }
