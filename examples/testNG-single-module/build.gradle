@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'com.github.platan.tests-execution-chart'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng-parallel.xml', 'src/test/resources/testng-isolated.xml'
+    }
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.6.1'
+}

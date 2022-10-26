@@ -28,7 +28,7 @@ configurations["functionalTestRuntimeOnly"].extendsFrom(configurations.runtimeOn
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
-    functionalTestImplementation("org.apache.commons:commons-text:1.10.0")
+    implementation("org.apache.commons:commons-text:1.10.0")
 }
 
 gradlePlugin {
