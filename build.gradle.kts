@@ -5,6 +5,7 @@ plugins {
     groovy
     id("com.gradle.plugin-publish") version "1.0.0"
     id("com.diffplug.spotless") version "6.11.0"
+    id("com.github.jakemarsden.git-hooks") version "0.0.2"
 }
 
 group = "com.github.platan"
@@ -103,4 +104,9 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             mapOf("indent_size" to "4")
         )
     }
+}
+
+gitHooks {
+    setHooks(mapOf("pre-commit" to "spotlessCheck"))
+    setHooksDirectory(layout.projectDirectory.dir("/tmp/tests-execution-chart/.git/hooks"))
 }
