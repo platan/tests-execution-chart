@@ -108,5 +108,4 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 
 gitHooks {
     setHooks(mapOf("pre-commit" to "spotlessCheck"))
-    setHooksDirectory(layout.projectDirectory.dir("/tmp/tests-execution-chart/.git/hooks"))
 }
