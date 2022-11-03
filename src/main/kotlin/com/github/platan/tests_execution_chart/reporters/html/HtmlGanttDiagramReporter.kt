@@ -1,11 +1,11 @@
 package com.github.platan.tests_execution_chart.reporters.html
 
-import org.gradle.api.logging.Logger
-import org.gradle.api.tasks.testing.Test
 import com.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import com.github.platan.tests_execution_chart.config.Html
 import com.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import com.github.platan.tests_execution_chart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
+import org.gradle.api.logging.Logger
+import org.gradle.api.tasks.testing.Test
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Paths

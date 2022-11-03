@@ -14,18 +14,22 @@ data class MermaidGanttDiagram(val dateFormat: String, val axisFormat: String, v
         }
 
         fun build(dateFormat: String, axisFormat: String): MermaidGanttDiagram {
-            return MermaidGanttDiagram(dateFormat, axisFormat, sectionsMap.entries.map { sectionEntry ->
-                Section(
-                    sectionEntry.key,
-                    sectionEntry.value.map { row ->
-                        Section.Row(
-                            row.name,
-                            row.type,
-                            row.start,
-                            row.end
-                        )
-                    })
-            }
+            return MermaidGanttDiagram(
+                dateFormat,
+                axisFormat,
+                sectionsMap.entries.map { sectionEntry ->
+                    Section(
+                        sectionEntry.key,
+                        sectionEntry.value.map { row ->
+                            Section.Row(
+                                row.name,
+                                row.type,
+                                row.start,
+                                row.end
+                            )
+                        }
+                    )
+                }
             )
         }
     }

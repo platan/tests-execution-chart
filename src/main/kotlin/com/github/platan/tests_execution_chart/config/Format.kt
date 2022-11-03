@@ -1,10 +1,10 @@
 package com.github.platan.tests_execution_chart.config
 
-import javax.inject.Inject
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
+import javax.inject.Inject
 
 abstract class Format @Inject constructor(objectFactory: ObjectFactory, name: String) {
 

@@ -4,6 +4,8 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.0.0"
+    id("com.diffplug.spotless") version "6.11.0"
+    id("com.github.jakemarsden.git-hooks") version "0.0.2"
 }
 
 group = "com.github.platan"
@@ -83,4 +85,27 @@ publishing {
             url = uri("../local-plugin-repository")
         }
     }
+}
+
+configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+    kotlin {
+        // New versions of ktlint display:
+        // "Property 'disabled_rules' is deprecated: Rename property 'disabled_rules' to 'ktlint_disabled_rules' in all '.editorconfig' files."
+        // but .editorconfig file is ignored (Similar issue: https://github.com/pinterest/ktlint/issues/1599 )
+        ktlint("0.46.0").editorConfigOverride(
+            mapOf(
+                "disabled_rules" to "package-name"
+            )
+        )
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint().editorConfigOverride(
+            mapOf("indent_size" to "4")
+        )
+    }
+}
+
+gitHooks {
+    setHooks(mapOf("pre-commit" to "spotlessCheck"))
 }

@@ -5,12 +5,12 @@ import org.gradle.api.Project
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.testing.Test
 
-
 class TestsExecutionReportPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val serviceProvider: Provider<TestExecutionResultsRegisterService> =
             project.gradle.sharedServices.registerIfAbsent(
-                "testExecutionResultsRegisterService", TestExecutionResultsRegisterService::class.java
+                "testExecutionResultsRegisterService",
+                TestExecutionResultsRegisterService::class.java
             ) {}
 
         val createTestsExecutionReportExtension =
