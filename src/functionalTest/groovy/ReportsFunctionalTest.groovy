@@ -57,17 +57,21 @@ class ReportsFunctionalTest extends Specification {
                 .build()
 
         then:
+        def mermaidFile = new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt")
+        def jsonFile = new File("$projectDirRealPath/build/reports/tests-execution/json/test.json")
+        def htmlFile = new File("$projectDirRealPath/build/reports/tests-execution/html/test.html")
         result.task(":createTestsExecutionReport").outcome == SUCCESS
         result.output.contains("Tests execution schedule report for task 'test'")
-        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/mermaid/test.txt file.")
-        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/json/test.json file.")
-        result.output.contains("Tests execution schedule report saved to $projectDirRealPath/build/reports/tests-execution/html/test.html file.")
+        result.output.contains("Tests execution schedule report saved to $mermaidFile file.")
+        result.output.contains("Tests execution schedule report saved to $jsonFile file.")
+        result.output.contains("Tests execution schedule report saved to $htmlFile file.")
         result.output.contains('BUILD SUCCESSFUL')
 
+
         and:
-        new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt").exists()
-        new File("$projectDirRealPath/build/reports/tests-execution/json/test.json").exists()
-        new File("$projectDirRealPath/build/reports/tests-execution/html/test.html").exists()
+        mermaidFile.exists()
+        jsonFile.exists()
+        htmlFile.exists()
     }
 
     def "should replace special characters in mermaid graph test names"() {
