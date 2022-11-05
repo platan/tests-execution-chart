@@ -31,12 +31,20 @@ class MermaidGanttDiagramFormatterSpec extends Specification {
         inputFile.text = mermaid
 
         when:
-        def process = "npx -p @mermaid-js/mermaid-cli mmdc -i $inputPath -o $outputPath".execute()
+        def process = "${getCommand("npx")} -p @mermaid-js/mermaid-cli mmdc -i $inputPath -o $outputPath".execute()
 
         then:
         process.consumeProcessOutput(processOutput, processError)
         process.waitForOrKill(60000)
         assert process.exitValue() == 0, "Process finished with exit code `${process.exitValue()}, output: $processOutput\nerror: $processError"
+    }
+
+    String getCommand(String command) {
+        if (System.properties['os.name'].toString().toLowerCase().contains('windows')) {
+            return "${command}.cmd"
+        } else {
+            return command
+        }
     }
 
 }
