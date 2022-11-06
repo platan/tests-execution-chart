@@ -66,3 +66,5 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build -i
+    - name: Create tests execution report for all examples
+      run: ./examples.ps1 test createTestsExecutionReport
