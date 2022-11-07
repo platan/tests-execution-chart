@@ -8,7 +8,7 @@ plugins {
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
 }
 
-group = "com.github.platan"
+group = "io.github.platan"
 version = "0.0.1-SNAPSHOT"
 
 repositories {
@@ -35,10 +35,10 @@ dependencies {
 gradlePlugin {
     plugins {
         create("testsExecutionReportPlugin") {
-            id = "com.github.platan.tests-execution-chart"
+            id = "io.github.platan.tests-execution-chart"
             displayName = "tests-execution-chart"
             description = "visualise tests execution schedule"
-            implementationClass = "com.github.platan.tests_execution_chart.TestsExecutionReportPlugin"
+            implementationClass = "io.github.platan.tests_execution_chart.TestsExecutionReportPlugin"
         }
     }
 }

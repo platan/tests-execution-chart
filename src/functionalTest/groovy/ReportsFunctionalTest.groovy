@@ -26,7 +26,7 @@ class ReportsFunctionalTest extends Specification {
         buildFile << """
             plugins {
                 id 'groovy'
-                id 'com.github.platan.tests-execution-chart'
+                id 'io.github.platan.tests-execution-chart'
             }
             createTestsExecutionReport {
                 formats {
@@ -80,7 +80,7 @@ class ReportsFunctionalTest extends Specification {
         buildFile << """
             plugins {
                 id 'groovy'
-                id 'com.github.platan.tests-execution-chart'
+                id 'io.github.platan.tests-execution-chart'
             }
             createTestsExecutionReport {
                 formats {
@@ -143,7 +143,7 @@ class ReportsFunctionalTest extends Specification {
         buildFile << """
             plugins {
                 id 'groovy'
-                id 'com.github.platan.tests-execution-chart'
+                id 'io.github.platan.tests-execution-chart'
             }
             createTestsExecutionReport {
                 formats {

@@ -38,7 +38,7 @@ pluginManagement {
 `build.gradle`:
 ```gradle
 plugins {
-    id 'com.github.platan.tests-execution-chart' version '0.0.1-SNAPSHOT'
+    id 'io.github.platan.tests-execution-chart' version '0.0.1-SNAPSHOT'
 }
 ```
 
@@ -49,7 +49,7 @@ plugins {
 
 [//]: # (plugins {)
 
-[//]: # (    id&#40;"com.github.platan.tests-execution-chart"&#41;)
+[//]: # (    id&#40;"io.github.platan.tests-execution-chart"&#41;)
 
 [//]: # (})
 
@@ -63,7 +63,7 @@ plugins {
 
 [//]: # (plugins {)
 
-[//]: # (    id 'com.github.platan.tests-execution-chart')
+[//]: # (    id 'io.github.platan.tests-execution-chart')
 
 [//]: # (})
 
@@ -104,7 +104,7 @@ Options:
 Gradle + Kotlin:
 
 ```kotlin
-configure<com.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
+configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             enabled.set(true)

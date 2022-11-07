@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.7.10"
-    id("com.github.platan.tests-execution-chart")
+    id("io.github.platan.tests-execution-chart")
 }
 
 repositories {
@@ -19,7 +19,7 @@ tasks.test {
 }
 
 
-configure<com.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
+configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             script {
