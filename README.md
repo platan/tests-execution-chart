@@ -109,8 +109,8 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
         html {
             enabled.set(true)
             script {
-                src.set("https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js")
-                embed.set(true)
+                src.set("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js")
+                embed.set(false)
             }
         }
         json {
@@ -129,17 +129,17 @@ Gradle + Groovy:
 createTestsExecutionReport {
     formats {
         json {
-            enabled = false
+            enabled = true
         }
         html {
             enabled = true
             script {
                 src = "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
-                embed = true
+                embed = false
             }
         }
         mermaid {
-            enabled = false
+            enabled = true
         }
     }
 }
