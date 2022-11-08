@@ -101,7 +101,7 @@ Options:
 | `formats.mermaid.enabled`   | boolean | Generate report in mermaid text format                             | `true`                                                     |
 
 
-Gradle + Kotlin:
+`build.gradle.kts`:
 
 ```kotlin
 configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
@@ -123,7 +123,7 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
 }
 ```
 
-Gradle + Groovy:
+`build.gradle`:
 
 ```gradle
 createTestsExecutionReport {
