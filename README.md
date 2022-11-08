@@ -149,7 +149,7 @@ createTestsExecutionReport {
 
 ## Unreleased
 
-- ...
+- Add option to create a report that visualises the tests execution schedule
 
 # License
 
