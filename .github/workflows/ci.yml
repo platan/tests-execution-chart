@@ -22,7 +22,7 @@ jobs:
       with:
         arguments: build
     - name: Create tests execution report for all examples
-      run: ./examples.sh test createTestsExecutionReport
+      run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
       uses: andstor/file-existence-action@v1
       with:
@@ -67,7 +67,7 @@ jobs:
       with:
         arguments: build -i
     - name: Create tests execution report for all examples
-      run: ./examples.ps1 test createTestsExecutionReport
+      run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
       uses: andstor/file-existence-action@v1
       with:
