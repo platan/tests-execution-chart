@@ -38,7 +38,7 @@ pluginManagement {
 `build.gradle`:
 ```gradle
 plugins {
-    id 'io.github.platan.tests-execution-chart' version '0.0.1-SNAPSHOT'
+    id 'io.github.platan.tests-execution-chart' version '0.1.0-SNAPSHOT'
 }
 ```
 
