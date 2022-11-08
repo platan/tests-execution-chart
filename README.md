@@ -88,6 +88,50 @@ Example result (HTML report):
     </picture>
 </p>
 
+# Reports
+
+`createTestsExecutionReport` task creates reports in HTML, JSON and [Mermaid](https://mermaid-js.github.io/mermaid/#/) formats.
+
+## HTML
+<picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".readme/example-html-report-dark.png">
+      <img src=".readme/example-html-report.png">
+</picture>
+
+## JSON
+```json
+{
+  "results": [
+    {
+      "className": "Test1Spec",
+      "durationMs": 120,
+      "endTime": 1667936777974,
+      "startTime": 1667936777854,
+      "resultType": "SUCCESS",
+      "testName": "test 2"
+    },
+    {
+      "className": "Test1Spec",
+      "durationMs": 213,
+      "endTime": 1667936778067,
+      "startTime": 1667936777854,
+      "resultType": "SUCCESS",
+      "testName": "test 1"
+    }
+  ]
+}
+```
+
+## Mermaid
+```
+gantt
+dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
+axisFormat %H:%M:%S.%L
+section Test1Spec
+test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
+test 1 - 213 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0100
+```
+
 # Configuration
 
 Options:
