@@ -36,8 +36,8 @@ gradlePlugin {
     plugins {
         create("testsExecutionReportPlugin") {
             id = "io.github.platan.tests-execution-chart"
-            displayName = "tests-execution-chart"
-            description = "visualise tests execution schedule"
+            displayName = "Visualise tests execution schedule"
+            description = "Visualise tests execution schedule"
             implementationClass = "io.github.platan.tests_execution_chart.TestsExecutionReportPlugin"
         }
     }
@@ -46,7 +46,8 @@ gradlePlugin {
 pluginBundle {
     website = "https://github.com/platan/tests-execution-chart"
     vcsUrl = "https://github.com/platan/tests-execution-chart.git"
-    tags = listOf("tests", "execution", "schedule", "report", "gantt", "chart")
+    description = "Visualise tests execution schedule"
+    tags = listOf("test", "tests", "execution", "schedule", "report", "gantt", "chart", "parallel")
 }
 
 val functionalTestTask = tasks.register<Test>("functionalTest") {
