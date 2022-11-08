@@ -2,7 +2,7 @@
 
 set -x
 
-for dir in examples/*
+for dir in test-projects/*
 do
   cd "$dir" || exit
   ./gradlew "$@" || exit

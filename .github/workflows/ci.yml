@@ -21,37 +21,37 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
-    - name: Create tests execution report for all examples
-      run: ./examples.sh test createTestsExecutionReport
+    - name: Create tests execution report for all test projects
+      run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
       uses: andstor/file-existence-action@v1
       with:
         allow_failure: true
         files: "
-         examples/junit5-single-module/build/reports/tests-execution/html/test.html,
-         examples/junit5-single-module/build/reports/tests-execution/json/test.json, 
-         examples/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/kotest-single-module/build/reports/tests-execution/html/test.html,
-         examples/kotest-single-module/build/reports/tests-execution/json/test.json, 
-         examples/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
-         examples/spock-single-module/build/reports/tests-execution/html/test.html,
-         examples/spock-single-module/build/reports/tests-execution/json/test.json, 
-         examples/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/testNG-single-module/build/reports/tests-execution/html/test.html,
-         examples/testNG-single-module/build/reports/tests-execution/json/test.json,
-         examples/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
+         test-projects/junit5-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/junit5-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/kotest-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/kotest-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
+         test-projects/spock-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/spock-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/testNG-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/testNG-single-module/build/reports/tests-execution/json/test.json,
+         test-projects/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
          "
   build-on-windows:
     runs-on: windows-latest
@@ -66,35 +66,35 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build -i
-    - name: Create tests execution report for all examples
-      run: ./examples.ps1 test createTestsExecutionReport
+    - name: Create tests execution report for all test projects
+      run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
       uses: andstor/file-existence-action@v1
       with:
         allow_failure: true
         files: "
-         examples/junit5-single-module/build/reports/tests-execution/html/test.html,
-         examples/junit5-single-module/build/reports/tests-execution/json/test.json, 
-         examples/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/kotest-single-module/build/reports/tests-execution/html/test.html,
-         examples/kotest-single-module/build/reports/tests-execution/json/test.json, 
-         examples/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
-         examples/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
-         examples/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
-         examples/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
-         examples/spock-single-module/build/reports/tests-execution/html/test.html,
-         examples/spock-single-module/build/reports/tests-execution/json/test.json, 
-         examples/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
-         examples/testNG-single-module/build/reports/tests-execution/html/test.html,
-         examples/testNG-single-module/build/reports/tests-execution/json/test.json,
-         examples/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
+         test-projects/junit5-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/junit5-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/kotest-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/kotest-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
+         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
+         test-projects/spock-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/spock-single-module/build/reports/tests-execution/json/test.json, 
+         test-projects/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
+         test-projects/testNG-single-module/build/reports/tests-execution/html/test.html,
+         test-projects/testNG-single-module/build/reports/tests-execution/json/test.json,
+         test-projects/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
          "
