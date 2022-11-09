@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
-
+import spock.lang.Retry
 import spock.lang.Specification
 import spock.lang.TempDir
 
@@ -22,6 +22,8 @@ class MermaidGanttDiagramFormatterSpec extends Specification {
         outputPath = new File(tempDir, "output.svg").getAbsolutePath()
     }
 
+    // Fails sometimes on Windows runner
+    @Retry
     def "should produce result parsable by mmdc (mermaid CLI)"() {
         given:
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
