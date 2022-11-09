@@ -1,5 +1,3 @@
-
-
 <p align="center">
     <img src="src/etc/logo/logo.svg" height="140">
 </p>
