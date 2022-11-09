@@ -132,7 +132,7 @@ test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0
 test 1 - 213 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0100
 ```
 
-Rendered by GitHub ([info](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)):
+rendered: ([info](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)):
 ```mermaid
 gantt
 dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
