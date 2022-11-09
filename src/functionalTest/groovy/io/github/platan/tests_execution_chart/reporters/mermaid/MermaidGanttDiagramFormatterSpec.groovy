@@ -36,7 +36,7 @@ class MermaidGanttDiagramFormatterSpec extends Specification {
         then:
         process.consumeProcessOutput(processOutput, processError)
         process.waitForOrKill(60000)
-        assert process.exitValue() == 0, "Process finished with exit code `${process.exitValue()}, output: $processOutput\nerror: $processError"
+        assert process.exitValue() == 0, "Process finished with exit code ${process.exitValue()}\nOutput: $processOutput\nError: $processError"
     }
 
     String getCommand(String command) {
