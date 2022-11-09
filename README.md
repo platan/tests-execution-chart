@@ -198,13 +198,11 @@ createTestsExecutionReport {
 ```
 
 # Motivation
-[JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. Both frameworks allow to configure execution mode for classes/specifications and methods/features. JUnit/Spock documentation illustrates how this configuration affects the execution schedule of tests. 
+[JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. Both frameworks allow configuring execution mode for classes/specifications and methods/features. JUnit/Spock documentation illustrates how this configuration affects the execution schedule of tests. 
 
-Unfortunately I did not found existing tool which allows to visualise tests executions schedule for particular project. This Gradle plugin tries to address this need. 
+Unfortunately, I did not find existing tool which allows to visualise tests executions schedule for particular project. This Gradle plugin tries to address this need. 
 
-
-<!-- add info regarding JUnit reports -->
-
+Gradle can generate reports in JUnit XML format. But such reports cannot be used to generate charts, because it does not have start timestamps for test methods, only for test classes (with seconds precision). 
 
 # Changelog
 
