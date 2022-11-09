@@ -197,6 +197,9 @@ createTestsExecutionReport {
 }
 ```
 
+# Motivation
+[JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. 
+
 # Changelog
 
 ## Unreleased
