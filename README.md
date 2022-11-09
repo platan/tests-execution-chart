@@ -205,7 +205,7 @@ createTestsExecutionReport {
 
 Unfortunately, I did not find existing tool which allows to visualise tests executions schedule for particular project. This Gradle plugin tries to address this need. 
 
-Gradle can generate reports in JUnit XML format. But such reports cannot be used to generate charts, because it does not have start timestamps for test methods, only for test classes (with seconds precision). 
+Gradle can generate reports in JUnit XML format. But such reports cannot be used to generate charts, because they do not have start timestamps for test methods, only for test classes (with seconds precision). 
 
 # Changelog
 
