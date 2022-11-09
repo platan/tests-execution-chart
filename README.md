@@ -198,7 +198,13 @@ createTestsExecutionReport {
 ```
 
 # Motivation
-[JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. 
+[JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. Both frameworks allow to configure execution mode for classes/specifications and methods/features. JUnit/Spock documentation illustrates how this configuration affects the execution schedule of tests. 
+
+Unfortunately I did not found existing tool which allows to visualise tests executions schedule for particular project. This Gradle plugin tries to address this need. 
+
+
+<!-- add info regarding JUnit reports -->
+
 
 # Changelog
 
