@@ -183,15 +183,15 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
 ```gradle
 createTestsExecutionReport {
     formats {
-        json {
-            enabled = true
-        }
         html {
             enabled = true
             script {
                 src = "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
                 embed = false
             }
+        }
+        json {
+            enabled = true
         }
         mermaid {
             enabled = true
