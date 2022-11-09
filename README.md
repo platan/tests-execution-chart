@@ -97,6 +97,9 @@ Example result (HTML report):
 </picture>
 
 ## JSON
+
+- `startTime` - in milliseconds since the epoch
+- `endTime` - in milliseconds since the epoch
 ```json
 {
   "results": [
