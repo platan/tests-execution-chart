@@ -5,6 +5,8 @@
 **Gradle plugin that visualises tests execution schedule**
 
 [![build status](https://img.shields.io/github/workflow/status/platan/tests-execution-chart/CI)](https://github.com/platan/tests-execution-chart/actions/workflows/ci.yml)
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/io.github.platan.tests-execution-chart)](https://plugins.gradle.org/plugin/io.github.platan.tests-execution-chart)
+
 
 # Usage
 
