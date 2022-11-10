@@ -213,6 +213,10 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+- no changes
+
+## 0.1.0 (09 November 2022)
+
 - Add option to create a report that visualises the tests execution schedule
 
 # License
