@@ -202,6 +202,36 @@ createTestsExecutionReport {
 }
 ```
 
+# Development
+
+You can publish plugin locally:
+```sh
+cd tests-execution-chart
+./gradlew publish
+```
+Artifacts are published to `../local-plugin-repository` directory.
+
+Configure your project:
+
+`settings.gradle` (set proper path instead of `/path-to`):
+```gradle
+pluginManagement {
+    repositories {
+        maven {
+            url '/path-to/local-plugin-repository'
+        }
+        gradlePluginPortal()
+    }
+}
+
+```
+`build.gradle`:
+```gradle
+plugins {
+    id 'io.github.platan.tests-execution-chart' version '0.1.0-SNAPSHOT'
+}
+```
+
 # Motivation
 [JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. Both frameworks allow configuring execution mode for classes/specifications and methods/features. JUnit/Spock documentation illustrates how this configuration affects the execution schedule of tests. 
 
