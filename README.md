@@ -10,64 +10,19 @@
 
 # Usage
 
-> **Warning**
-> This project is under development and has not yet been published to the Gradle Plugin Portal.
-
-Since this project has not been published to the Gradle Plugin Portal you have to publish it locally to use it:
-
-```sh
-cd tests-execution-chart
-./gradlew publish
-```
-Artifacts are published to `../local-plugin-repository` directory.
-
-Configure your project:
-
-`settings.gradle` (set proper path instead of `/path-to`):
-```gradle
-pluginManagement {
-    repositories {
-        maven {
-            url '/path-to/local-plugin-repository'
-        }
-        gradlePluginPortal()
-    }
+`build.gradle.kts`:
+```kotlin
+plugins {
+    id("io.github.platan.tests-execution-chart") version "0.1.0"
 }
-
 ```
+
 `build.gradle`:
 ```gradle
 plugins {
-    id 'io.github.platan.tests-execution-chart' version '0.1.0-SNAPSHOT'
+    id "io.github.platan.tests-execution-chart" version "0.1.0"
 }
 ```
-
-[//]: # (Gradle + Kotlin:)
-
-[//]: # ()
-[//]: # (```kotlin)
-
-[//]: # (plugins {)
-
-[//]: # (    id&#40;"io.github.platan.tests-execution-chart"&#41;)
-
-[//]: # (})
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (Gradle + Groovy:)
-
-[//]: # ()
-[//]: # (```gradle)
-
-[//]: # (plugins {)
-
-[//]: # (    id 'io.github.platan.tests-execution-chart')
-
-[//]: # (})
-
-[//]: # (```)
 
 ```sh
 ./gradlew test createTestsExecutionReport --rerun-tasks
