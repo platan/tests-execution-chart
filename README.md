@@ -48,12 +48,17 @@ Example result (HTML report):
 `createTestsExecutionReport` task creates reports in HTML, JSON and [Mermaid](https://mermaid-js.github.io/mermaid/#/) formats.
 
 ## HTML
+
+Located in `build/reports/tests-execution/html/*.html`.
+
 <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".readme/example-html-report-dark.png">
       <img src=".readme/example-html-report.png">
 </picture>
 
 ## JSON
+
+Located in `build/reports/tests-execution/json/*.json`.
 
 - `startTime` - in milliseconds since the epoch
 - `endTime` - in milliseconds since the epoch
@@ -81,6 +86,9 @@ Example result (HTML report):
 ```
 
 ## Mermaid
+
+Located in `build/reports/tests-execution/mermaid/*.txt`.
+
 ```
 gantt
 dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
