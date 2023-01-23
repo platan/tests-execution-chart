@@ -64,7 +64,7 @@
     const darkModeEnabled = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const getTheme = (darkModeEnabled) => darkModeEnabled ? 'dark' : 'default'
     const renderCallback = (svgChart) => document.getElementById("chart-container").innerHTML = svgChart;
-    const options = {theme: getTheme(darkModeEnabled)};
+    const options = {theme: getTheme(darkModeEnabled), maxTextSize: @MAX_TEXT_SIZE@};
     mermaid.initialize(options);
     mermaid.render("chart", graphData, renderCallback);
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {

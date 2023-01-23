@@ -12,6 +12,7 @@ import java.nio.file.Paths
 
 private const val TEMPLATE_HTML_FILE = "template.html"
 private const val GRAPH_PLACEHOLDER = "@GRAPH_PLACEHOLDER@"
+private const val MAX_TEXT_SIZE_PLACEHOLDER = "@MAX_TEXT_SIZE@"
 private const val MERMAID_JS_FILE_NAME = "mermaid.min.js"
 private const val MERMAID_SRC_PLACEHOLDER = "@MERMAID_SRC@"
 private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
@@ -34,9 +35,11 @@ internal class HtmlGanttDiagramReporter(private val config: Html, private val lo
             downloadFile(URL(src), "${reportsDir.absolutePath}/$scriptFileName")
             src = scriptFileName
         }
+        val maxTextSize = config.getMermaid().getConfig().maxTextSize.get()
         val htmlReport = template
             .replace(GRAPH_PLACEHOLDER, mermaid)
             .replace(MERMAID_SRC_PLACEHOLDER, src)
+            .replace(MAX_TEXT_SIZE_PLACEHOLDER, maxTextSize.toString())
             .replace(TABLE_SRC_PLACEHOLDER, table)
 
         val reportFile = save(task, htmlReport, config.outputLocation.get(), "html")

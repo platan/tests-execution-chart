@@ -9,7 +9,14 @@ abstract class Html @Inject constructor(objectFactory: ObjectFactory) : Format(o
     @Nested
     abstract fun getScript(): Script
 
+    @Nested
+    abstract fun getMermaid(): HtmlMermaid
+
     open fun script(action: Action<in Script>) {
         action.execute(getScript())
+    }
+
+    open fun mermaid(action: Action<in HtmlMermaid>) {
+        action.execute(getMermaid())
     }
 }
