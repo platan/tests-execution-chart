@@ -120,7 +120,7 @@ Options:
 | `formats.html.enabled`                    | boolean | Generate report in html format                                     | `true`                                                     |
 | `formats.html.script.embed`               | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                    |
 | `formats.html.script.src`                 | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js` |
-| `formats.html.mermaid.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `100000`                                                   |
+| `formats.html.mermaid.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                    |
 | `formats.json.enabled`                    | boolean | Generate report in json format                                     | `true`                                                     |
 | `formats.mermaid.enabled`                 | boolean | Generate report in mermaid text format                             | `true`                                                     |
 
