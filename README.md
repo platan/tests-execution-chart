@@ -13,7 +13,7 @@
 
 ```kotlin
 plugins {
-    id("io.github.platan.tests-execution-chart") version "0.1.0"
+    id("io.github.platan.tests-execution-chart") version "0.2.0"
 }
 ```
 
@@ -21,7 +21,7 @@ plugins {
 
 ```gradle
 plugins {
-    id "io.github.platan.tests-execution-chart" version "0.1.0"
+    id "io.github.platan.tests-execution-chart" version "0.0.0"
 }
 ```
 
@@ -211,7 +211,7 @@ pluginManagement {
 
 ```gradle
 plugins {
-    id 'io.github.platan.tests-execution-chart' version '0.1.0-SNAPSHOT'
+    id 'io.github.platan.tests-execution-chart' version '0.2.1-SNAPSHOT'
 }
 ```
 
