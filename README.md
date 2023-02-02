@@ -227,6 +227,10 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+- ...
+
+## 0.2.0 (02 February 2023)
+
 - (feature) Allow to set `maxTextSize` config option in Mermaid script in HTML report
 
 ## 0.1.0 (09 November 2022)
