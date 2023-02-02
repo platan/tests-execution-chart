@@ -174,6 +174,12 @@ createTestsExecutionReport {
 }
 ```
 
+# Troubleshooting
+
+> I see `Maximum text size in diagram exceeded` in an HTML report instead of a chart.
+
+Mermaid has limit of maximum allowed size of the text diagram. Default value of this size is 50000. This can be overridden using `formats.html.script.config.maxTextSize` option.
+
 # Development
 
 You can publish plugin locally:
