@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 private const val MAX_TEXT_SIZE = 50_000
 
-abstract class HtmlMermaidConfig @Inject constructor(objectFactory: ObjectFactory) {
+abstract class ScriptConfig @Inject constructor(objectFactory: ObjectFactory) {
 
     @get:Input
     val maxTextSize: Property<Int> = objectFactory.property(Int::class.java).convention(MAX_TEXT_SIZE)

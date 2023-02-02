@@ -33,9 +33,9 @@ class TestsExecutionReportPlugin : Plugin<Project> {
     ) {
         task.getFormats().getHtml().outputLocation
             .set(createTestsExecutionReportExtension.getFormats().getHtml().outputLocation)
-        task.getFormats().getHtml().getMermaid().getConfig()
+        task.getFormats().getHtml().getScript().getConfig()
             .maxTextSize.set(
-                createTestsExecutionReportExtension.getFormats().getHtml().getMermaid().getConfig().maxTextSize
+                createTestsExecutionReportExtension.getFormats().getHtml().getScript().getConfig().maxTextSize
             )
         task.getFormats().getHtml().getScript().src
             .set(createTestsExecutionReportExtension.getFormats().getHtml().getScript().src)

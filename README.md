@@ -115,14 +115,14 @@ test 1 - 213 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0
 
 Options:
 
-| Key                                       | Type    | Description                                                        | Default                                                    |
-|-------------------------------------------|---------|--------------------------------------------------------------------|------------------------------------------------------------|
-| `formats.html.enabled`                    | boolean | Generate report in html format                                     | `true`                                                     |
-| `formats.html.script.embed`               | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                    |
-| `formats.html.script.src`                 | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js` |
-| `formats.html.mermaid.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                    |
-| `formats.json.enabled`                    | boolean | Generate report in json format                                     | `true`                                                     |
-| `formats.mermaid.enabled`                 | boolean | Generate report in mermaid text format                             | `true`                                                     |
+| Key                                      | Type    | Description                                                        | Default                                                    |
+|------------------------------------------|---------|--------------------------------------------------------------------|------------------------------------------------------------|
+| `formats.html.enabled`                   | boolean | Generate report in html format                                     | `true`                                                     |
+| `formats.html.script.embed`              | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                    |
+| `formats.html.script.src`                | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js` |
+| `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                    |
+| `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                     |
+| `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                     |
 
 `build.gradle.kts`:
 
@@ -131,13 +131,11 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
     formats {
         html {
             enabled.set(true)
-            mermaid {
+            script {
+                embed.set(false)
                 config {
                     maxTextSize.set(110000)
                 }
-            }
-            script {
-                embed.set(false)
                 src.set("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js")
             }
         }
@@ -158,13 +156,11 @@ createTestsExecutionReport {
     formats {
         html {
             enabled = true
-            mermaid {
+            script {
+                embed = false
                 config {
                     maxTextSize = 110000
                 }
-            }
-            script {
-                embed = false
                 src = "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
             }
         }
@@ -225,7 +221,7 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-- (feature) Allow to set `maxTextSize` Mermaid config option
+- (feature) Allow to set `maxTextSize` config option in Mermaid script in HTML report
 
 ## 0.1.0 (09 November 2022)
 

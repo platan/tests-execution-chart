@@ -35,7 +35,7 @@ internal class HtmlGanttDiagramReporter(private val config: Html, private val lo
             downloadFile(URL(src), "${reportsDir.absolutePath}/$scriptFileName")
             src = scriptFileName
         }
-        val maxTextSize = config.getMermaid().getConfig().maxTextSize.get()
+        val maxTextSize = config.getScript().getConfig().maxTextSize.get()
         val htmlReport = template
             .replace(GRAPH_PLACEHOLDER, mermaid)
             .replace(MERMAID_SRC_PLACEHOLDER, src)
