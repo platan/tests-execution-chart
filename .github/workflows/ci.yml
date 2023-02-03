@@ -26,7 +26,7 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
-      uses: andstor/file-existence-action@v1
+      uses: andstor/file-existence-action@v2
       with:
         allow_failure: true
         files: "
@@ -71,7 +71,7 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
-      uses: andstor/file-existence-action@v1
+      uses: andstor/file-existence-action@v2
       with:
         allow_failure: true
         files: "
