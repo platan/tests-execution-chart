@@ -96,14 +96,14 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         // but .editorconfig file is ignored (Similar issue: https://github.com/pinterest/ktlint/issues/1599 )
         ktlint("0.46.0").editorConfigOverride(
             mapOf(
-                "disabled_rules" to "package-name"
-            )
+                "disabled_rules" to "package-name",
+            ),
         )
     }
     kotlinGradle {
         target("*.gradle.kts")
         ktlint().editorConfigOverride(
-            mapOf("indent_size" to "4")
+            mapOf("indent_size" to "4"),
         )
     }
 }
