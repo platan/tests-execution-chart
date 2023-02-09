@@ -4,6 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "org.spockframework:spock-core"
+        versions: ["2.x-groovy-4.x]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
