@@ -45,4 +45,4 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
-      run: ./test-projects.sh checkReports
+      run: ./test-projects.ps1 checkReports
