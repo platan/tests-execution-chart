@@ -28,35 +28,9 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
-      uses: andstor/file-existence-action@v2
+      uses: gradle/gradle-build-action@v2
       with:
-        allow_failure: true
-        files: "
-         test-projects/junit5-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/junit5-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/kotest-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/kotest-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
-         test-projects/spock-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/spock-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/testNG-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/testNG-single-module/build/reports/tests-execution/json/test.json,
-         test-projects/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
-         "
+        arguments: checkReports
   build-on-windows:
     runs-on: windows-latest
     steps:
@@ -73,32 +47,6 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
-      uses: andstor/file-existence-action@v2
+      uses: gradle/gradle-build-action@v2
       with:
-        allow_failure: true
-        files: "
-         test-projects/junit5-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/junit5-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/junit5-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/kotest-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/kotest-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/kotest-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/module1/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/html/test.html,
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-multi-module/module2/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/html/integrationTest.html,
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/json/integrationTest.json, 
-         test-projects/spock-multiple-test-tasks/build/reports/tests-execution/mermaid/integrationTest.txt,
-         test-projects/spock-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/spock-single-module/build/reports/tests-execution/json/test.json, 
-         test-projects/spock-single-module/build/reports/tests-execution/mermaid/test.txt,
-         test-projects/testNG-single-module/build/reports/tests-execution/html/test.html,
-         test-projects/testNG-single-module/build/reports/tests-execution/json/test.json,
-         test-projects/testNG-single-module/build/reports/tests-execution/mermaid/test.txt
-         "
+        arguments: checkReports

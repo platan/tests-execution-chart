@@ -1,0 +1,20 @@
+abstract class CheckReportsTask extends DefaultTask {
+    @Input
+    String jsonReport = 'build/reports/tests-execution/json/test.json'
+    @Input
+    String htmlReport = 'build/reports/tests-execution/html/test.html'
+    @Input
+    String mermaidReport = 'build/reports/tests-execution/mermaid/test.txt'
+
+    @TaskAction
+    def check() {
+        logger.lifecycle("Verify that JSON report exists in $jsonReport")
+        assert project.file(jsonReport).exists()
+        logger.lifecycle("Verify that HTML report exists in $htmlReport")
+        assert project.file(htmlReport).exists()
+        logger.lifecycle("Verify that Mermaid report exists in $mermaidReport")
+        assert project.file(mermaidReport).exists()
+    }
+}
+
+tasks.register('checkReports', CheckReportsTask)

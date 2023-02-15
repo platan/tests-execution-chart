@@ -3,6 +3,8 @@ plugins {
     id("io.github.platan.tests-execution-chart")
 }
 
+apply(from = "../checks.gradle")
+
 repositories {
     mavenCentral()
 }

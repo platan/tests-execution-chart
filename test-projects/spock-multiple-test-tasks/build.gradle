@@ -4,6 +4,8 @@ plugins {
     id 'io.github.platan.tests-execution-chart'
 }
 
+apply from: '../checks.gradle'
+
 repositories {
     mavenCentral()
 }
@@ -51,4 +53,10 @@ createTestsExecutionReport {
         json { enabled = true }
         mermaid { enabled = true }
     }
+}
+
+checkReports {
+    jsonReport = 'build/reports/tests-execution/json/integrationTest.json'
+    htmlReport = 'build/reports/tests-execution/html/integrationTest.html'
+    mermaidReport = 'build/reports/tests-execution/mermaid/integrationTest.txt'
 }
