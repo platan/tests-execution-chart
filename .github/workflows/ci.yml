@@ -28,9 +28,7 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: checkReports
+      run: ./test-projects.sh checkReports
   build-on-windows:
     runs-on: windows-latest
     steps:
@@ -47,6 +45,4 @@ jobs:
     - name: Create tests execution report for all test projects
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: checkReports
+      run: ./test-projects.sh checkReports
