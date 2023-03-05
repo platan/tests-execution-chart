@@ -31,6 +31,11 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
     implementation("org.apache.commons:commons-text:1.10.0")
+
+    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.15"))
+    testImplementation("org.codehaus.groovy:groovy")
+    testImplementation(platform("org.spockframework:spock-bom:2.3-groovy-3.0"))
+    testImplementation("org.spockframework:spock-core")
 }
 
 gradlePlugin {
@@ -51,11 +56,21 @@ pluginBundle {
     tags = listOf("test", "tests", "execution", "schedule", "report", "gantt", "chart", "parallel")
 }
 
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
 val functionalTestTask = tasks.register<Test>("functionalTest") {
     group = "verification"
     testClassesDirs = functionalTest.output.classesDirs
     classpath = functionalTest.runtimeClasspath
     useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
 }
 
 tasks.check {
