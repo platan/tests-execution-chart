@@ -227,6 +227,10 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+- nothing
+
+### 0.2.1 (07 March 2023)
+
 - (fix) Render chart in HTML report when the test name contains a backtick character
 
 ## 0.2.0 (02 February 2023)
