@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "io.github.platan"
-version = "0.2.1"
+version = "0.2.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
