@@ -227,7 +227,7 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-- ...
+- (fix) Render chart in HTML report when the test name contains a backtick character
 
 ## 0.2.0 (02 February 2023)
 
