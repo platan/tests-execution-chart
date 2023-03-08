@@ -19,8 +19,6 @@ private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
 internal class HtmlGanttDiagramReporter(private val config: Html, private val logger: Logger) : GanttDiagramReporter() {
     override fun report(report: TestExecutionScheduleReport, task: Test) {
-        val mermaid = TestExecutionMermaidDiagramFormatter().format(report)
-        val table = HtmlTableFormatter().format(report)
         val resource: URL? = this::class.java.classLoader.getResource(TEMPLATE_HTML_FILE)
         val template: String
         if (resource == null) {
@@ -28,22 +26,37 @@ internal class HtmlGanttDiagramReporter(private val config: Html, private val lo
         } else {
             template = resource.readText(Charsets.UTF_8)
         }
-        var src = config.getScript().src.get()
+        var scriptSrc = config.getScript().src.get()
         if (config.getScript().embed.get()) {
             val reportsDir = prepareReportsDir(task, config.outputLocation.get())
             val scriptFileName = MERMAID_JS_FILE_NAME
-            downloadFile(URL(src), "${reportsDir.absolutePath}/$scriptFileName")
-            src = scriptFileName
+            downloadFile(URL(scriptSrc), "${reportsDir.absolutePath}/$scriptFileName")
+            scriptSrc = scriptFileName
         }
         val maxTextSize = config.getScript().getConfig().maxTextSize.get()
-        val htmlReport = template
-            .replace(GRAPH_PLACEHOLDER, mermaid)
+        val htmlReport = prepareHtmlReport(report, template, scriptSrc, maxTextSize)
+        val reportFile = save(task, htmlReport, config.outputLocation.get(), "html")
+        logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
+    }
+
+    private fun prepareHtmlReport(
+        report: TestExecutionScheduleReport,
+        template: String,
+        src: String,
+        maxTextSize: Int
+    ): String {
+        val mermaid = TestExecutionMermaidDiagramFormatter().format(report)
+        val escapedMermaid = mermaid
+            .replace("\\", "\\\\")
+            // Mermaid data is put in javascript code and specified using backtick character (`).
+            // We have to escape ` character.
+            .replace("`", "\\`")
+        val table = HtmlTableFormatter().format(report)
+        return template
+            .replace(GRAPH_PLACEHOLDER, escapedMermaid)
             .replace(MERMAID_SRC_PLACEHOLDER, src)
             .replace(MAX_TEXT_SIZE_PLACEHOLDER, maxTextSize.toString())
             .replace(TABLE_SRC_PLACEHOLDER, table)
-
-        val reportFile = save(task, htmlReport, config.outputLocation.get(), "html")
-        logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
 
     private fun downloadFile(url: URL, path: String) {

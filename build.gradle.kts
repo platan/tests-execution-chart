@@ -4,13 +4,13 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.1.0"
-    id("com.diffplug.spotless") version "6.15.0"
+    id("com.diffplug.spotless") version "6.16.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
-    id("io.github.platan.tests-execution-chart") version "0.2.0"
+    id("io.github.platan.tests-execution-chart") version "0.2.1"
 }
 
 group = "io.github.platan"
-version = "0.2.1-SNAPSHOT"
+version = "0.2.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
