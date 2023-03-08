@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters
 
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import org.gradle.api.tasks.testing.Test
 import java.io.File
 

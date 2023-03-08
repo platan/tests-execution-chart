@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart
+package io.github.platan.tests_execution_chart.report
 
 data class TimedTestResult(
     var className: String?,

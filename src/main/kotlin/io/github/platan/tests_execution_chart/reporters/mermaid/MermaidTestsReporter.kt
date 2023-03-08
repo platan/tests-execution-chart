@@ -1,7 +1,7 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.config.Mermaid
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.testing.Test

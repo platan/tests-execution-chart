@@ -1,7 +1,7 @@
 package io.github.platan.tests_execution_chart.reporters.html
 
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.config.Html
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
 import org.gradle.api.logging.Logger

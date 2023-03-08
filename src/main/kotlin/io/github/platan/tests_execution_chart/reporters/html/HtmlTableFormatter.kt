@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.html
 
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import org.apache.commons.text.StringEscapeUtils.escapeHtml4
 
 class HtmlTableFormatter {

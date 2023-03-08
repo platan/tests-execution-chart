@@ -1,8 +1,8 @@
 package io.github.platan.tests_execution_chart.reporters.json
 
 import groovy.json.JsonOutput
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.config.Json
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import org.gradle.api.logging.Logger
 import org.gradle.api.tasks.testing.Test
