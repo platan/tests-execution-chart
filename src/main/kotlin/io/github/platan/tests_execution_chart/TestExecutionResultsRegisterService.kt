@@ -10,7 +10,7 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
     private val register = RegisterClass()
 
     class RegisterClass {
-        var results: MutableMap<Test, TestExecutionScheduleReport> = mutableMapOf()
+        var results: MutableMap<Test, TestExecutionScheduleReportBuilder> = mutableMapOf()
         fun add(
             task: Test,
             className: String?,
@@ -19,7 +19,7 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
             endTime: Long,
             resultType: String
         ) {
-            val taskResults = results.getOrPut(task) { TestExecutionScheduleReport() }
+            val taskResults = results.getOrPut(task) { TestExecutionScheduleReportBuilder() }
             taskResults.add(className, testName, startTime, endTime, resultType)
         }
     }
@@ -29,6 +29,8 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
     }
 
     fun getResults(module: Path?): Map<Test, TestExecutionScheduleReport> {
-        return if (module == null) register.results else register.results.filterKeys { it.identityPath.parent == module }
+        val reportBuilders =
+            if (module == null) register.results else register.results.filterKeys { it.identityPath.parent == module }
+        return reportBuilders.mapValues { it.value.getResults() }
     }
 }
