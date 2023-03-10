@@ -1,3 +1,5 @@
+package io.github.platan.tests_execution_chart.report
+
 import io.github.platan.tests_execution_chart.report.TimedTestResult
 import spock.lang.Specification
 
