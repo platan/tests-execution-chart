@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.report
 
-import io.github.platan.tests_execution_chart.report.TimedTestResult
+
 import spock.lang.Specification
 
 import static java.time.Duration.ofMillis
@@ -19,7 +19,7 @@ class TimedTestResultTest extends Specification {
         )
 
         when:
-        def shiftedResult = result.shiftTimestamps(duration)
+        def shiftedResult = result.shiftTimestamps(timeShift)
 
         then:
         shiftedResult.className == 'class'
@@ -29,7 +29,7 @@ class TimedTestResultTest extends Specification {
         shiftedResult.resultType == 'passed'
 
         where:
-        givenStart    | givenEnd      | duration      || exectedStart  | expectedEnd
+        givenStart    | givenEnd      | timeShift || exectedStart | expectedEnd
         1196712906001 | 1196712908001 | ofSeconds(4)  || 1196712902001 | 1196712904001
         5000          | 6000          | ofSeconds(4)  || 1000          | 2000
         2000          | 3000          | ofSeconds(4)  || -2000         | -1000

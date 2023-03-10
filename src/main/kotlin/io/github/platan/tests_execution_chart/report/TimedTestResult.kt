@@ -10,10 +10,10 @@ data class TimedTestResult(
     var resultType: String
 ) {
 
-    fun shiftTimestamps(duration: Duration): TimedTestResult {
+    fun shiftTimestamps(timeShift: Duration): TimedTestResult {
         return this.copy(
-            startTime = this.startTime - duration.toMillis(),
-            endTime = this.endTime - duration.toMillis()
+            startTime = this.startTime - timeShift.toMillis(),
+            endTime = this.endTime - timeShift.toMillis()
         )
     }
 
