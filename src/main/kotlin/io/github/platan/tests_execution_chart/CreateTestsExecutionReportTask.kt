@@ -1,14 +1,19 @@
 package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.config.Formats
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
 import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
 import org.gradle.api.DefaultTask
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.TaskAction
+import java.time.ZoneId
+import javax.inject.Inject
 
 private const val NO_REPORTS_MESSAGE =
     "Task was run but it hasn't created any reports. Possible reasons:\n" +
@@ -17,13 +22,16 @@ private const val NO_REPORTS_MESSAGE =
         "- plugin 'tests-execution-chart' was not added to module with tests\n" +
         "- tests weren't run (were up-to-date) - force running tests by '--rerun-tasks' Gradle option"
 
-abstract class CreateTestsExecutionReportTask : DefaultTask() {
+abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory: ObjectFactory) : DefaultTask() {
 
     @Internal
     abstract fun getRegisterService(): Property<TestExecutionResultsRegisterService>
 
     @Nested
     abstract fun getFormats(): Formats
+
+    @get:Input
+    val shiftTimestampsToStartOfDay: Property<Boolean> = objectFactory.property(Boolean::class.java).convention(false)
 
     @TaskAction
     fun printReport() {
@@ -32,17 +40,26 @@ abstract class CreateTestsExecutionReportTask : DefaultTask() {
             logger.lifecycle(NO_REPORTS_MESSAGE)
         } else {
             resultsForAllModules.forEach { (task, results) ->
+                val adjustedResults = adjustResults(results)
                 logger.lifecycle("Tests execution schedule report for task '${task.name}'")
                 if (getFormats().getMermaid().enabled.get()) {
-                    MermaidTestsReporter(getFormats().getMermaid(), logger).report(results, task)
+                    MermaidTestsReporter(getFormats().getMermaid(), logger).report(adjustedResults, task)
                 }
                 if (getFormats().getJson().enabled.get()) {
-                    JsonReporter(getFormats().getJson(), logger).report(results, task)
+                    JsonReporter(getFormats().getJson(), logger).report(adjustedResults, task)
                 }
                 if (getFormats().getHtml().enabled.get()) {
-                    HtmlGanttDiagramReporter(getFormats().getHtml(), logger).report(results, task)
+                    HtmlGanttDiagramReporter(getFormats().getHtml(), logger).report(adjustedResults, task)
                 }
             }
+        }
+    }
+
+    private fun adjustResults(results: TestExecutionScheduleReport): TestExecutionScheduleReport {
+        return if (shiftTimestampsToStartOfDay.get()) {
+            results.timestampsShiftedToStartOfDay(ZoneId.systemDefault())
+        } else {
+            results
         }
     }
 }

@@ -49,5 +49,7 @@ class TestsExecutionReportPlugin : Plugin<Project> {
             .set(createTestsExecutionReportExtension.getFormats().getMermaid().enabled)
         task.getFormats().getMermaid().outputLocation
             .set(createTestsExecutionReportExtension.getFormats().getMermaid().outputLocation)
+
+        task.shiftTimestampsToStartOfDay.set(createTestsExecutionReportExtension.shiftTimestampsToStartOfDay)
     }
 }

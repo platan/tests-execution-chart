@@ -123,6 +123,7 @@ Options:
 | `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                    |
 | `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                     |
 | `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                     |
+| `shiftTimestampsToStartOfDay`            | boolean | Adjust timestamps to the start of the day                          | `false`                                                    |
 
 `build.gradle.kts`:
 
@@ -146,6 +147,7 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
             enabled.set(true)
         }
     }
+    shiftTimestampsToStartOfDay.set(true)
 }
 ```
 
@@ -171,6 +173,7 @@ createTestsExecutionReport {
             enabled = true
         }
     }
+    shiftTimestampsToStartOfDay = true
 }
 ```
 

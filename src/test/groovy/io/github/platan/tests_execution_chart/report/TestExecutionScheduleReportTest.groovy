@@ -3,6 +3,7 @@ package io.github.platan.tests_execution_chart.report
 import spock.lang.Specification
 
 import java.time.Instant
+import java.time.ZoneOffset
 
 class TestExecutionScheduleReportTest extends Specification {
 
@@ -14,7 +15,7 @@ class TestExecutionScheduleReportTest extends Specification {
         ])
 
         when:
-        def shiftedResult = report.timestampsShiftedToStartOfDay()
+        def shiftedResult = report.timestampsShiftedToStartOfDay(ZoneOffset.ofHours(0))
 
         then:
         shiftedResult == new TestExecutionScheduleReport([
@@ -30,7 +31,7 @@ class TestExecutionScheduleReportTest extends Specification {
         ])
 
         when:
-        def shiftedResult = report.timestampsShiftedToStartOfDay()
+        def shiftedResult = report.timestampsShiftedToStartOfDay(ZoneOffset.ofHours(0))
 
         then:
         shiftedResult == new TestExecutionScheduleReport([
@@ -43,7 +44,7 @@ class TestExecutionScheduleReportTest extends Specification {
         def report = new TestExecutionScheduleReport([])
 
         when:
-        def shiftedResult = report.timestampsShiftedToStartOfDay()
+        def shiftedResult = report.timestampsShiftedToStartOfDay(ZoneOffset.ofHours(0))
 
         then:
         shiftedResult == new TestExecutionScheduleReport([])
