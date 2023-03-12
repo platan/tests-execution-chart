@@ -14,7 +14,7 @@ class TestExecutionMermaidDiagramFormatter {
             val testNameWithDuration = "${it.testName} - ${it.endTime.minus(it.startTime)} ms"
             diagramBuilder.add(it.className!!, testNameWithDuration, types[it.resultType], it.startTime, it.endTime)
         }
-        val diagram = diagramBuilder.build("YYYY-MM-DD\\THH\\:mm\\:ss\\.SSSZ", "%H:%M:%S.%L")
+        val diagram = diagramBuilder.build("YYYY-MM-DDTHH:mm:ss.SSSZZ", "%H:%M:%S.%L")
         return MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     }
 }

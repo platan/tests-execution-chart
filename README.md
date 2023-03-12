@@ -13,7 +13,7 @@
 
 ```kotlin
 plugins {
-    id("io.github.platan.tests-execution-chart") version "0.2.1"
+    id("io.github.platan.tests-execution-chart") version "0.3.0"
 }
 ```
 
@@ -21,7 +21,7 @@ plugins {
 
 ```gradle
 plugins {
-    id "io.github.platan.tests-execution-chart" version "0.2.1"
+    id "io.github.platan.tests-execution-chart" version "0.3.0"
 }
 ```
 
@@ -93,7 +93,7 @@ Located in `build/reports/tests-execution/mermaid/*.txt`.
 
 ```
 gantt
-dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
+dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
 axisFormat %H:%M:%S.%L
 section Test1Spec
 test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
@@ -104,7 +104,7 @@ rendered: ([info](https://github.blog/2022-02-14-include-diagrams-markdown-files
 
 ```mermaid
 gantt
-dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
+dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
 axisFormat %H:%M:%S.%L
 section Test1Spec
 test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
@@ -115,15 +115,15 @@ test 1 - 213 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0
 
 Options:
 
-| Key                                      | Type    | Description                                                        | Default                                                    |
-|------------------------------------------|---------|--------------------------------------------------------------------|------------------------------------------------------------|
-| `formats.html.enabled`                   | boolean | Generate report in html format                                     | `true`                                                     |
-| `formats.html.script.embed`              | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                    |
-| `formats.html.script.src`                | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js` |
-| `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                    |
-| `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                     |
-| `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                     |
-| `shiftTimestampsToStartOfDay`            | boolean | Adjust timestamps to the start of the day                          | `false`                                                    |
+| Key                                      | Type    | Description                                                        | Default                                                          |
+|------------------------------------------|---------|--------------------------------------------------------------------|------------------------------------------------------------------|
+| `formats.html.enabled`                   | boolean | Generate report in html format                                     | `true`                                                           |
+| `formats.html.script.embed`              | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                          |
+| `formats.html.script.src`                | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js` |
+| `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                          |
+| `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                           |
+| `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                           |
+| `shiftTimestampsToStartOfDay`            | boolean | Adjust timestamps to the start of the day                          | `false`                                                          |
 
 `build.gradle.kts`:
 
@@ -137,7 +137,7 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
                 config {
                     maxTextSize.set(110000)
                 }
-                src.set("https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js")
+                src.set("https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js")
             }
         }
         json {
@@ -163,7 +163,7 @@ createTestsExecutionReport {
                 config {
                     maxTextSize = 110000
                 }
-                src = "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
+                src = "https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"
             }
         }
         json {
@@ -230,7 +230,12 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-- nothing
+## 0.3.0 (12 March 2023)
+
+### Changed
+
+- Use `dateFormat` compatible with Mermaid 9.4.2
+- Link to Mermaid 9.4.3 instead of the latest version
 
 ## 0.2.1 (07 March 2023)
 
