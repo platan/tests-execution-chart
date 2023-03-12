@@ -93,7 +93,7 @@ Located in `build/reports/tests-execution/mermaid/*.txt`.
 
 ```
 gantt
-dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
+dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
 axisFormat %H:%M:%S.%L
 section Test1Spec
 test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
@@ -104,7 +104,7 @@ rendered: ([info](https://github.blog/2022-02-14-include-diagrams-markdown-files
 
 ```mermaid
 gantt
-dateFormat YYYY-MM-DD\THH\:mm\:ss\.SSSZ
+dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
 axisFormat %H:%M:%S.%L
 section Test1Spec
 test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
@@ -227,7 +227,9 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-- nothing
+### Changed
+
+- Use `dateFormat` compatible with Mermaid 9.4.2
 
 ## 0.2.1 (07 March 2023)
 
