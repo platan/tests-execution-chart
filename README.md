@@ -13,7 +13,7 @@
 
 ```kotlin
 plugins {
-    id("io.github.platan.tests-execution-chart") version "0.2.1"
+    id("io.github.platan.tests-execution-chart") version "0.3.0"
 }
 ```
 
@@ -21,7 +21,7 @@ plugins {
 
 ```gradle
 plugins {
-    id "io.github.platan.tests-execution-chart" version "0.2.1"
+    id "io.github.platan.tests-execution-chart" version "0.3.0"
 }
 ```
 
@@ -226,6 +226,8 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 # Changelog
 
 ## Unreleased
+
+## 0.3.0 (12 March 2023)
 
 ### Changed
 
