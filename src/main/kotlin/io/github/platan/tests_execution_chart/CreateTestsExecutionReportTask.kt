@@ -1,6 +1,7 @@
 package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.config.Formats
+import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
 import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
@@ -19,6 +20,12 @@ private const val NO_REPORTS_MESSAGE =
 
 abstract class CreateTestsExecutionReportTask : DefaultTask() {
 
+    private val customLogger = object : Logger {
+        override fun lifecycle(message: String) {
+            logger.lifecycle(message)
+        }
+    }
+
     @Internal
     abstract fun getRegisterService(): Property<TestExecutionResultsRegisterService>
 
@@ -34,13 +41,21 @@ abstract class CreateTestsExecutionReportTask : DefaultTask() {
             resultsForAllModules.forEach { (task, results) ->
                 logger.lifecycle("Tests execution schedule report for task '${task.name}'")
                 if (getFormats().getMermaid().enabled.get()) {
-                    MermaidTestsReporter(getFormats().getMermaid(), logger).report(results, task)
+                    MermaidTestsReporter(getFormats().getMermaid(), customLogger).report(
+                        results,
+                        task.project.buildDir,
+                        task.name
+                    )
                 }
                 if (getFormats().getJson().enabled.get()) {
-                    JsonReporter(getFormats().getJson(), logger).report(results, task)
+                    JsonReporter(getFormats().getJson(), customLogger).report(results, task.project.buildDir, task.name)
                 }
                 if (getFormats().getHtml().enabled.get()) {
-                    HtmlGanttDiagramReporter(getFormats().getHtml(), logger).report(results, task)
+                    HtmlGanttDiagramReporter(getFormats().getHtml().toHtmlConfig(), customLogger).report(
+                        results,
+                        task.project.buildDir,
+                        task.name
+                    )
                 }
             }
         }
