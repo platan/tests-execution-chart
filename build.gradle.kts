@@ -91,9 +91,6 @@ publishing {
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
-        // New versions of ktlint display:
-        // "Property 'disabled_rules' is deprecated: Rename property 'disabled_rules' to 'ktlint_disabled_rules' in all '.editorconfig' files."
-        // but .editorconfig file is ignored (Similar issue: https://github.com/pinterest/ktlint/issues/1599 )
         ktlint("0.47.0").editorConfigOverride(
             mapOf(
                 "ktlint_disabled_rules" to "package-name",
