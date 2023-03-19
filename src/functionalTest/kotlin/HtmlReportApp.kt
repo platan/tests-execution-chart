@@ -1,12 +1,13 @@
-package io.github.platan.tests_execution_chart
-
+import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.io.File
+import java.io.FileInputStream
 
 fun main() {
-    println("test")
     val config = HtmlConfig(
         HtmlConfig.Format(true, "html-report"),
         HtmlConfig.Script(
@@ -20,9 +21,10 @@ fun main() {
             println(message)
         }
     }
-    val report = TestExecutionScheduleReport()
-    report.add("Tests", "test 1", 2, 4, "SUCCESS")
-    report.add("Tests", "test 2", 2, 6, "SUCCESS")
-    report.add("Tests", "test 3", 2, 3, "FAILUER")
-    HtmlGanttDiagramReporter(config, logger).report(report, File("."), "task1")
+
+    val report =
+        Json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream("./src/functionalTest/resources/report-visual-regression.json"))
+    println(report.results.first())
+
+    HtmlGanttDiagramReporter(config, logger).report(report, File("build"), "task1")
 }

@@ -7,6 +7,7 @@ plugins {
     id("com.diffplug.spotless") version "6.17.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.3.0"
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 group = "io.github.platan"
@@ -31,6 +32,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
     implementation("org.apache.commons:commons-text:1.10.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 }
 
 gradlePlugin {
@@ -70,6 +72,7 @@ dependencies {
     "functionalTestImplementation"("org.spockframework:spock-core:2.3-groovy-3.0") {
         exclude(group = "org.codehaus.groovy")
     }
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 }
 
 publishing {

@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "className": "Tests",
+      "testName": "test 1",
+      "startTime": 2,
+      "endTime": 4,
+      "resultType": "SUCCESS"
+    },
+    {
+      "className": "Tests",
+      "testName": "test 2",
+      "startTime": 2,
+      "endTime": 6,
+      "resultType": "SUCCESS"
+    },
+    {
+      "className": "Tests",
+      "testName": "test 3",
+      "startTime": 2,
+      "endTime": 3,
+      "resultType": "FAILUER"
+    }
+  ]
+}
