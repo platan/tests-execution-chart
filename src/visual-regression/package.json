@@ -1,0 +1,16 @@
+{
+  "name": "visual-regression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@percy/cli": "^1.21.0",
+    "@percy/playwright": "^1.0.4",
+    "@playwright/test": "^1.31.2",
+    "serve": "^14.2.0"
+  }
+}
