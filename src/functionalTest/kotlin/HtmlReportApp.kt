@@ -26,5 +26,5 @@ fun main() {
         Json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream("./src/functionalTest/resources/report-visual-regression.json"))
     println(report.results.first())
 
-    HtmlGanttDiagramReporter(config, logger).report(report, File("build"), "task1")
+    HtmlGanttDiagramReporter(config, logger).report(report, File("build"), "example-task")
 }
