@@ -111,3 +111,8 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 gitHooks {
     setHooks(mapOf("pre-commit" to "spotlessCheck"))
 }
+
+tasks.register<JavaExec>("createRegressionHtmlReport") {
+    classpath = sourceSets["functionalTest"].runtimeClasspath
+    mainClass.set("io.github.platan.tests_execution_chart.CreateRegressionHtmlReportApp")
+}

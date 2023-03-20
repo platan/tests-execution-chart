@@ -1,12 +1,19 @@
-import io.github.platan.tests_execution_chart.TestExecutionScheduleReport
+@file:JvmName("CreateRegressionHtmlReportApp")
+
+package io.github.platan.tests_execution_chart
+
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import java.io.File
 import java.io.FileInputStream
 
+private val json = Json { ignoreUnknownKeys = true }
+
+@OptIn(ExperimentalSerializationApi::class)
 fun main() {
     val config = HtmlConfig(
         HtmlConfig.Format(true, "html-report"),
@@ -23,8 +30,7 @@ fun main() {
     }
 
     val report =
-        Json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream("./src/functionalTest/resources/report-visual-regression.json"))
-    println(report.results.first())
+        json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream("./src/functionalTest/resources/report-visual-regression.json"))
 
     HtmlGanttDiagramReporter(config, logger).report(report, File("build"), "example-task")
 }
