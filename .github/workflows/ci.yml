@@ -29,6 +29,10 @@ jobs:
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
       run: ./test-projects.sh checkReports
+    - name: Create HTML report for regression tests
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: createRegressionHtmlReport
   build-on-windows:
     runs-on: windows-latest
     steps:
@@ -46,3 +50,7 @@ jobs:
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
       run: ./test-projects.ps1 checkReports
+    - name: Create HTML report for regression tests
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: createRegressionHtmlReport
