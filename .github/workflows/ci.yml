@@ -47,12 +47,6 @@ jobs:
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       working-directory: src/visual-regression
-    - uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: playwright-report
-        path: src/visual-regression/playwright-report/
-        retention-days: 30
 
   build-on-windows:
     runs-on: windows-latest

@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 
 
 test('open the report and take a screenshot', async ({ page }) => {
-  await page.goto(`http://localhost:${port}/example-task.html`);
+  await page.goto(`http://localhost:${port}/test.html`);
 
   await expect(page).toHaveTitle(/Test execution chart/);
   await percySnapshot(page, 'Test execution chart page');

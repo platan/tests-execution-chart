@@ -88,6 +88,7 @@ dependencies {
         exclude(group = "org.codehaus.groovy")
     }
     functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
 }
 
 publishing {
@@ -129,5 +130,6 @@ gitHooks {
 
 tasks.register<JavaExec>("createRegressionHtmlReport") {
     classpath = sourceSets["functionalTest"].runtimeClasspath
-    mainClass.set("io.github.platan.tests_execution_chart.CreateRegressionHtmlReportApp")
+    mainClass.set("io.github.platan.tests_execution_chart.JsonToHtmlReportApp")
+    setArgsString("--input ./src/functionalTest/resources/report-visual-regression.json --output-dir build")
 }
