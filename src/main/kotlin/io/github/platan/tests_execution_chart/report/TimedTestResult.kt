@@ -1,7 +1,9 @@
 package io.github.platan.tests_execution_chart.report
 
+import kotlinx.serialization.Serializable
 import java.time.Duration
 
+@Serializable
 data class TimedTestResult(
     var className: String?,
     var testName: String,

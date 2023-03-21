@@ -29,6 +29,31 @@ jobs:
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
       run: ./test-projects.sh checkReports
+    - name: Create HTML report for regression tests
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: createRegressionHtmlReport
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install dependencies
+      run: npm ci
+      working-directory: src/visual-regression
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+      working-directory: src/visual-regression
+    - name: Run Playwright tests with Percy
+      run: npx percy exec -- npx playwright test
+      env:
+        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      working-directory: src/visual-regression
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: src/visual-regression/playwright-report/
+        retention-days: 30
+
   build-on-windows:
     runs-on: windows-latest
     steps:
@@ -46,3 +71,7 @@ jobs:
       run: ./test-projects.ps1 test createTestsExecutionReport
     - name: Check reports were created
       run: ./test-projects.ps1 checkReports
+    - name: Create HTML report for regression tests
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: createRegressionHtmlReport

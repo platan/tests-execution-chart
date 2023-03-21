@@ -4,9 +4,10 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.1.0"
-    id("com.diffplug.spotless") version "6.16.0"
+    id("com.diffplug.spotless") version "6.17.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
-    id("io.github.platan.tests-execution-chart") version "0.2.1"
+    id("io.github.platan.tests-execution-chart") version "0.3.0"
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 group = "io.github.platan"
@@ -31,6 +32,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
     implementation("org.apache.commons:commons-text:1.10.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.15"))
     testImplementation("org.codehaus.groovy:groovy")
@@ -85,6 +87,7 @@ dependencies {
     "functionalTestImplementation"("org.spockframework:spock-core:2.3-groovy-3.0") {
         exclude(group = "org.codehaus.groovy")
     }
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 }
 
 publishing {
@@ -106,12 +109,9 @@ publishing {
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
-        // New versions of ktlint display:
-        // "Property 'disabled_rules' is deprecated: Rename property 'disabled_rules' to 'ktlint_disabled_rules' in all '.editorconfig' files."
-        // but .editorconfig file is ignored (Similar issue: https://github.com/pinterest/ktlint/issues/1599 )
-        ktlint("0.46.0").editorConfigOverride(
+        ktlint("0.47.0").editorConfigOverride(
             mapOf(
-                "disabled_rules" to "package-name",
+                "ktlint_disabled_rules" to "package-name",
             ),
         )
     }
@@ -125,4 +125,9 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 
 gitHooks {
     setHooks(mapOf("pre-commit" to "spotlessCheck"))
+}
+
+tasks.register<JavaExec>("createRegressionHtmlReport") {
+    classpath = sourceSets["functionalTest"].runtimeClasspath
+    mainClass.set("io.github.platan.tests_execution_chart.CreateRegressionHtmlReportApp")
 }

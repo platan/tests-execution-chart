@@ -23,7 +23,7 @@ class MermaidGanttDiagramFormatterSpec extends Specification {
     }
 
     // Fails sometimes on Windows runner
-    @Retry
+    @Retry(mode = Retry.Mode.SETUP_FEATURE_CLEANUP)
     def "should produce result parsable by mmdc (mermaid CLI)"() {
         given:
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()

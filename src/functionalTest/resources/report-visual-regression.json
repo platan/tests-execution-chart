@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "className": "Test2Spec",
+      "durationMs": 1,
+      "endTime": 1679338714340,
+      "startTime": 1679338714339,
+      "resultType": "SKIPPED",
+      "testName": "test 2"
+    },
+    {
+      "className": "Test1Spec",
+      "durationMs": 1,
+      "endTime": 1679338714340,
+      "startTime": 1679338714339,
+      "resultType": "SKIPPED",
+      "testName": "test 2"
+    },
+    {
+      "className": "Test1Spec",
+      "durationMs": 222,
+      "endTime": 1679338714560,
+      "startTime": 1679338714338,
+      "resultType": "SUCCESS",
+      "testName": "test 1"
+    },
+    {
+      "className": "Test1Spec",
+      "durationMs": 234,
+      "endTime": 1679338714572,
+      "startTime": 1679338714338,
+      "resultType": "FAILURE",
+      "testName": "test 3"
+    },
+    {
+      "className": "Test2Spec",
+      "durationMs": 320,
+      "endTime": 1679338714659,
+      "startTime": 1679338714339,
+      "resultType": "SUCCESS",
+      "testName": "test 1"
+    },
+    {
+      "className": "Test2Spec",
+      "durationMs": 301,
+      "endTime": 1679338714666,
+      "startTime": 1679338714365,
+      "resultType": "SUCCESS",
+      "testName": "test 3 x=a"
+    },
+    {
+      "className": "Test2Spec",
+      "durationMs": 303,
+      "endTime": 1679338714669,
+      "startTime": 1679338714366,
+      "resultType": "SUCCESS",
+      "testName": "test 3 x=b"
+    },
+    {
+      "className": "TestIsolatedSpec",
+      "durationMs": 103,
+      "endTime": 1679338714777,
+      "startTime": 1679338714674,
+      "resultType": "SUCCESS",
+      "testName": "test 1"
+    },
+    {
+      "className": "TestIsolatedSpec",
+      "durationMs": 101,
+      "endTime": 1679338714878,
+      "startTime": 1679338714777,
+      "resultType": "SUCCESS",
+      "testName": "test 2"
+    },
+    {
+      "className": "TestIsolatedSpec",
+      "durationMs": 103,
+      "endTime": 1679338714982,
+      "startTime": 1679338714879,
+      "resultType": "SUCCESS",
+      "testName": "test 3"
+    }
+  ]
+}

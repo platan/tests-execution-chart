@@ -2,6 +2,7 @@ package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.config.Formats
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
 import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
@@ -24,6 +25,12 @@ private const val NO_REPORTS_MESSAGE =
 
 abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory: ObjectFactory) : DefaultTask() {
 
+    private val customLogger = object : Logger {
+        override fun lifecycle(message: String) {
+            logger.lifecycle(message)
+        }
+    }
+
     @Internal
     abstract fun getRegisterService(): Property<TestExecutionResultsRegisterService>
 
@@ -43,13 +50,21 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
                 val adjustedResults = adjustResults(results)
                 logger.lifecycle("Tests execution schedule report for task '${task.name}'")
                 if (getFormats().getMermaid().enabled.get()) {
-                    MermaidTestsReporter(getFormats().getMermaid(), logger).report(adjustedResults, task)
+                    MermaidTestsReporter(getFormats().getMermaid(), customLogger).report(
+                        adjustedResults,
+                        task.project.buildDir,
+                        task.name
+                    )
                 }
                 if (getFormats().getJson().enabled.get()) {
-                    JsonReporter(getFormats().getJson(), logger).report(adjustedResults, task)
+                    JsonReporter(getFormats().getJson(), customLogger).report(adjustedResults, task.project.buildDir, task.name)
                 }
                 if (getFormats().getHtml().enabled.get()) {
-                    HtmlGanttDiagramReporter(getFormats().getHtml(), logger).report(adjustedResults, task)
+                    HtmlGanttDiagramReporter(getFormats().getHtml().toHtmlConfig(), customLogger).report(
+                        adjustedResults,
+                        task.project.buildDir,
+                        task.name
+                    )
                 }
             }
         }

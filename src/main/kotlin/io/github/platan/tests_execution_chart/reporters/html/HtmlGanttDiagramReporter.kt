@@ -1,11 +1,11 @@
 package io.github.platan.tests_execution_chart.reporters.html
 
-import io.github.platan.tests_execution_chart.config.Html
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
+import io.github.platan.tests_execution_chart.reporters.Logger
+import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
-import org.gradle.api.logging.Logger
-import org.gradle.api.tasks.testing.Test
+import java.io.File
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -17,8 +17,9 @@ private const val MERMAID_JS_FILE_NAME = "mermaid.min.js"
 private const val MERMAID_SRC_PLACEHOLDER = "@MERMAID_SRC@"
 private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
-internal class HtmlGanttDiagramReporter(private val config: Html, private val logger: Logger) : GanttDiagramReporter() {
-    override fun report(report: TestExecutionScheduleReport, task: Test) {
+class HtmlGanttDiagramReporter(private val config: HtmlConfig, private val logger: Logger) :
+    GanttDiagramReporter() {
+    override fun report(report: TestExecutionScheduleReport, baseDir: File, taskName: String) {
         val resource: URL? = this::class.java.classLoader.getResource(TEMPLATE_HTML_FILE)
         val template: String
         if (resource == null) {
@@ -26,16 +27,16 @@ internal class HtmlGanttDiagramReporter(private val config: Html, private val lo
         } else {
             template = resource.readText(Charsets.UTF_8)
         }
-        var scriptSrc = config.getScript().src.get()
-        if (config.getScript().embed.get()) {
-            val reportsDir = prepareReportsDir(task, config.outputLocation.get())
+        var scriptSrc = config.script.src
+        if (config.script.embed) {
+            val reportsDir = prepareReportsDir(baseDir, config.format.outputLocation)
             val scriptFileName = MERMAID_JS_FILE_NAME
             downloadFile(URL(scriptSrc), "${reportsDir.absolutePath}/$scriptFileName")
             scriptSrc = scriptFileName
         }
-        val maxTextSize = config.getScript().getConfig().maxTextSize.get()
+        val maxTextSize = config.script.options.maxTextSize
         val htmlReport = prepareHtmlReport(report, template, scriptSrc, maxTextSize)
-        val reportFile = save(task, htmlReport, config.outputLocation.get(), "html")
+        val reportFile = save(htmlReport, taskName, baseDir, config.format.outputLocation, "html")
         logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
 
