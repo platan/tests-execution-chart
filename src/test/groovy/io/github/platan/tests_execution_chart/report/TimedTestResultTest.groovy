@@ -36,5 +36,6 @@ class TimedTestResultTest extends Specification {
         2000          | 3000          | ofSeconds(0)  || 2000          | 3000
         2000          | 3000          | ofSeconds(1)  || 3000          | 4000
         2000          | 3000          | ofMillis(-4)  || 1996          | 2996
+        2000          | 3000          | ofMillis(0)   || 2000          | 3000
     }
 }
