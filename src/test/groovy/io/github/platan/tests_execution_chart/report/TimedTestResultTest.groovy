@@ -29,12 +29,12 @@ class TimedTestResultTest extends Specification {
         shiftedResult.resultType == 'passed'
 
         where:
-        givenStart    | givenEnd      | timeShift || exectedStart | expectedEnd
-        1196712906001 | 1196712908001 | ofSeconds(4)  || 1196712902001 | 1196712904001
-        5000          | 6000          | ofSeconds(4)  || 1000          | 2000
-        2000          | 3000          | ofSeconds(4)  || -2000         | -1000
+        givenStart    | givenEnd      | timeShift     || exectedStart  | expectedEnd
+        1196712906001 | 1196712908001 | ofSeconds(-4) || 1196712902001 | 1196712904001
+        5000          | 6000          | ofSeconds(-4) || 1000          | 2000
+        2000          | 3000          | ofSeconds(-4) || -2000         | -1000
         2000          | 3000          | ofSeconds(0)  || 2000          | 3000
-        2000          | 3000          | ofSeconds(-1) || 3000          | 4000
-        2000          | 3000          | ofMillis(4)   || 1996          | 2996
+        2000          | 3000          | ofSeconds(1)  || 3000          | 4000
+        2000          | 3000          | ofMillis(-4)  || 1996          | 2996
     }
 }

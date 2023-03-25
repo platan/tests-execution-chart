@@ -14,8 +14,8 @@ data class TimedTestResult(
 
     fun shiftTimestamps(timeShift: Duration): TimedTestResult {
         return this.copy(
-            startTime = this.startTime - timeShift.toMillis(),
-            endTime = this.endTime - timeShift.toMillis()
+            startTime = this.startTime + timeShift.toMillis(),
+            endTime = this.endTime + timeShift.toMillis()
         )
     }
 

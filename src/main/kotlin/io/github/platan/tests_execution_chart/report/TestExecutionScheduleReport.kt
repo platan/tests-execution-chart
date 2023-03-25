@@ -14,7 +14,7 @@ data class TestExecutionScheduleReport(val results: List<TimedTestResult>) {
             else -> {
                 val minStartTime = Instant.ofEpochMilli(results.minBy { it.startTime }.startTime)
                 val targetMinStartTime = minStartTime.atZone(zoneId).truncatedTo(ChronoUnit.DAYS).toInstant()
-                val timeShift = Duration.between(targetMinStartTime, minStartTime)
+                val timeShift = Duration.between(minStartTime, targetMinStartTime)
                 return TestExecutionScheduleReport(results.map { it.shiftTimestamps(timeShift) })
             }
         }
