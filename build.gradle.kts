@@ -1,3 +1,5 @@
+import pl.allegro.tech.build.axion.release.domain.hooks.HookContext
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.8.10"
     `java-gradle-plugin`
@@ -8,10 +10,29 @@ plugins {
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.3.0"
     kotlin("plugin.serialization") version "1.8.10"
+    id("pl.allegro.tech.build.axion-release") version "1.15.0"
 }
 
 group = "io.github.platan"
-version = "0.3.1-SNAPSHOT"
+
+scmVersion {
+    tag {
+        prefix.set("release-")
+    }
+    hooks {
+        pre(
+            "fileUpdate",
+            mapOf(
+                "file" to "README.md",
+                "pattern" to KotlinClosure2<String, HookContext, String>({ previousVersion, _ -> "version $previousVersion" }),
+                "replacement" to KotlinClosure2<String, HookContext, String>({ releaseVersion, _ -> "version $releaseVersion" }),
+            ),
+        )
+//        pre("commit")
+    }
+}
+
+project.version = scmVersion.version
 
 repositories {
     mavenCentral()
