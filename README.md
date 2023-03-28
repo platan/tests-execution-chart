@@ -231,6 +231,10 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+### Added
+
+- A new option `shiftTimestampsToStartOfDay` allows to adjust the earliest timestamp to the start of the day
+
 ## 0.3.0 (12 March 2023)
 
 ### Changed
