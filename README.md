@@ -124,7 +124,7 @@ Options:
 | `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                          |
 | `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                           |
 | `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                           |
-| `shiftTimestampsToStartOfDay`            | boolean | Adjust timestamps to the start of the day                          | `false`                                                          |
+| `shiftTimestampsToStartOfDay`            | boolean | Adjust the earliest timestamp to the start of the day              | `false`                                                          |
 
 `build.gradle.kts`:
 
