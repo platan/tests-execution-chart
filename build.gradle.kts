@@ -24,8 +24,8 @@ scmVersion {
             "fileUpdate",
             mapOf(
                 "file" to "README.md",
-                "pattern" to KotlinClosure2<String, HookContext, String>({ previousVersion, _ -> "version $previousVersion" }),
-                "replacement" to KotlinClosure2<String, HookContext, String>({ releaseVersion, _ -> "version $releaseVersion" }),
+                "pattern" to KotlinClosure2<String, HookContext, String>({ previousVersion, _ -> "version \"$previousVersion\"" }),
+                "replacement" to KotlinClosure2<String, HookContext, String>({ releaseVersion, _ -> "version \"$releaseVersion\"" }),
             ),
         )
 //        pre("commit")
