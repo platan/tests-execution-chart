@@ -28,7 +28,6 @@ scmVersion {
                 "replacement" to KotlinClosure2<String, HookContext, String>({ releaseVersion, _ -> "version \"$releaseVersion\"" }),
             ),
         )
-//        pre("commit")
     }
 }
 
