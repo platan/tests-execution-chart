@@ -211,13 +211,20 @@ pluginManagement {
 
 ```
 
-`build.gradle`:
+`build.gradle` (replace `X.X.X-SNAPSHOT` with the value returned by `./gradlew cV -q -Prelease.quiet`):
 
 ```gradle
 plugins {
-    id 'io.github.platan.tests-execution-chart' version '0.2.1-SNAPSHOT'
+    id 'io.github.platan.tests-execution-chart' version 'X.X.X-SNAPSHOT'
 }
 ```
+
+# Release
+
+1. `./gradlew createRelease`  - creates a new tag and updates examples in README
+2. `git push origin release-[X.X.X]`
+3. `./gradlew clean build publishPlugins`
+4. Edit Changelog in README.md and `git commit -m "Document release 0.3.1"`
 
 # Motivation
 
