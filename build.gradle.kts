@@ -56,7 +56,7 @@ dependencies {
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.16"))
     testImplementation("org.codehaus.groovy:groovy")
-    testImplementation(platform("org.spockframework:spock-bom:2.3-groovy-3.0"))
+    testImplementation(platform("org.spockframework:spock-bom:2.3-groovy-4.0"))
     testImplementation("org.spockframework:spock-core")
 }
 
