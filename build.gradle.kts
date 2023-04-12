@@ -5,7 +5,7 @@ plugins {
     `java-gradle-plugin`
     `maven-publish`
     groovy
-    id("com.gradle.plugin-publish") version "1.1.0"
+    id("com.gradle.plugin-publish") version "1.2.0"
     id("com.diffplug.spotless") version "6.18.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.3.1"
