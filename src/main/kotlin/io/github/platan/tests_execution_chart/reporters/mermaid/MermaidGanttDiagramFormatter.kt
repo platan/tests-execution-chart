@@ -1,7 +1,8 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
-import java.text.SimpleDateFormat
-import java.util.Date
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 internal class MermaidGanttDiagramFormatter {
 
@@ -10,7 +11,7 @@ internal class MermaidGanttDiagramFormatter {
         ganttDiagram.append("gantt\n")
         ganttDiagram.append("dateFormat ${diagram.dateFormat}\n")
         ganttDiagram.append("axisFormat ${diagram.axisFormat}\n")
-        val format = SimpleDateFormat(dateFormat)
+        val format = DateTimeFormatter.ofPattern(dateFormat).withZone(ZoneId.systemDefault())
         diagram.sections.forEach { section ->
             ganttDiagram.append("section ${escape(section.name)}\n")
             section.rows.forEach { row ->
@@ -18,8 +19,8 @@ internal class MermaidGanttDiagramFormatter {
                 if (row.type != null) {
                     status = "${row.type}, "
                 }
-                val end = format.format(Date(row.end))
-                val start = format.format(Date(row.start))
+                val end = format.format(Instant.ofEpochMilli(row.end))
+                val start = format.format(Instant.ofEpochMilli(row.start))
                 ganttDiagram.append("${escape(row.name)} :${status}$start, $end\n")
             }
         }
