@@ -15,6 +15,7 @@ class MermaidGanttDiagramFormatterTest extends Specification {
         diagramBuilder.add('Test1', 'test1 - 100 ms', 'active', 1681402397000, 1681402397100)
         diagramBuilder.add('Test1', 'test2 - 200 ms', 'active', 1681402397100, 1681402397300)
         diagramBuilder.add('Test2', 'test1 - 100 ms', 'active', 1681402397000, 1681402397100)
+        diagramBuilder.addMilestone('milestone1', 1681402397400)
         MermaidGanttDiagram diagram = diagramBuilder.build("YYYY-MM-DDTHH:mm:ss.SSSZZ", "%H:%M:%S.%L")
 
         when:
@@ -29,6 +30,7 @@ test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+02
 test2 - 200 ms :active, 2023-04-13T18:13:17.100+0200, 2023-04-13T18:13:17.300+0200
 section Test2
 test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
+milestone1 : milestone, 2023-04-13T18:13:17.400+0200, 0
 """
         then:
         mermaidReport == indent

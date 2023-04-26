@@ -24,6 +24,10 @@ internal class MermaidGanttDiagramFormatter {
                 ganttDiagram.append("${escape(row.name)} :${status}$start, $end\n")
             }
         }
+        diagram.milestones.forEach { milestone ->
+            val timestamp = format.format(Instant.ofEpochMilli(milestone.timestamp))
+            ganttDiagram.append("${milestone.name} : milestone, $timestamp, 0\n")
+        }
         return ganttDiagram.toString()
     }
 
