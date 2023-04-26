@@ -4,7 +4,7 @@ import spock.lang.Retry
 import spock.lang.Specification
 import spock.lang.TempDir
 
-class MermaidGanttDiagramFormatterSpec extends Specification {
+class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
 
     @TempDir
     File tempDir
