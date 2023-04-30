@@ -12,21 +12,27 @@ internal class MermaidGanttDiagramFormatter {
         ganttDiagram.append("dateFormat ${diagram.dateFormat}\n")
         ganttDiagram.append("axisFormat ${diagram.axisFormat}\n")
         val format = DateTimeFormatter.ofPattern(dateFormat).withZone(ZoneId.systemDefault())
-        diagram.sections.forEach { section ->
-            ganttDiagram.append("section ${escape(section.name)}\n")
-            section.rows.forEach { row ->
-                var status = ""
-                if (row.type != null) {
-                    status = "${row.type}, "
+        diagram.entries.forEach { entry ->
+            when (entry) {
+                is MermaidGanttDiagram.Section -> {
+                    ganttDiagram.append("section ${escape(entry.name)}\n")
                 }
-                val end = format.format(Instant.ofEpochMilli(row.end))
-                val start = format.format(Instant.ofEpochMilli(row.start))
-                ganttDiagram.append("${escape(row.name)} :${status}$start, $end\n")
+
+                is MermaidGanttDiagram.Task -> {
+                    var status = ""
+                    if (entry.type != null) {
+                        status = "${entry.type}, "
+                    }
+                    val end = format.format(Instant.ofEpochMilli(entry.end))
+                    val start = format.format(Instant.ofEpochMilli(entry.start))
+                    ganttDiagram.append("${escape(entry.name)} :${status}$start, $end\n")
+                }
+
+                is MermaidGanttDiagram.Milestone -> {
+                    val timestamp = format.format(Instant.ofEpochMilli(entry.timestamp))
+                    ganttDiagram.append("${entry.name} : milestone, $timestamp, 0\n")
+                }
             }
-        }
-        diagram.milestones.forEach { milestone ->
-            val timestamp = format.format(Instant.ofEpochMilli(milestone.timestamp))
-            ganttDiagram.append("${milestone.name} : milestone, $timestamp, 0\n")
         }
         return ganttDiagram.toString()
     }

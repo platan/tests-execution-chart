@@ -12,10 +12,14 @@ class MermaidGanttDiagramFormatterTest extends Specification {
         def getDefault = TimeZone.getDefault()
         TimeZone.setDefault(SimpleTimeZone.getTimeZone(ZoneOffset.ofHours(2)))
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
-        diagramBuilder.add('Test1', 'test1 - 100 ms', 'active', 1681402397000, 1681402397100)
-        diagramBuilder.add('Test1', 'test2 - 200 ms', 'active', 1681402397100, 1681402397300)
-        diagramBuilder.add('Test2', 'test1 - 100 ms', 'active', 1681402397000, 1681402397100)
-        diagramBuilder.addMilestone('milestone1', 1681402397400)
+        diagramBuilder.addSection('Test1')
+        diagramBuilder.addTask('test1 - 100 ms', 'active', 1681402397000, 1681402397100)
+        diagramBuilder.addTask('test2 - 200 ms', 'active', 1681402397100, 1681402397300)
+        diagramBuilder.addMilestone('milestone1', 1681402397100)
+        diagramBuilder.addSection('Test2')
+        diagramBuilder.addTask('test1 - 100 ms', 'active', 1681402397000, 1681402397100)
+        diagramBuilder.addMilestone('milestone2', 1681402397400)
+
         MermaidGanttDiagram diagram = diagramBuilder.build("YYYY-MM-DDTHH:mm:ss.SSSZZ", "%H:%M:%S.%L")
 
         when:
@@ -28,9 +32,10 @@ axisFormat %H:%M:%S.%L
 section Test1
 test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
 test2 - 200 ms :active, 2023-04-13T18:13:17.100+0200, 2023-04-13T18:13:17.300+0200
+milestone1 : milestone, 2023-04-13T18:13:17.100+0200, 0
 section Test2
 test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
-milestone1 : milestone, 2023-04-13T18:13:17.400+0200, 0
+milestone2 : milestone, 2023-04-13T18:13:17.400+0200, 0
 """
         then:
         mermaidReport == indent
