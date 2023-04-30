@@ -30,7 +30,7 @@ internal class MermaidGanttDiagramFormatter {
 
                 is MermaidGanttDiagram.Milestone -> {
                     val timestamp = format.format(Instant.ofEpochMilli(entry.timestamp))
-                    ganttDiagram.append("${entry.name} : milestone, $timestamp, 0\n")
+                    ganttDiagram.append("${escape(entry.name)} : milestone, $timestamp, 0\n")
                 }
             }
         }

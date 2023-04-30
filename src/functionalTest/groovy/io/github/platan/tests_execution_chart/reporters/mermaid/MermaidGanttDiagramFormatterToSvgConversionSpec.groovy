@@ -29,6 +29,7 @@ class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
         diagramBuilder.addSection("test-section $SPECIAL_CHARS")
         diagramBuilder.addTask("test-row $SPECIAL_CHARS", 'active', 1, 2)
+        diagramBuilder.addMilestone("test-milestone $SPECIAL_CHARS", 1)
         def diagram = diagramBuilder.build("YYYY-MM-DD\\THH\\:mm\\:ss\\.SSSZ", "%H:%M:%S.%L")
         def mermaid = new MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         inputFile.text = mermaid
