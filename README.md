@@ -149,6 +149,9 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
         }
     }
     shiftTimestampsToStartOfDay.set(true)
+    mark {
+        maxEndTimeOfPreviousRuns.set(true)
+    }
 }
 ```
 
@@ -175,6 +178,9 @@ createTestsExecutionReport {
         }
     }
     shiftTimestampsToStartOfDay = true
+    mark {
+        maxEndTimeOfPreviousRuns = true
+    }
 }
 ```
 

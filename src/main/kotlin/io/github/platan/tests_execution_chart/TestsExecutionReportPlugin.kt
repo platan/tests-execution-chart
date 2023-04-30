@@ -51,5 +51,6 @@ class TestsExecutionReportPlugin : Plugin<Project> {
             .set(createTestsExecutionReportExtension.getFormats().getMermaid().outputLocation)
 
         task.shiftTimestampsToStartOfDay.set(createTestsExecutionReportExtension.shiftTimestampsToStartOfDay)
+        task.getMark().maxEndTimeOfPreviousRuns.set(createTestsExecutionReportExtension.getMark().maxEndTimeOfPreviousRuns)
     }
 }
