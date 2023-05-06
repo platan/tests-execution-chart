@@ -1,7 +1,7 @@
 import pl.allegro.tech.build.axion.release.domain.hooks.HookContext
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("org.jetbrains.kotlin.jvm") version "1.8.21"
     `java-gradle-plugin`
     `maven-publish`
     groovy
