@@ -8,5 +8,8 @@ import javax.inject.Inject
 abstract class Mark @Inject constructor(objectFactory: ObjectFactory) {
 
     @get:Input
-    val maxEndTimeOfPreviousRuns: Property<Boolean> = objectFactory.property(Boolean::class.java).convention(false)
+    val enabled: Property<Boolean> = objectFactory.property(Boolean::class.java).convention(false)
+
+    @get:Input
+    val name: Property<String> = objectFactory.property(String::class.java).convention("")
 }

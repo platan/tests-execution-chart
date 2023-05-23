@@ -51,6 +51,11 @@ class TestsExecutionReportPlugin : Plugin<Project> {
             .set(createTestsExecutionReportExtension.getFormats().getMermaid().outputLocation)
 
         task.shiftTimestampsToStartOfDay.set(createTestsExecutionReportExtension.shiftTimestampsToStartOfDay)
-        task.getMark().maxEndTimeOfPreviousRuns.set(createTestsExecutionReportExtension.getMark().maxEndTimeOfPreviousRuns)
+        task.getMarks().getTotalTimeOfAllTests().enabled.set(
+            createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().enabled
+        )
+        task.getMarks().getTotalTimeOfAllTests().name.set(
+            createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().name
+        )
     }
 }

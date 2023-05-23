@@ -1,7 +1,7 @@
 package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.config.Formats
-import io.github.platan.tests_execution_chart.config.Mark
+import io.github.platan.tests_execution_chart.config.Marks
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
@@ -39,7 +39,7 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
     abstract fun getFormats(): Formats
 
     @Nested
-    abstract fun getMark(): Mark
+    abstract fun getMarks(): Marks
 
     @get:Input
     val shiftTimestampsToStartOfDay: Property<Boolean> = objectFactory.property(Boolean::class.java).convention(false)
