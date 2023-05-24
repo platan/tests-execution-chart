@@ -22,6 +22,9 @@ class TestExecutionMermaidDiagramFormatter {
                 )
             }
         }
+        report.marks.forEach { mark ->
+            diagramBuilder.addMilestone(mark.name, mark.timestamp)
+        }
         val diagram = diagramBuilder.build("YYYY-MM-DDTHH:mm:ss.SSSZZ", "%H:%M:%S.%L")
         return MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     }
