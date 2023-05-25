@@ -26,12 +26,18 @@ createTestsExecutionReport {
             enabled = true
             script {
                 config {
-                    maxTextSize = 990
+                    maxTextSize = 2000
                 }
                 src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js'
             }
         }
         json { enabled = true }
         mermaid { enabled = true }
+    }
+    marks {
+        totalTimeOfAllTests {
+            enabled = true
+            name = 'total time of all tests'
+        }
     }
 }
