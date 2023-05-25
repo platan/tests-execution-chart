@@ -79,10 +79,13 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
     }
 
     private fun adjustResults(results: TestExecutionScheduleReport): TestExecutionScheduleReport {
-        return if (shiftTimestampsToStartOfDay.get()) {
-            results.timestampsShiftedToStartOfDay(ZoneId.systemDefault())
-        } else {
-            results
+        var adjusted = results
+        if (shiftTimestampsToStartOfDay.get()) {
+            adjusted = results.timestampsShiftedToStartOfDay(ZoneId.systemDefault())
         }
+        if (getMarks().getTotalTimeOfAllTests().enabled.get()) {
+            adjusted = adjusted.addTotalTimeOfAllTestsMark(getMarks().getTotalTimeOfAllTests().name.get())
+        }
+        return adjusted
     }
 }

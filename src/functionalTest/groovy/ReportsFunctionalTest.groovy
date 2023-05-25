@@ -34,6 +34,11 @@ class ReportsFunctionalTest extends Specification {
                     json { enabled = true }
                     mermaid { enabled = true }
                 }
+                marks {
+                    totalTimeOfAllTests {
+                        enabled = true
+                    }
+                }
             }
             repositories {
                 mavenCentral()
@@ -72,6 +77,9 @@ class ReportsFunctionalTest extends Specification {
         mermaidFile.exists()
         jsonFile.exists()
         htmlFile.exists()
+
+        and:
+        mermaidFile.text.contains 'total time of all tests : milestone, '
     }
 
     def "should replace special characters in mermaid graph test names"() {

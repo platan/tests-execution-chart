@@ -6,9 +6,9 @@ import org.gradle.api.tasks.Nested
 abstract class Marks {
 
     @Nested
-    abstract fun getTotalTimeOfAllTests(): Mark
+    abstract fun getTotalTimeOfAllTests(): TotalTimeOfAllTestsMark
 
-    open fun config(action: Action<in Mark>) {
+    open fun totalTimeOfAllTests(action: Action<in Mark>) {
         action.execute(getTotalTimeOfAllTests())
     }
 }
