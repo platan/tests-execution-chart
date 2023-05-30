@@ -39,10 +39,11 @@ internal class MermaidGanttDiagramFormatter {
 
     private fun escape(str: String): String {
         return str
-            // remove # before replacing other characters with entity containing #
-            .replace("#", "")
+            // warning: order of replacements below matters
             // replace ; before replacing other characters with entity containing ;
             .replace(";", "#semi;")
+            // replace # but not in #semi;
+            .replace(Regex("#(?!semi;)"), "#35;")
             .replace(":", "#colon;") // https://github.com/mermaid-js/mermaid/issues/742
     }
 }

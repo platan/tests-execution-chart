@@ -43,4 +43,33 @@ milestone2 : milestone, 2023-04-13T18:13:17.400+0200, 0
         cleanup:
         TimeZone.setDefault(getDefault)
     }
+
+    def "should format report with special characters"() {
+        given:
+        def getDefault = TimeZone.getDefault()
+        TimeZone.setDefault(SimpleTimeZone.getTimeZone(ZoneOffset.ofHours(2)))
+        def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
+        diagramBuilder.addSection('Test # ; : 1')
+        diagramBuilder.addTask('test # ; : 1', 'active', 1681402397000, 1681402397100)
+        diagramBuilder.addMilestone('milestone # ; : 1', 1681402397100)
+
+        MermaidGanttDiagram diagram = diagramBuilder.build("YYYY-MM-DDTHH:mm:ss.SSSZZ", "%H:%M:%S.%L")
+
+        when:
+        def mermaidReport = new MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+
+
+        def indent = """gantt
+dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
+axisFormat %H:%M:%S.%L
+section Test #35; #semi; #colon; 1
+test #35; #semi; #colon; 1 :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
+milestone #35; #semi; #colon; 1 : milestone, 2023-04-13T18:13:17.100+0200, 0
+"""
+        then:
+        mermaidReport == indent
+
+        cleanup:
+        TimeZone.setDefault(getDefault)
+    }
 }
