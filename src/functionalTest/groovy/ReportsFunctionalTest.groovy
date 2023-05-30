@@ -141,7 +141,7 @@ class ReportsFunctionalTest extends Specification {
         def mermaidGraph = new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt").text
         !mermaidGraph.contains("test with # character")
         !mermaidGraph.contains("test with : character")
-        mermaidGraph.contains("test with  character")
+        mermaidGraph.contains("test with #35; character")
         mermaidGraph.contains("test with #colon; character")
     }
 
