@@ -1,5 +1,7 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
+import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagram
+import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagramFormatter
 import spock.lang.Retry
 import spock.lang.Specification
 import spock.lang.TempDir

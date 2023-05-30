@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart.reporters.mermaid
+package io.github.platan.tests_execution_chart.reporters.mermaid.core
 
 import java.time.Instant
 import java.time.ZoneId
