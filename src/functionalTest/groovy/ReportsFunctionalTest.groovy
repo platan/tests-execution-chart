@@ -129,10 +129,10 @@ class ReportsFunctionalTest extends Specification {
 
         when:
         def result = GradleRunner.create()
-            .withProjectDir(testProjectDir)
-            .withArguments('test', 'createTestsExecutionReport')
-            .withPluginClasspath()
-            .build()
+                .withProjectDir(testProjectDir)
+                .withArguments('test', 'createTestsExecutionReport')
+                .withPluginClasspath()
+                .build()
 
         then:
         result.task(":createTestsExecutionReport").outcome == SUCCESS
@@ -216,6 +216,38 @@ class ReportsFunctionalTest extends Specification {
         result.task(":createTestsExecutionReport").outcome == SUCCESS
         result.output.contains("Task was run but it hasn't created any reports. Possible reasons:")
         result.output.contains('BUILD SUCCESSFUL')
+
+        and:
+        !new File("$projectDirRealPath/build/reports/tests-execution/").exists()
+    }
+
+    def "exit with error on empty mark name"() {
+        given:
+        settingsFile << "rootProject.name = 'hello-world'"
+        buildFile << """
+            plugins {
+                id 'groovy'
+                id 'io.github.platan.tests-execution-chart'
+            }
+            createTestsExecutionReport {
+                marks {
+                    totalTimeOfAllTests {
+                        name = ''
+                    }
+                }
+            }
+        """
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(testProjectDir)
+                .withArguments('createTestsExecutionReport')
+                .withPluginClasspath()
+                .buildAndFail()
+
+        then:
+        result.output.contains("marks.totalTimeOfAllTests.name cannot be blank")
+        result.output.contains('BUILD FAILED')
 
         and:
         !new File("$projectDirRealPath/build/reports/tests-execution/").exists()

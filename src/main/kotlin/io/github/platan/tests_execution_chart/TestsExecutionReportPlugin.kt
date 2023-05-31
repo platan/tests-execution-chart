@@ -54,8 +54,8 @@ class TestsExecutionReportPlugin : Plugin<Project> {
         task.getMarks().getTotalTimeOfAllTests().enabled.set(
             createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().enabled
         )
-        task.getMarks().getTotalTimeOfAllTests().name.set(
-            createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().name
-        )
+        val name = createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().name.get()
+        require(name.isNotBlank()) { "marks.totalTimeOfAllTests.name cannot be blank" }
+        task.getMarks().getTotalTimeOfAllTests().name.set(name)
     }
 }
