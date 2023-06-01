@@ -7,7 +7,7 @@ import java.time.ZoneId
 import java.time.temporal.ChronoUnit
 
 @Serializable
-data class TestExecutionScheduleReport(val results: List<TimedTestResult>, val marks: List<Mark> = emptyList()) {
+data class TestExecutionScheduleReport(val results: List<TimedTestResult>, val marks: List<Mark>) {
 
     constructor(results: List<TimedTestResult>) : this(results, emptyList())
 
