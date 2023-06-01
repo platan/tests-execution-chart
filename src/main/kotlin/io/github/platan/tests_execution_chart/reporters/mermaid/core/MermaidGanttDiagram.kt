@@ -6,9 +6,23 @@ data class MermaidGanttDiagram(
     val entries: List<Entry>
 ) {
     sealed interface Entry
-    data class Section(val name: String) : Entry
-    data class Task(val name: String, val type: String?, val start: Long, val end: Long) : Entry
-    data class Milestone(val name: String, val timestamp: Long) : Entry
+    data class Section(val name: String) : Entry {
+        init {
+            require(name.isNotBlank()) { "Section name cannot be blank" }
+        }
+    }
+
+    data class Task(val name: String, val type: String?, val start: Long, val end: Long) : Entry {
+        init {
+            require(name.isNotBlank()) { "Task name cannot be blank" }
+        }
+    }
+
+    data class Milestone(val name: String, val timestamp: Long) : Entry {
+        init {
+            require(name.isNotBlank()) { "Mark name cannot be blank" }
+        }
+    }
 
     class MermaidGanttDiagramBuilder {
         private val entries: MutableList<Entry> = mutableListOf()
