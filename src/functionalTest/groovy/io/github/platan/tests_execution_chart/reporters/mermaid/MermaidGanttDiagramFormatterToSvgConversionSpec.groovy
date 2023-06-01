@@ -1,10 +1,12 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
+import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagram
+import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagramFormatter
 import spock.lang.Retry
 import spock.lang.Specification
 import spock.lang.TempDir
 
-class MermaidGanttDiagramFormatterSpec extends Specification {
+class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
 
     @TempDir
     File tempDir
@@ -27,7 +29,9 @@ class MermaidGanttDiagramFormatterSpec extends Specification {
     def "should produce result parsable by mmdc (mermaid CLI)"() {
         given:
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
-        diagramBuilder.add("test-section $SPECIAL_CHARS", "test-row $SPECIAL_CHARS", 'active', 1, 2)
+        diagramBuilder.addSection("test-section $SPECIAL_CHARS")
+        diagramBuilder.addTask("test-row $SPECIAL_CHARS", 'active', 1, 2)
+        diagramBuilder.addMilestone("test-milestone $SPECIAL_CHARS", 1)
         def diagram = diagramBuilder.build("YYYY-MM-DD\\THH\\:mm\\:ss\\.SSSZ", "%H:%M:%S.%L")
         def mermaid = new MermaidGanttDiagramFormatter().format(diagram, "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         inputFile.text = mermaid

@@ -80,5 +80,11 @@
       "resultType": "SUCCESS",
       "testName": "test 3"
     }
+  ],
+  "marks": [
+    {
+      "timestamp": 1679338714982,
+      "name": "total time of all tests"
+    }
   ]
 }

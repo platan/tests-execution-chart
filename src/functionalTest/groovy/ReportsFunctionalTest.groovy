@@ -34,6 +34,11 @@ class ReportsFunctionalTest extends Specification {
                     json { enabled = true }
                     mermaid { enabled = true }
                 }
+                marks {
+                    totalTimeOfAllTests {
+                        enabled = true
+                    }
+                }
             }
             repositories {
                 mavenCentral()
@@ -72,6 +77,9 @@ class ReportsFunctionalTest extends Specification {
         mermaidFile.exists()
         jsonFile.exists()
         htmlFile.exists()
+
+        and:
+        mermaidFile.text.contains 'total time of all tests : milestone, '
     }
 
     def "should replace special characters in mermaid graph test names"() {
@@ -121,10 +129,10 @@ class ReportsFunctionalTest extends Specification {
 
         when:
         def result = GradleRunner.create()
-            .withProjectDir(testProjectDir)
-            .withArguments('test', 'createTestsExecutionReport')
-            .withPluginClasspath()
-            .build()
+                .withProjectDir(testProjectDir)
+                .withArguments('test', 'createTestsExecutionReport')
+                .withPluginClasspath()
+                .build()
 
         then:
         result.task(":createTestsExecutionReport").outcome == SUCCESS
@@ -133,7 +141,7 @@ class ReportsFunctionalTest extends Specification {
         def mermaidGraph = new File("$projectDirRealPath/build/reports/tests-execution/mermaid/test.txt").text
         !mermaidGraph.contains("test with # character")
         !mermaidGraph.contains("test with : character")
-        mermaidGraph.contains("test with  character")
+        mermaidGraph.contains("test with #35; character")
         mermaidGraph.contains("test with #colon; character")
     }
 
@@ -208,6 +216,38 @@ class ReportsFunctionalTest extends Specification {
         result.task(":createTestsExecutionReport").outcome == SUCCESS
         result.output.contains("Task was run but it hasn't created any reports. Possible reasons:")
         result.output.contains('BUILD SUCCESSFUL')
+
+        and:
+        !new File("$projectDirRealPath/build/reports/tests-execution/").exists()
+    }
+
+    def "exit with error on empty mark name"() {
+        given:
+        settingsFile << "rootProject.name = 'hello-world'"
+        buildFile << """
+            plugins {
+                id 'groovy'
+                id 'io.github.platan.tests-execution-chart'
+            }
+            createTestsExecutionReport {
+                marks {
+                    totalTimeOfAllTests {
+                        name = ''
+                    }
+                }
+            }
+        """
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(testProjectDir)
+                .withArguments('createTestsExecutionReport')
+                .withPluginClasspath()
+                .buildAndFail()
+
+        then:
+        result.output.contains("marks.totalTimeOfAllTests.name cannot be blank")
+        result.output.contains('BUILD FAILED')
 
         and:
         !new File("$projectDirRealPath/build/reports/tests-execution/").exists()

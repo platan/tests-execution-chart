@@ -105,11 +105,11 @@ rendered: ([info](https://github.blog/2022-02-14-include-diagrams-markdown-files
 
 ```mermaid
 gantt
-dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
-axisFormat %H:%M:%S.%L
-section Test1Spec
-test 2 - 120 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
-test 1 - 213 ms :active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0100
+    dateFormat YYYY-MM-DDTHH:mm:ss.SSSZZ
+    axisFormat %H:%M:%S.%L
+    section Test1Spec
+        test 2 - 120 ms: active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:17.974+0100
+        test 1 - 213 ms: active, 2022-11-08T20:46:17.854+0100, 2022-11-08T20:46:18.067+0100
 ```
 
 # Configuration
@@ -125,6 +125,8 @@ Options:
 | `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                           |
 | `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                           |
 | `shiftTimestampsToStartOfDay`            | boolean | Adjust the earliest timestamp to the start of the day              | `false`                                                          |
+| `marks.totalTimeOfAllTests.enabled`      | boolean | Enable mark showing total time of all tests                        | `false`                                                          |
+| `marks.totalTimeOfAllTests.name`         | string  | Label used for mark                                                | `total time of all tests`                                        |
 
 `build.gradle.kts`:
 
@@ -149,6 +151,12 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
         }
     }
     shiftTimestampsToStartOfDay.set(true)
+    marks {
+        totalTimeOfAllTests {
+            enabled.set(true)
+            name.set("total time of all tests")
+        }
+    }
 }
 ```
 
@@ -175,6 +183,12 @@ createTestsExecutionReport {
         }
     }
     shiftTimestampsToStartOfDay = true
+    marks {
+        totalTimeOfAllTests {
+            enabled = true
+            name = 'total time of all tests'
+        }
+    }
 }
 ```
 
@@ -237,6 +251,14 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 # Changelog
 
 ## Unreleased
+
+### Added
+
+- A new option `marks.totalTimeOfAllTests` allows to add mark showing total time of all tests
+
+### Changed
+
+- Do not remove `#` character from names of tasks/sections
 
 ## 0.3.1 (29 March 2023)
 

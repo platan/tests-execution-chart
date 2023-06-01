@@ -51,5 +51,11 @@ class TestsExecutionReportPlugin : Plugin<Project> {
             .set(createTestsExecutionReportExtension.getFormats().getMermaid().outputLocation)
 
         task.shiftTimestampsToStartOfDay.set(createTestsExecutionReportExtension.shiftTimestampsToStartOfDay)
+        task.getMarks().getTotalTimeOfAllTests().enabled.set(
+            createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().enabled
+        )
+        val name = createTestsExecutionReportExtension.getMarks().getTotalTimeOfAllTests().name.get()
+        require(name.isNotBlank()) { "marks.totalTimeOfAllTests.name cannot be blank" }
+        task.getMarks().getTotalTimeOfAllTests().name.set(name)
     }
 }
