@@ -235,10 +235,10 @@ plugins {
 
 # Release
 
-1. `./gradlew createRelease`  - creates a new tag and updates examples in README
+1. `./gradlew createRelease` (or `./gradlew createRelease -Prelease.versionIncrementer=incrementMinor`) - creates a new tag and updates examples in README (but does not commit changes in README)
 2. `git push origin release-[X.X.X]`
-3. `./gradlew clean build publishPlugins`
-4. Edit Changelog in README.md and `git commit -m "Document release 0.3.1"`
+3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
+4. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
 
 # Motivation
 
