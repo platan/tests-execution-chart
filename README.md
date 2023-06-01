@@ -252,6 +252,14 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+### Added
+
+- A new option `marks.totalTimeOfAllTests` allows to add mark showing total time of all tests
+
+### Changed
+
+- Do not remove `#` character from names of tasks/sections
+
 ## 0.3.1 (29 March 2023)
 
 ### Added
