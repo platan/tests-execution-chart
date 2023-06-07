@@ -8,7 +8,7 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.0"
     id("com.diffplug.spotless") version "6.19.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
-    id("io.github.platan.tests-execution-chart") version "0.3.1"
+    id("io.github.platan.tests-execution-chart") version "0.4.0"
     kotlin("plugin.serialization") version "1.8.21"
     id("pl.allegro.tech.build.axion-release") version "1.15.3"
     id("com.github.ben-manes.versions") version "0.46.0"
