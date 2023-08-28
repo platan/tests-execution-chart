@@ -7,10 +7,6 @@ plugins {
 group = "io.github.platan"
 version = "0.4.1-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.commons:commons-text:1.10.0")

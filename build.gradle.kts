@@ -34,8 +34,10 @@ scmVersion {
 
 project.version = scmVersion.version
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
 val functionalTest = sourceSets.create("functionalTest") {
