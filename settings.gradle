@@ -1,1 +1,3 @@
 rootProject.name = 'tests-execution-chart'
+include 'commons'
+
