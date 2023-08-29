@@ -1,7 +1,7 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.0"
     kotlin("plugin.serialization") version "1.9.0"
-    id("maven-publish")
+    `maven-publish`
 }
 
 group = "io.github.platan"
@@ -19,6 +19,11 @@ dependencies {
 }
 
 publishing {
+    publications {
+        create<MavenPublication>("jar") {
+            from(components["java"])
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"
