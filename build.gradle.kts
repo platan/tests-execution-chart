@@ -35,8 +35,17 @@ scmVersion {
 project.version = scmVersion.version
 
 allprojects {
+    apply(plugin = "groovy")
+
     repositories {
         mavenCentral()
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
     }
 }
 
@@ -80,13 +89,6 @@ pluginBundle {
     vcsUrl = "https://github.com/platan/tests-execution-chart.git"
     description = "Visualise tests execution schedule"
     tags = listOf("test", "tests", "execution", "schedule", "report", "gantt", "chart", "parallel")
-}
-
-tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events("passed", "skipped", "failed")
-    }
 }
 
 val functionalTestTask = tasks.register<Test>("functionalTest") {
