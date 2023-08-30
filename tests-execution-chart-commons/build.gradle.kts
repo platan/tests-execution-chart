@@ -4,9 +4,6 @@ plugins {
     `maven-publish`
 }
 
-group = "io.github.platan"
-version = "0.4.1-SNAPSHOT"
-
 dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.commons:commons-text:1.10.0")

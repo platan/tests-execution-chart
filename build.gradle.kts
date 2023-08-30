@@ -14,8 +14,6 @@ plugins {
     id("com.github.ben-manes.versions") version "0.47.0"
 }
 
-group = "io.github.platan"
-
 scmVersion {
     tag {
         prefix.set("release-")
@@ -32,8 +30,6 @@ scmVersion {
     }
 }
 
-project.version = scmVersion.version
-
 allprojects {
     apply(plugin = "groovy")
 
@@ -47,6 +43,9 @@ allprojects {
             events("passed", "skipped", "failed")
         }
     }
+
+    group = "io.github.platan"
+    project.version = rootProject.scmVersion.version
 }
 
 val functionalTest = sourceSets.create("functionalTest") {
