@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart.config
+package io.github.platan.tests_execution_chart.gradle.config
 
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property

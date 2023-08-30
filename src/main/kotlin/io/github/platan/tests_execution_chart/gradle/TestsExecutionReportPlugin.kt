@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart
+package io.github.platan.tests_execution_chart.gradle
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

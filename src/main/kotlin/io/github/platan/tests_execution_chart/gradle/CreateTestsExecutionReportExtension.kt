@@ -1,7 +1,7 @@
-package io.github.platan.tests_execution_chart
+package io.github.platan.tests_execution_chart.gradle
 
-import io.github.platan.tests_execution_chart.config.Formats
-import io.github.platan.tests_execution_chart.config.Marks
+import io.github.platan.tests_execution_chart.gradle.config.Formats
+import io.github.platan.tests_execution_chart.gradle.config.Marks
 import org.gradle.api.Action
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property

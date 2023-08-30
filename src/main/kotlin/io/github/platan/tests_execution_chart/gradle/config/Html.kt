@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart.config
+package io.github.platan.tests_execution_chart.gradle.config
 
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import org.gradle.api.Action

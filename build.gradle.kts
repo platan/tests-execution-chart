@@ -78,7 +78,7 @@ gradlePlugin {
             id = "io.github.platan.tests-execution-chart"
             displayName = "Visualise tests execution schedule"
             description = "Visualise tests execution schedule"
-            implementationClass = "io.github.platan.tests_execution_chart.TestsExecutionReportPlugin"
+            implementationClass = "io.github.platan.tests_execution_chart.gradle.TestsExecutionReportPlugin"
         }
     }
 }

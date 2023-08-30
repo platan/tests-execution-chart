@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart
+package io.github.platan.tests_execution_chart.gradle
 
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
