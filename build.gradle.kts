@@ -61,7 +61,7 @@ val functionalTestImplementation by configurations.getting {
 configurations["functionalTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
 
 dependencies {
-    implementation(project(":commons"))
+    implementation(project(":tests-execution-chart-commons"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
     implementation("org.apache.commons:commons-text:1.10.0")
