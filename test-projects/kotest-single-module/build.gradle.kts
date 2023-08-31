@@ -21,7 +21,7 @@ tasks.test {
 }
 
 
-configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
+configure<io.github.platan.tests_execution_chart.gradle.CreateTestsExecutionReportExtension> {
     formats {
         html {
             script {
