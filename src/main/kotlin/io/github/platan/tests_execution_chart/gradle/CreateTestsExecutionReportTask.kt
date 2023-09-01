@@ -54,14 +54,14 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
                 val adjustedResults = adjustResults(results)
                 logger.lifecycle("Tests execution schedule report for task '${task.name}'")
                 if (getFormats().getMermaid().enabled.get()) {
-                    MermaidTestsReporter(getFormats().getMermaid(), customLogger).report(
+                    MermaidTestsReporter(getFormats().getMermaid().toMermaidConfig(), customLogger).report(
                         adjustedResults,
                         task.project.buildDir,
                         task.name
                     )
                 }
                 if (getFormats().getJson().enabled.get()) {
-                    JsonReporter(getFormats().getJson(), customLogger).report(
+                    JsonReporter(getFormats().getJson().toJsonConfig(), customLogger).report(
                         adjustedResults,
                         task.project.buildDir,
                         task.name

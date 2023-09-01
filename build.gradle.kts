@@ -63,7 +63,6 @@ dependencies {
     implementation(project(":tests-execution-chart-commons"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
-    implementation("org.apache.commons:commons-text:1.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.18"))
