@@ -1,5 +1,7 @@
-package io.github.platan.tests_execution_chart.gradle.config
+package io.github.platan.tests_execution_chart.gradle.config.formats
 
+import io.github.platan.tests_execution_chart.gradle.config.formats.json.Json
+import io.github.platan.tests_execution_chart.gradle.config.formats.mermaid.Mermaid
 import org.gradle.api.Action
 import org.gradle.api.tasks.Nested
 
