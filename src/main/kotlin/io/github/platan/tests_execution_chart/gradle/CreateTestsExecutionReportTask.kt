@@ -1,9 +1,9 @@
 package io.github.platan.tests_execution_chart.gradle
 
 import io.github.platan.tests_execution_chart.gradle.config.Marks
-import io.github.platan.tests_execution_chart.gradle.config.ReportConfigurator
 import io.github.platan.tests_execution_chart.gradle.config.formats.Formats
 import io.github.platan.tests_execution_chart.report.ReportConfig
+import io.github.platan.tests_execution_chart.report.ReportConfigurator
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
