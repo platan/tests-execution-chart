@@ -3,12 +3,8 @@ package io.github.platan.tests_execution_chart.gradle
 import io.github.platan.tests_execution_chart.gradle.config.Marks
 import io.github.platan.tests_execution_chart.gradle.config.formats.Formats
 import io.github.platan.tests_execution_chart.report.ReportConfig
-import io.github.platan.tests_execution_chart.report.ReportConfigurator
-import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.ReportCreator
 import io.github.platan.tests_execution_chart.reporters.Logger
-import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
-import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
-import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
 import org.gradle.api.DefaultTask
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
@@ -16,7 +12,6 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.TaskAction
-import org.gradle.api.tasks.testing.Test
 import javax.inject.Inject
 
 private const val NO_REPORTS_MESSAGE =
@@ -58,41 +53,8 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
                     getMarks().toMarks(),
                     getFormats().toFormatsConfig()
                 )
-                createReports(results, reportConfig, task)
+                ReportCreator(customLogger).createReports(results, reportConfig, task.project.buildDir, task.name)
             }
-        }
-    }
-
-    private fun createReports(
-        results: TestExecutionScheduleReport,
-        reportConfig: ReportConfig,
-        task: Test
-    ) {
-        val adjustedResults = ReportConfigurator().configure(results, reportConfig)
-        logger.lifecycle("Tests execution schedule report for task '${task.name}'")
-        val mermaidConfig = reportConfig.formats.mermaid
-        if (mermaidConfig.format.enabled) {
-            MermaidTestsReporter(mermaidConfig, customLogger).report(
-                adjustedResults,
-                task.project.buildDir,
-                task.name
-            )
-        }
-        val jsonConfig = reportConfig.formats.json
-        if (jsonConfig.format.enabled) {
-            JsonReporter(jsonConfig, customLogger).report(
-                adjustedResults,
-                task.project.buildDir,
-                task.name
-            )
-        }
-        val htmlConfig = reportConfig.formats.html
-        if (htmlConfig.format.enabled) {
-            HtmlGanttDiagramReporter(htmlConfig, customLogger).report(
-                adjustedResults,
-                task.project.buildDir,
-                task.name
-            )
         }
     }
 }
