@@ -2,6 +2,7 @@ package io.github.platan.tests_execution_chart.gradle.config.formats
 
 import io.github.platan.tests_execution_chart.gradle.config.formats.json.Json
 import io.github.platan.tests_execution_chart.gradle.config.formats.mermaid.Mermaid
+import io.github.platan.tests_execution_chart.report.ReportConfig
 import org.gradle.api.Action
 import org.gradle.api.tasks.Nested
 
@@ -26,4 +27,7 @@ abstract class Formats {
     open fun mermaid(action: Action<Mermaid>) {
         action.execute(getMermaid())
     }
+
+    fun toFormatsConfig(): ReportConfig.Formats =
+        ReportConfig.Formats(getMermaid().toMermaidConfig(), getHtml().toHtmlConfig(), getJson().toJsonConfig())
 }
