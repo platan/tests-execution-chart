@@ -1,7 +1,7 @@
 package io.github.platan.tests_execution_chart.gradle
 
-import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
+import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import org.gradle.api.services.BuildService
 import org.gradle.api.services.BuildServiceParameters
 import org.gradle.api.tasks.testing.Test

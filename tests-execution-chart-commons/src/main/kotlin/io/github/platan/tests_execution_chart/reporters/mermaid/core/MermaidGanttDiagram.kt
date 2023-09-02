@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid.core
 
-data class MermaidGanttDiagram(
+internal data class MermaidGanttDiagram(
     val dateFormat: String,
     val axisFormat: String,
     val entries: List<Entry>
