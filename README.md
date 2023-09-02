@@ -131,7 +131,7 @@ Options:
 `build.gradle.kts`:
 
 ```kotlin
-configure<io.github.platan.tests_execution_chart.gradle.CreateTestsExecutionReportExtension> {
+configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
     formats {
         html {
             enabled.set(true)

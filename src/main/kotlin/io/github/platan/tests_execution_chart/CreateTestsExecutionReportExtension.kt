@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart.gradle
+package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.gradle.config.Marks
 import io.github.platan.tests_execution_chart.gradle.config.formats.Formats
