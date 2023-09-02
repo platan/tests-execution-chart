@@ -1,4 +1,4 @@
-package io.github.platan.tests_execution_chart.report
+package io.github.platan.tests_execution_chart.report.data
 
 import kotlinx.serialization.Serializable
 import java.time.Duration

@@ -3,7 +3,7 @@
 package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.gradle.config.formats.DEFAULT_MERMAID_SCRIPT_SRC
-import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter

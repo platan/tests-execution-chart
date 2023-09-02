@@ -1,5 +1,6 @@
 package io.github.platan.tests_execution_chart.report
 
+import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter

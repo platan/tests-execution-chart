@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.report
 
-
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import spock.lang.Specification
 
 import static java.time.Duration.ofMillis

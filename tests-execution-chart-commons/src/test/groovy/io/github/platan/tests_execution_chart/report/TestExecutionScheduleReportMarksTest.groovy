@@ -1,5 +1,8 @@
 package io.github.platan.tests_execution_chart.report
 
+import io.github.platan.tests_execution_chart.report.data.Mark
+import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import spock.lang.Specification
 
 import java.time.Instant

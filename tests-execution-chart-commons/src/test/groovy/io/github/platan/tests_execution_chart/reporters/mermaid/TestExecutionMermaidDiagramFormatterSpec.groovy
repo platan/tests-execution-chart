@@ -1,6 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
-import io.github.platan.tests_execution_chart.report.Mark
+import io.github.platan.tests_execution_chart.report.data.Mark
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
 import spock.lang.Specification
 
