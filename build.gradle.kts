@@ -11,7 +11,7 @@ plugins {
     id("io.github.platan.tests-execution-chart") version "0.4.0"
     kotlin("plugin.serialization") version "1.9.10"
     id("pl.allegro.tech.build.axion-release") version "1.15.4"
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.48.0"
 }
 
 group = "io.github.platan"
