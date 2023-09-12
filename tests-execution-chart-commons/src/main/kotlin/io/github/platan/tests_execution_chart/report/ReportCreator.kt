@@ -1,6 +1,7 @@
 package io.github.platan.tests_execution_chart.report
 
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
@@ -17,29 +18,21 @@ class ReportCreator(private val logger: Logger) {
     ) {
         val adjustedResults = ReportConfigurator().configure(results, reportConfig)
         logger.lifecycle("Tests execution schedule report for task '$taskName'")
+        val reporters: MutableList<GanttDiagramReporter> = mutableListOf()
         val mermaidConfig = reportConfig.formats.mermaid
         if (mermaidConfig.format.enabled) {
-            MermaidTestsReporter(mermaidConfig, logger).report(
-                adjustedResults,
-                buildDir,
-                taskName
-            )
+            reporters.add(MermaidTestsReporter(mermaidConfig, logger))
         }
         val jsonConfig = reportConfig.formats.json
         if (jsonConfig.format.enabled) {
-            JsonReporter(jsonConfig, logger).report(
-                adjustedResults,
-                buildDir,
-                taskName
-            )
+            reporters.add(JsonReporter(jsonConfig, logger))
         }
         val htmlConfig = reportConfig.formats.html
         if (htmlConfig.format.enabled) {
-            HtmlGanttDiagramReporter(htmlConfig, logger).report(
-                adjustedResults,
-                buildDir,
-                taskName
-            )
+            reporters.add(HtmlGanttDiagramReporter(htmlConfig, logger))
+        }
+        reporters.forEach {
+            it.report(adjustedResults, buildDir, taskName)
         }
     }
 
