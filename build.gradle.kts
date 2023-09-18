@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.2.1"
-    id("com.diffplug.spotless") version "6.19.0"
+    id("com.diffplug.spotless") version "6.21.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.4.0"
     kotlin("plugin.serialization") version "1.9.10"
@@ -128,11 +128,7 @@ publishing {
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
-        ktlint("0.47.0").editorConfigOverride(
-            mapOf(
-                "ktlint_disabled_rules" to "package-name",
-            ),
-        )
+        ktlint("0.50.0")
     }
     kotlinGradle {
         target("*.gradle.kts")
