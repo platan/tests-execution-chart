@@ -128,11 +128,7 @@ publishing {
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
-        ktlint("0.47.0").editorConfigOverride(
-            mapOf(
-                "ktlint_disabled_rules" to "package-name",
-            ),
-        )
+        ktlint("0.50.0")
     }
     kotlinGradle {
         target("*.gradle.kts")
