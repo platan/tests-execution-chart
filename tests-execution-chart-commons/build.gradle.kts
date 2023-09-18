@@ -1,6 +1,6 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.0"
-    kotlin("plugin.serialization") version "1.9.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.10"
     `maven-publish`
 }
 
@@ -8,7 +8,7 @@ dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.commons:commons-text:1.10.0")
     implementation(localGroovy())
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.18"))
     testImplementation("org.codehaus.groovy:groovy")

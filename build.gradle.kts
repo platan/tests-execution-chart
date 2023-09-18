@@ -1,7 +1,7 @@
 import pl.allegro.tech.build.axion.release.domain.hooks.HookContext
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.10"
     `java-gradle-plugin`
     `maven-publish`
     groovy
@@ -9,9 +9,9 @@ plugins {
     id("com.diffplug.spotless") version "6.19.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.4.0"
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.10"
     id("pl.allegro.tech.build.axion-release") version "1.15.4"
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.48.0"
 }
 
 scmVersion {
@@ -63,9 +63,9 @@ dependencies {
     implementation(project(":tests-execution-chart-commons"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
-    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.18"))
+    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.19"))
     testImplementation("org.codehaus.groovy:groovy")
     testImplementation(platform("org.spockframework:spock-bom:2.4-M1-groovy-3.0"))
     testImplementation("org.spockframework:spock-core")
@@ -108,8 +108,8 @@ dependencies {
     "functionalTestImplementation"("org.spockframework:spock-core:2.3-groovy-3.0") {
         exclude(group = "org.codehaus.groovy")
     }
-    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.6")
 }
 
 publishing {
