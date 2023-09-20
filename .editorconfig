@@ -1,0 +1,4 @@
+[*.kt]
+ktlint_standard_package-name = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
+ktlint_standard_trailing-comma-on-declaration-site = disabled
