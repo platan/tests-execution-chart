@@ -4,7 +4,7 @@ import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.config.JsonConfig
 import io.github.platan.tests_execution_chart.reporters.config.MermaidConfig
 
-data class ReportConfig(val shiftTimestampsToStartOfDay: Boolean, val marks: Marks, val formats: Formats) {
+data class ReportConfig(val formats: Formats, val marks: Marks, val shiftTimestampsToStartOfDay: Boolean = false) {
     data class Marks(val totalTimeOfAllTests: Mark) {
         data class Mark(val enabled: Boolean, val name: String)
     }

@@ -3,10 +3,13 @@
 package io.github.platan.tests_execution_chart
 
 import io.github.platan.tests_execution_chart.gradle.config.formats.DEFAULT_MERMAID_SCRIPT_SRC
+import io.github.platan.tests_execution_chart.report.ReportConfig
+import io.github.platan.tests_execution_chart.report.ReportCreator
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
-import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
+import io.github.platan.tests_execution_chart.reporters.config.JsonConfig
+import io.github.platan.tests_execution_chart.reporters.config.MermaidConfig
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.default
@@ -39,8 +42,7 @@ fun main(args: Array<String>) {
     parser.parse(args)
 
     val outputLocation = "html-report"
-
-    val config = HtmlConfig(
+    val htmlConfig = HtmlConfig(
         HtmlConfig.Format(true, outputLocation),
         HtmlConfig.Script(
             mermaidScriptSrc,
@@ -48,7 +50,15 @@ fun main(args: Array<String>) {
             HtmlConfig.Script.Options(maxTextSize)
         )
     )
-
     val report = json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream(input))
-    HtmlGanttDiagramReporter(config, logger).report(report, File(outputDir), taskName)
+    val reportConfig = ReportConfig(
+        ReportConfig.Formats(
+            MermaidConfig(MermaidConfig.Format(false, "")),
+            htmlConfig,
+            JsonConfig(JsonConfig.Format(false, ""))
+        ),
+        ReportConfig.Marks(ReportConfig.Marks.Mark(false, "name")),
+        false
+    )
+    ReportCreator(logger).createReports(report, reportConfig, File(outputDir), taskName)
 }
