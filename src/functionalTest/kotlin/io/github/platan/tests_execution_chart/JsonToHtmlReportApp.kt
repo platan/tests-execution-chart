@@ -42,8 +42,6 @@ fun main(args: Array<String>) {
     val outputLocation = "html-report"
     val report = json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream(input))
     val reportConfig = ReportConfig(
-        ReportConfig.Marks(ReportConfig.Marks.Mark(false, "name")),
-        false,
         listOf(
             HtmlConfig(
                 true,
@@ -54,7 +52,9 @@ fun main(args: Array<String>) {
                     HtmlConfig.Script.Options(maxTextSize)
                 )
             ),
-        )
+        ),
+        ReportConfig.Marks(),
+        false,
     )
     ReportCreator(logger).createReports(report, reportConfig, File(outputDir), taskName)
 }
