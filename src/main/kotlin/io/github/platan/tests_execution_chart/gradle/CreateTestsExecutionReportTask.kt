@@ -47,12 +47,12 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
         if (resultsForAllModules.isEmpty()) {
             logger.lifecycle(NO_REPORTS_MESSAGE)
         } else {
+            val reportConfig = ReportConfig(
+                getFormats().toFormatsList(),
+                getMarks().toMarks(),
+                shiftTimestampsToStartOfDay.get()
+            )
             resultsForAllModules.forEach { (task, results) ->
-                val reportConfig = ReportConfig(
-                    getFormats().toFormatsList(),
-                    getMarks().toMarks(),
-                    shiftTimestampsToStartOfDay.get()
-                )
                 ReportCreator(customLogger).createReports(results, reportConfig, task.project.buildDir, task.name)
             }
         }
