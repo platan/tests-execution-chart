@@ -1,5 +1,8 @@
 package io.github.platan.tests_execution_chart.reporters.config
 
-data class JsonConfig(val format: Format) {
-    data class Format(val enabled: Boolean, val outputLocation: String)
+import io.github.platan.tests_execution_chart.report.ReportConfig
+
+data class JsonConfig(override val enabled: Boolean, override val outputLocation: String) : ReportConfig.Format {
+
+    constructor(enabled: Boolean) : this(enabled, "")
 }

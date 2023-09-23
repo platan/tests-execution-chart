@@ -1,5 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.html
 
+import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.Logger
@@ -17,8 +18,10 @@ private const val MERMAID_JS_FILE_NAME = "mermaid.min.js"
 private const val MERMAID_SRC_PLACEHOLDER = "@MERMAID_SRC@"
 private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
-class HtmlGanttDiagramReporter(private val config: HtmlConfig, private val logger: Logger) :
-    GanttDiagramReporter() {
+class HtmlGanttDiagramReporter(private val logger: Logger) :
+    GanttDiagramReporter<HtmlConfig>() {
+
+
     override fun report(report: TestExecutionScheduleReport, baseDir: File, taskName: String) {
         val resource: URL? = this::class.java.classLoader.getResource(TEMPLATE_HTML_FILE)
         val template: String
@@ -29,16 +32,18 @@ class HtmlGanttDiagramReporter(private val config: HtmlConfig, private val logge
         }
         var scriptSrc = config.script.src
         if (config.script.embed) {
-            val reportsDir = prepareReportsDir(baseDir, config.format.outputLocation)
+            val reportsDir = prepareReportsDir(baseDir, config.outputLocation)
             val scriptFileName = MERMAID_JS_FILE_NAME
             downloadFile(URL(scriptSrc), "${reportsDir.absolutePath}/$scriptFileName")
             scriptSrc = scriptFileName
         }
         val maxTextSize = config.script.options.maxTextSize
         val htmlReport = prepareHtmlReport(report, template, scriptSrc, maxTextSize)
-        val reportFile = save(htmlReport, taskName, baseDir, config.format.outputLocation, "html")
+        val reportFile = save(htmlReport, taskName, baseDir, config.outputLocation, "html")
         logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
+
+    override fun getConfigType(): Class<out ReportConfig.Format> = HtmlConfig::class.java
 
     private fun prepareHtmlReport(
         report: TestExecutionScheduleReport,

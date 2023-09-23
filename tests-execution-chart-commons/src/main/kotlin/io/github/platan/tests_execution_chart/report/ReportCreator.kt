@@ -1,7 +1,6 @@
 package io.github.platan.tests_execution_chart.report
 
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
-import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
@@ -18,21 +17,24 @@ class ReportCreator(private val logger: Logger) {
     ) {
         val adjustedResults = ReportConfigurator().configure(results, reportConfig)
         logger.lifecycle("Tests execution schedule report for task '$taskName'")
-        val reporters: MutableList<GanttDiagramReporter> = mutableListOf()
-        val mermaidConfig = reportConfig.formats.mermaid
-        if (mermaidConfig.format.enabled) {
-            reporters.add(MermaidTestsReporter(mermaidConfig, logger))
+        // TODO discover reporter
+        val availableReporters =
+            listOf(
+                MermaidTestsReporter(logger),
+                JsonReporter(logger),
+                HtmlGanttDiagramReporter(logger)
+            )
+        val configsByType = reportConfig.formatsList.groupBy { it.javaClass }
+        val enabledReporters = availableReporters.filter { reporter ->
+            // TODO ask reporter if it's enabled
+            configsByType.containsKey(reporter.getConfigType()) && configsByType[reporter.getConfigType()]!!.first().enabled
         }
-        val jsonConfig = reportConfig.formats.json
-        if (jsonConfig.format.enabled) {
-            reporters.add(JsonReporter(jsonConfig, logger))
+        enabledReporters.forEach { reporter ->
+            val configuration = configsByType[reporter.getConfigType()]!!.first()
+            reporter.setConfiguration(configuration)
         }
-        val htmlConfig = reportConfig.formats.html
-        if (htmlConfig.format.enabled) {
-            reporters.add(HtmlGanttDiagramReporter(htmlConfig, logger))
-        }
-        reporters.forEach {
-            it.report(adjustedResults, buildDir, taskName)
+        enabledReporters.forEach { reporter ->
+            reporter.report(adjustedResults, buildDir, taskName)
         }
     }
 

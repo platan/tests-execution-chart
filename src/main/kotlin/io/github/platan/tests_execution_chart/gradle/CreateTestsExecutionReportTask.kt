@@ -49,9 +49,9 @@ abstract class CreateTestsExecutionReportTask @Inject constructor(objectFactory:
         } else {
             resultsForAllModules.forEach { (task, results) ->
                 val reportConfig = ReportConfig(
-                    getFormats().toFormatsConfig(),
                     getMarks().toMarks(),
-                    shiftTimestampsToStartOfDay.get()
+                    shiftTimestampsToStartOfDay.get(),
+                    getFormats().toFormatsList()
                 )
                 ReportCreator(customLogger).createReports(results, reportConfig, task.project.buildDir, task.name)
             }

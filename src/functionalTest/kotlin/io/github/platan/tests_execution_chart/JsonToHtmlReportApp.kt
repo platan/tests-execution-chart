@@ -8,8 +8,6 @@ import io.github.platan.tests_execution_chart.report.ReportCreator
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
-import io.github.platan.tests_execution_chart.reporters.config.JsonConfig
-import io.github.platan.tests_execution_chart.reporters.config.MermaidConfig
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.default
@@ -42,23 +40,21 @@ fun main(args: Array<String>) {
     parser.parse(args)
 
     val outputLocation = "html-report"
-    val htmlConfig = HtmlConfig(
-        HtmlConfig.Format(true, outputLocation),
-        HtmlConfig.Script(
-            mermaidScriptSrc,
-            embed,
-            HtmlConfig.Script.Options(maxTextSize)
-        )
-    )
     val report = json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream(input))
     val reportConfig = ReportConfig(
-        ReportConfig.Formats(
-            MermaidConfig(MermaidConfig.Format(false, "")),
-            htmlConfig,
-            JsonConfig(JsonConfig.Format(false, ""))
-        ),
         ReportConfig.Marks(ReportConfig.Marks.Mark(false, "name")),
-        false
+        false,
+        listOf(
+            HtmlConfig(
+                true,
+                outputLocation,
+                HtmlConfig.Script(
+                    mermaidScriptSrc,
+                    embed,
+                    HtmlConfig.Script.Options(maxTextSize)
+                )
+            ),
+        )
     )
     ReportCreator(logger).createReports(report, reportConfig, File(outputDir), taskName)
 }

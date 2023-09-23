@@ -28,6 +28,6 @@ abstract class Formats {
         action.execute(getMermaid())
     }
 
-    fun toFormatsConfig(): ReportConfig.Formats =
-        ReportConfig.Formats(getMermaid().toMermaidConfig(), getHtml().toHtmlConfig(), getJson().toJsonConfig())
+    fun toFormatsList(): List<ReportConfig.Format> =
+        listOf(getMermaid().toMermaidConfig(), getHtml().toHtmlConfig(), getJson().toJsonConfig())
 }

@@ -15,7 +15,8 @@ abstract class Html @Inject constructor(objectFactory: ObjectFactory) : Format(o
     }
 
     fun toHtmlConfig(): HtmlConfig = HtmlConfig(
-        HtmlConfig.Format(enabled.get(), outputLocation.get()),
+        enabled.get(),
+        outputLocation.get(),
         HtmlConfig.Script(
             getScript().src.get(),
             getScript().embed.get(),

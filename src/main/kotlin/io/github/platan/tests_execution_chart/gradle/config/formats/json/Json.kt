@@ -6,5 +6,5 @@ import org.gradle.api.model.ObjectFactory
 import javax.inject.Inject
 
 abstract class Json @Inject constructor(objectFactory: ObjectFactory) : Format(objectFactory, "json") {
-    fun toJsonConfig(): JsonConfig = JsonConfig(JsonConfig.Format(enabled.get(), outputLocation.get()))
+    fun toJsonConfig(): JsonConfig = JsonConfig(enabled.get(), outputLocation.get())
 }
