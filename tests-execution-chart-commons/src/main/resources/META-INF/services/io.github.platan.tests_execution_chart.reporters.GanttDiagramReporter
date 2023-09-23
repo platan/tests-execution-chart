@@ -1,0 +1,3 @@
+io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
+io.github.platan.tests_execution_chart.reporters.json.JsonReporter
+io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter

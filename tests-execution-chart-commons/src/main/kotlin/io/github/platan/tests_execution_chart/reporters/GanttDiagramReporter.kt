@@ -2,7 +2,6 @@ package io.github.platan.tests_execution_chart.reporters
 
 import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
-import io.github.platan.tests_execution_chart.reporters.html.NoopLogger
 import java.io.File
 
 abstract class GanttDiagramReporter<T : ReportConfig.Format> {

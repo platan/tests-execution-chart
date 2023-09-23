@@ -1,11 +1,10 @@
 package io.github.platan.tests_execution_chart.report
 
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
 import io.github.platan.tests_execution_chart.reporters.Logger
-import io.github.platan.tests_execution_chart.reporters.html.HtmlGanttDiagramReporter
-import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
-import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
 import java.io.File
+import java.util.*
 
 
 class ReportCreator(private val logger: Logger) {
@@ -18,13 +17,7 @@ class ReportCreator(private val logger: Logger) {
     ) {
         val adjustedResults = ReportConfigurator().configure(results, reportConfig)
         logger.lifecycle("Tests execution schedule report for task '$taskName'")
-        // TODO discover reporter
-        val availableReporters =
-            listOf(
-                MermaidTestsReporter(),
-                JsonReporter(),
-                HtmlGanttDiagramReporter()
-            )
+        val availableReporters = ServiceLoader.load(GanttDiagramReporter::class.java)
         val configsByType = reportConfig.formatsList.groupBy { it.javaClass }
         val enabledReporters = availableReporters.filter { reporter ->
             // TODO ask reporter if it's enabled
