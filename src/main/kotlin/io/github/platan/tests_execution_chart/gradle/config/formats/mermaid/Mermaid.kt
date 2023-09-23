@@ -1,7 +1,7 @@
 package io.github.platan.tests_execution_chart.gradle.config.formats.mermaid
 
 import io.github.platan.tests_execution_chart.gradle.config.formats.Format
-import io.github.platan.tests_execution_chart.reporters.config.MermaidConfig
+import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidConfig
 import org.gradle.api.model.ObjectFactory
 import javax.inject.Inject
 

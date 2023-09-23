@@ -4,8 +4,6 @@ import groovy.json.JsonOutput
 import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
-import io.github.platan.tests_execution_chart.reporters.Logger
-import io.github.platan.tests_execution_chart.reporters.config.JsonConfig
 import java.io.File
 
 class JsonReporter : GanttDiagramReporter<JsonConfig>() {

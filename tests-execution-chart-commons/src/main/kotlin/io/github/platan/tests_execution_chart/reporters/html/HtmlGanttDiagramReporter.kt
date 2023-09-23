@@ -3,8 +3,6 @@ package io.github.platan.tests_execution_chart.reporters.html
 import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
-import io.github.platan.tests_execution_chart.reporters.Logger
-import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
 import io.github.platan.tests_execution_chart.reporters.mermaid.TestExecutionMermaidDiagramFormatter
 import java.io.File
 import java.net.URL

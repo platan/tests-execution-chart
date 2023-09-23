@@ -7,7 +7,7 @@ import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.ReportCreator
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.Logger
-import io.github.platan.tests_execution_chart.reporters.config.HtmlConfig
+import io.github.platan.tests_execution_chart.reporters.html.HtmlConfig
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.default
