@@ -16,6 +16,10 @@ dependencies {
     testImplementation("org.spockframework:spock-core")
 }
 
+java {
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("jar") {
