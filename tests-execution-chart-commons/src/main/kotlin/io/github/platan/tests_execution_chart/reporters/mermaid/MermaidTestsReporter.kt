@@ -7,7 +7,7 @@ import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.MermaidConfig
 import java.io.File
 
-class MermaidTestsReporter(private val logger: Logger) :
+class MermaidTestsReporter :
     GanttDiagramReporter<MermaidConfig>() {
 
 

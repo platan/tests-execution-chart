@@ -8,7 +8,7 @@ import io.github.platan.tests_execution_chart.reporters.Logger
 import io.github.platan.tests_execution_chart.reporters.config.JsonConfig
 import java.io.File
 
-class JsonReporter(private val logger: Logger) : GanttDiagramReporter<JsonConfig>() {
+class JsonReporter : GanttDiagramReporter<JsonConfig>() {
 
 
     override fun report(

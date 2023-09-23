@@ -18,8 +18,9 @@ private const val MERMAID_JS_FILE_NAME = "mermaid.min.js"
 private const val MERMAID_SRC_PLACEHOLDER = "@MERMAID_SRC@"
 private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
-class HtmlGanttDiagramReporter(private val logger: Logger) :
+class HtmlGanttDiagramReporter :
     GanttDiagramReporter<HtmlConfig>() {
+
 
 
     override fun report(report: TestExecutionScheduleReport, baseDir: File, taskName: String) {

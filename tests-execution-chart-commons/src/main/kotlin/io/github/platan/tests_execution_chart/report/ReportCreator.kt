@@ -7,6 +7,7 @@ import io.github.platan.tests_execution_chart.reporters.json.JsonReporter
 import io.github.platan.tests_execution_chart.reporters.mermaid.MermaidTestsReporter
 import java.io.File
 
+
 class ReportCreator(private val logger: Logger) {
 
     fun createReports(
@@ -20,9 +21,9 @@ class ReportCreator(private val logger: Logger) {
         // TODO discover reporter
         val availableReporters =
             listOf(
-                MermaidTestsReporter(logger),
-                JsonReporter(logger),
-                HtmlGanttDiagramReporter(logger)
+                MermaidTestsReporter(),
+                JsonReporter(),
+                HtmlGanttDiagramReporter()
             )
         val configsByType = reportConfig.formatsList.groupBy { it.javaClass }
         val enabledReporters = availableReporters.filter { reporter ->
@@ -32,6 +33,7 @@ class ReportCreator(private val logger: Logger) {
         enabledReporters.forEach { reporter ->
             val configuration = configsByType[reporter.getConfigType()]!!.first()
             reporter.setConfiguration(configuration)
+            reporter.logger = logger
         }
         enabledReporters.forEach { reporter ->
             reporter.report(adjustedResults, buildDir, taskName)
