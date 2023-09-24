@@ -1,3 +1,5 @@
+package io.github.platan.tests_execution_chart
+
 import org.gradle.testkit.runner.GradleRunner
 import spock.lang.Specification
 import spock.lang.TempDir
