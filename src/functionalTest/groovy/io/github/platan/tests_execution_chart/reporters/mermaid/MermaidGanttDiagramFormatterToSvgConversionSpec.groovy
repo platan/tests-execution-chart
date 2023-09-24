@@ -25,7 +25,7 @@ class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
     }
 
     // Fails sometimes on Windows runner
-    @Retry(mode = Retry.Mode.SETUP_FEATURE_CLEANUP)
+    @Retry(mode = Retry.Mode.SETUP_FEATURE_CLEANUP, count = 5)
     def "should produce result parsable by mmdc (mermaid CLI)"() {
         given:
         def diagramBuilder = new MermaidGanttDiagram.MermaidGanttDiagramBuilder()
