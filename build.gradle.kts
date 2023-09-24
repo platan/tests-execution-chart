@@ -12,6 +12,8 @@ plugins {
     kotlin("plugin.serialization") version "1.9.10"
     id("pl.allegro.tech.build.axion-release") version "1.15.4"
     id("com.github.ben-manes.versions") version "0.48.0"
+    id("org.jetbrains.kotlinx.kover") version "0.7.3"
+    jacoco
 }
 
 scmVersion {
@@ -32,6 +34,8 @@ scmVersion {
 
 allprojects {
     apply(plugin = "groovy")
+    apply(plugin = "jacoco")
+    apply(plugin = "org.jetbrains.kotlinx.kover")
 
     repositories {
         mavenCentral()
@@ -42,10 +46,18 @@ allprojects {
         testLogging {
             events("passed", "skipped", "failed")
         }
+        finalizedBy(tasks.jacocoTestReport, tasks.koverHtmlReport)
     }
 
     group = "io.github.platan"
     project.version = rootProject.scmVersion.version
+
+    tasks.koverHtmlReport {
+        dependsOn(tasks.test)
+    }
+    tasks.jacocoTestReport {
+        dependsOn(tasks.test)
+    }
 }
 
 val functionalTest = sourceSets.create("functionalTest") {
