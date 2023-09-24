@@ -46,7 +46,6 @@ createTestsExecutionReport {
         html {
             enabled = true
             script {
-                src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js'
                 embed = true
             }
         }

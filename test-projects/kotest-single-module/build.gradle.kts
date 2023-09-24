@@ -24,9 +24,6 @@ tasks.test {
 configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExtension> {
     formats {
         html {
-            script {
-                src.set("https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js")
-            }
         }
         json {
             enabled.set(true)

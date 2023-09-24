@@ -22,7 +22,6 @@ createTestsExecutionReport {
     formats {
         html {
             enabled = true
-            script { src = 'https://cdn.jsdelivr.net/npm/mermaid@8.13.3/dist/mermaid.js' }
         }
         json { enabled = true }
         mermaid { enabled = true }
