@@ -25,6 +25,10 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     - name: Create tests execution report for all test projects
       run: ./test-projects.sh test createTestsExecutionReport
     - name: Check reports were created
