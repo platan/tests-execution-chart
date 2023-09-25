@@ -2,6 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.10"
     kotlin("plugin.serialization") version "1.9.10"
     `maven-publish`
+    id("org.jetbrains.kotlinx.kover") version "0.7.3"
 }
 
 dependencies {
@@ -36,4 +37,15 @@ publishing {
             }
         }
     }
+}
+
+tasks.test {
+    finalizedBy(tasks.koverHtmlReport, tasks.koverXmlReport)
+}
+
+tasks.koverXmlReport {
+    dependsOn(tasks.test)
+}
+tasks.koverHtmlReport {
+    dependsOn(tasks.test)
 }
