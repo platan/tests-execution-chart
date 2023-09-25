@@ -52,6 +52,12 @@ allprojects {
     group = "io.github.platan"
     project.version = rootProject.scmVersion.version
 
+    tasks.jacocoTestReport {
+        reports {
+            xml.required.set(true)
+        }
+    }
+
     tasks.koverHtmlReport {
         dependsOn(tasks.test)
     }
