@@ -46,18 +46,15 @@ allprojects {
         testLogging {
             events("passed", "skipped", "failed")
         }
-        finalizedBy(tasks.jacocoTestReport, tasks.koverHtmlReport)
+        finalizedBy(tasks.jacocoTestReport, tasks.koverHtmlReport, tasks.koverXmlReport)
     }
 
     group = "io.github.platan"
     project.version = rootProject.scmVersion.version
 
-    tasks.jacocoTestReport {
-        reports {
-            xml.required.set(true)
-        }
+    tasks.koverXmlReport {
+        dependsOn(tasks.test)
     }
-
     tasks.koverHtmlReport {
         dependsOn(tasks.test)
     }
