@@ -11,7 +11,7 @@ dependencies {
     implementation(localGroovy())
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
-    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.18"))
+    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.19"))
     testImplementation("org.codehaus.groovy:groovy")
     testImplementation(platform("org.spockframework:spock-bom:2.4-M1-groovy-3.0"))
     testImplementation("org.spockframework:spock-core")
