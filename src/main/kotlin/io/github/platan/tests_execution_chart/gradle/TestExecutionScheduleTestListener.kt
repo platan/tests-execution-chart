@@ -1,5 +1,6 @@
 package io.github.platan.tests_execution_chart.gradle
 
+import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.TestDescriptor
@@ -8,7 +9,8 @@ import org.gradle.api.tasks.testing.TestResult
 
 class TestExecutionScheduleTestListener(
     private val service: Provider<TestExecutionResultsRegisterService>,
-    private val task: Test
+    private val task: Test,
+    private val suitesEnabled: Property<Boolean>
 ) :
     TestListener {
 
@@ -16,6 +18,16 @@ class TestExecutionScheduleTestListener(
     }
 
     override fun afterSuite(suite: TestDescriptor, result: TestResult) {
+        if (suitesEnabled.get()) {
+            service.get().getRegister().add(
+                task,
+                suite.name,
+                "suite",
+                result.startTime,
+                result.endTime,
+                result.resultType.toString()
+            )
+        }
     }
 
     override fun beforeTest(testDescriptor: TestDescriptor) {

@@ -24,7 +24,8 @@ class TestsExecutionReportPlugin : Plugin<Project> {
             task.setMustRunAfter(project.tasks.withType(Test::class.java))
         }
         project.tasks.withType(Test::class.java) { task ->
-            task.addTestListener(TestExecutionScheduleTestListener(serviceProvider, task))
+            val suitesEnabled = createTestsExecutionReportExtension.getComponents().getSuites().enabled
+            task.addTestListener(TestExecutionScheduleTestListener(serviceProvider, task, suitesEnabled))
         }
     }
 

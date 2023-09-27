@@ -1,5 +1,6 @@
 package io.github.platan.tests_execution_chart
 
+import groovy.json.JsonSlurper
 import org.gradle.testkit.runner.GradleRunner
 import spock.lang.Specification
 import spock.lang.TempDir
@@ -82,6 +83,59 @@ class ReportsFunctionalTest extends Specification {
 
         and:
         mermaidFile.text.contains 'total time of all tests : milestone, '
+    }
+
+    def "generate reports with suites"() {
+        given:
+        settingsFile << "rootProject.name = 'hello-world'"
+        buildFile << """
+            plugins {
+                id 'groovy'
+                id 'io.github.platan.tests-execution-chart'
+            }
+            createTestsExecutionReport {
+                components {
+                    suites {
+                        enabled = $suitesEnabled
+                    }
+                }
+            }
+            repositories {
+                mavenCentral()
+            }
+            dependencies {
+                testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+                testImplementation platform('org.spockframework:spock-bom:2.1-groovy-3.0')
+                testImplementation 'org.spockframework:spock-core'
+            }
+            test {
+                useJUnitPlatform()
+            }
+        """
+        specFile.text = new File('src/functionalTest/resources/MySpec.groovy').text
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(testProjectDir)
+                .withArguments('test', 'createTestsExecutionReport')
+                .withPluginClasspath()
+                .build()
+
+        then:
+        result.task(":createTestsExecutionReport").outcome == SUCCESS
+
+        and:
+        def jsonReport = new JsonSlurper().parse(new File("$projectDirRealPath/build/reports/tests-execution/json/test.json"))
+
+        and:
+        jsonReport.results.count { it.className == "MySpec" && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
+        jsonReport.results.count { it.className == "Gradle Test Run :test" && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
+        jsonReport.results.count { it.className.startsWith("Gradle Test Executor") && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
+
+        where:
+        suitesEnabled || numberOfResults
+        true          || 1
+        false         || 0
     }
 
     def "should replace special characters in mermaid graph test names"() {
