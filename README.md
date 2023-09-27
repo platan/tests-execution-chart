@@ -124,6 +124,7 @@ Options:
 | `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                          |
 | `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                           |
 | `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                           |
+| `components.suite.enabled`               | boolean | Add suites/classes to report                                       | `false`                                                          |
 | `shiftTimestampsToStartOfDay`            | boolean | Adjust the earliest timestamp to the start of the day              | `false`                                                          |
 | `marks.totalTimeOfAllTests.enabled`      | boolean | Enable mark showing total time of all tests                        | `false`                                                          |
 | `marks.totalTimeOfAllTests.name`         | string  | Label used for mark                                                | `total time of all tests`                                        |
@@ -148,6 +149,11 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
         }
         mermaid {
             enabled.set(true)
+        }
+    }
+    components {
+        suites {
+            enabled.set(false)
         }
     }
     shiftTimestampsToStartOfDay.set(true)
@@ -180,6 +186,11 @@ createTestsExecutionReport {
         }
         mermaid {
             enabled = true
+        }
+    }
+    components {
+        suites {
+            enabled = false
         }
     }
     shiftTimestampsToStartOfDay = true
