@@ -2,9 +2,12 @@ package io.github.platan.tests_execution_chart.reporters.mermaid
 
 import io.github.platan.tests_execution_chart.report.data.Mark
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import spock.lang.Specification
 
 import java.time.ZoneOffset
+
+import static io.github.platan.tests_execution_chart.report.data.TimedTestResult.Type.TEST
 
 class TestExecutionMermaidDiagramFormatterSpec extends Specification {
 
@@ -13,9 +16,9 @@ class TestExecutionMermaidDiagramFormatterSpec extends Specification {
         def getDefault = TimeZone.getDefault()
         TimeZone.setDefault(SimpleTimeZone.getTimeZone(ZoneOffset.ofHours(2)))
         def reportBuilder = new TestExecutionScheduleReportBuilder()
-        reportBuilder.add('Test1', 'test1', 1681402397000, 1681402397100, 'SUCCESS')
-        reportBuilder.add('Test1', 'test2', 1681402397100, 1681402397300, 'SUCCESS')
-        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'SUCCESS')
+        reportBuilder.add('Test1', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
+        reportBuilder.add('Test1', 'test2', 1681402397100, 1681402397300, 'SUCCESS', TEST, 'parent name')
+        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
         def report = reportBuilder.getResults()
 
         when:
@@ -43,9 +46,9 @@ test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+02
         def getDefault = TimeZone.getDefault()
         TimeZone.setDefault(SimpleTimeZone.getTimeZone(ZoneOffset.ofHours(2)))
         def reportBuilder = new TestExecutionScheduleReportBuilder()
-        reportBuilder.add('Test1', 'test1', 1681402397000, 1681402397100, 'SUCCESS')
-        reportBuilder.add('Test1', 'test2', 1681402397100, 1681402397300, 'SUCCESS')
-        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'SUCCESS')
+        reportBuilder.add('Test1', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
+        reportBuilder.add('Test1', 'test2', 1681402397100, 1681402397300, 'SUCCESS', TEST, 'parent name')
+        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
         def results = reportBuilder.getResults()
         def report = results.copy(results.results, [new Mark('mark1', 1681402397400)])
 

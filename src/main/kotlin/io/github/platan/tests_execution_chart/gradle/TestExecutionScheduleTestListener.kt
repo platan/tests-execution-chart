@@ -1,5 +1,6 @@
 package io.github.platan.tests_execution_chart.gradle
 
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.testing.Test
@@ -25,7 +26,9 @@ class TestExecutionScheduleTestListener(
                 "suite",
                 result.startTime,
                 result.endTime,
-                result.resultType.toString()
+                result.resultType.toString(),
+                TimedTestResult.Type.SUITE,
+                suite.parent?.name
             )
         }
     }
@@ -40,7 +43,9 @@ class TestExecutionScheduleTestListener(
             testDescriptor.name,
             testResult.startTime,
             testResult.endTime,
-            testResult.resultType.toString()
+            testResult.resultType.toString(),
+            TimedTestResult.Type.TEST,
+            testDescriptor.parent?.name
         )
     }
 }

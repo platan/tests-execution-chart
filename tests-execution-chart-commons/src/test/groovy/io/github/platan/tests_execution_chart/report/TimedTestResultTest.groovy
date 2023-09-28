@@ -3,6 +3,7 @@ package io.github.platan.tests_execution_chart.report
 import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import spock.lang.Specification
 
+import static io.github.platan.tests_execution_chart.report.data.TimedTestResult.Type.TEST
 import static java.time.Duration.ofMillis
 import static java.time.Duration.ofSeconds
 
@@ -15,7 +16,9 @@ class TimedTestResultTest extends Specification {
                 'test',
                 givenStart,
                 givenEnd,
-                'passed'
+                'passed',
+                TEST,
+                'parent name'
         )
 
         when:
@@ -27,6 +30,7 @@ class TimedTestResultTest extends Specification {
         shiftedResult.startTime == exectedStart
         shiftedResult.endTime == expectedEnd
         shiftedResult.resultType == 'passed'
+        shiftedResult.parentName == 'parent name'
 
         where:
         givenStart    | givenEnd      | timeShift     || exectedStart  | expectedEnd

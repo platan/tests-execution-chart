@@ -2,6 +2,7 @@ package io.github.platan.tests_execution_chart.gradle
 
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import org.gradle.api.services.BuildService
 import org.gradle.api.services.BuildServiceParameters
 import org.gradle.api.tasks.testing.Test
@@ -19,10 +20,12 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
             testName: String,
             startTime: Long,
             endTime: Long,
-            resultType: String
+            resultType: String,
+            type: TimedTestResult.Type,
+            parentName: String?
         ) {
             val taskResults = results.getOrPut(task) { TestExecutionScheduleReportBuilder() }
-            taskResults.add(className, testName, startTime, endTime, resultType)
+            taskResults.add(className, testName, startTime, endTime, resultType, type, parentName)
         }
     }
 

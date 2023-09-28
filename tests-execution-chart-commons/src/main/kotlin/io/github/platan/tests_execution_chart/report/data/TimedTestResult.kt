@@ -5,11 +5,14 @@ import java.time.Duration
 
 @Serializable
 data class TimedTestResult(
+    // TODO change to val
     var className: String?,
     var testName: String,
     var startTime: Long,
     var endTime: Long,
-    var resultType: String
+    var resultType: String,
+    var type: Type,
+    var parentName: String?
 ) {
 
     fun shiftTimestamps(timeShift: Duration): TimedTestResult {
@@ -21,4 +24,8 @@ data class TimedTestResult(
 
     val durationMs: Long
         get() = this.endTime - this.startTime
+
+    enum class Type {
+        SUITE, TEST
+    }
 }
