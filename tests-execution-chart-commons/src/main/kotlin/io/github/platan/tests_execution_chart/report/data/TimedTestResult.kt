@@ -5,10 +5,12 @@ import java.time.Duration
 
 @Serializable
 data class TimedTestResult(
+    // TODO deprecate, rename to groupName
     val className: String?,
     val testName: String,
     val startTime: Long,
     val endTime: Long,
+    // TODO deprecate, rename to result
     val resultType: String,
     val type: Type,
     val parentName: String?
