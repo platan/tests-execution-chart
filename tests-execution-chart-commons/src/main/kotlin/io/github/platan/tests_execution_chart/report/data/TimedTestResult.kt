@@ -12,8 +12,7 @@ data class TimedTestResult(
     val endTime: Long,
     // TODO deprecate, rename to result
     val resultType: String,
-    val type: Type,
-    val parentName: String?
+    val type: Type
 ) {
 
     fun shiftTimestamps(timeShift: Duration): TimedTestResult {

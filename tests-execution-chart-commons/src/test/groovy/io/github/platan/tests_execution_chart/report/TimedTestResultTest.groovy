@@ -17,8 +17,8 @@ class TimedTestResultTest extends Specification {
                 givenStart,
                 givenEnd,
                 'passed',
-                TEST,
-                'parent name'
+                TEST
+
         )
 
         when:
@@ -30,7 +30,6 @@ class TimedTestResultTest extends Specification {
         shiftedResult.startTime == exectedStart
         shiftedResult.endTime == expectedEnd
         shiftedResult.resultType == 'passed'
-        shiftedResult.parentName == 'parent name'
 
         where:
         givenStart    | givenEnd      | timeShift     || exectedStart  | expectedEnd
