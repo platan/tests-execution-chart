@@ -1,12 +1,12 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
-import io.github.platan.tests_execution_chart.report.data.Mark
 import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
-import io.github.platan.tests_execution_chart.report.data.TimedTestResult
+import io.github.platan.tests_execution_chart.report.data.Mark
 import spock.lang.Specification
 
 import java.time.ZoneOffset
 
+import static io.github.platan.tests_execution_chart.report.data.TimedTestResult.Type.SUITE
 import static io.github.platan.tests_execution_chart.report.data.TimedTestResult.Type.TEST
 
 class TestExecutionMermaidDiagramFormatterSpec extends Specification {
@@ -18,7 +18,11 @@ class TestExecutionMermaidDiagramFormatterSpec extends Specification {
         def reportBuilder = new TestExecutionScheduleReportBuilder()
         reportBuilder.add('Test1', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
         reportBuilder.add('Test1', 'test2', 1681402397100, 1681402397300, 'SUCCESS', TEST, 'parent name')
-        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'SUCCESS', TEST, 'parent name')
+        reportBuilder.add('Test1', 'suite', 1681402397000, 1681402397300, 'SUCCESS', SUITE, 'parent name')
+        reportBuilder.add('Test2', 'test1', 1681402397000, 1681402397100, 'FAILURE', TEST, 'parent name')
+        reportBuilder.add('Test2', 'suite', 1681402397000, 1681402397300, 'FAILURE', SUITE, 'parent name')
+        reportBuilder.add('Test3', 'test1', 1681402397100, 1681402397300, 'SKIPPED', TEST, 'parent name')
+        reportBuilder.add('Test3', 'suite', 1681402397000, 1681402397300, 'SKIPPED', SUITE, 'parent name')
         def report = reportBuilder.getResults()
 
         when:
@@ -31,8 +35,13 @@ axisFormat %H:%M:%S.%L
 section Test1
 test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
 test2 - 200 ms :active, 2023-04-13T18:13:17.100+0200, 2023-04-13T18:13:17.300+0200
+suite - 300 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.300+0200
 section Test2
-test1 - 100 ms :active, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
+test1 - 100 ms :crit, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.100+0200
+suite - 300 ms :crit, 2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.300+0200
+section Test3
+test1 - 200 ms :2023-04-13T18:13:17.100+0200, 2023-04-13T18:13:17.300+0200
+suite - 300 ms :2023-04-13T18:13:17.000+0200, 2023-04-13T18:13:17.300+0200
 """
         then:
         mermaidReport == indent
