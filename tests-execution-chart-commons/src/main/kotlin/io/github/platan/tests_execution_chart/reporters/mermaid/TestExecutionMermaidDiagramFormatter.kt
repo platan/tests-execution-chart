@@ -1,13 +1,17 @@
 package io.github.platan.tests_execution_chart.reporters.mermaid
 
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
+import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagram
 import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagramFormatter
 
 class TestExecutionMermaidDiagramFormatter {
 
     companion object {
-        val types = mapOf("FAILURE" to "crit", "SUCCESS" to "active")
+        val taskFormat: Map<TimedTestResult.Type, Map<String, String>> = mapOf(
+            TimedTestResult.Type.TEST to mapOf("FAILURE" to "crit", "SUCCESS" to "active"),
+            TimedTestResult.Type.SUITE to mapOf("FAILURE" to "crit,done", "SUCCESS" to "done")
+        )
     }
 
     fun format(report: TestExecutionScheduleReport): String {
@@ -18,7 +22,7 @@ class TestExecutionMermaidDiagramFormatter {
                 val testNameWithDuration = "${it.testName} - ${it.endTime.minus(it.startTime)} ms"
                 diagramBuilder.addTask(
                     testNameWithDuration,
-                    types[it.resultType],
+                    taskFormat[it.type]?.get(it.resultType),
                     it.startTime,
                     it.endTime
                 )
