@@ -128,9 +128,9 @@ class ReportsFunctionalTest extends Specification {
         def jsonReport = new JsonSlurper().parse(new File("$projectDirRealPath/build/reports/tests-execution/json/test.json"))
 
         and:
-        jsonReport.results.count { it.className == "MySpec" && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
-        jsonReport.results.count { it.className == "Gradle Test Run :test" && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
-        jsonReport.results.count { it.className.startsWith("Gradle Test Executor") && it.testName == "suite" && it.resultType == "SUCCESS" } == numberOfResults
+        jsonReport.results.count { it.className == "MySpec" && it.testName == "suite" && it.resultType == "SUCCESS" && it.type == "SUITE" } == numberOfResults
+        jsonReport.results.count { it.className == "Gradle Test Run :test" && it.testName == "suite" && it.resultType == "SUCCESS" && it.type == "SUITE" } == numberOfResults
+        jsonReport.results.count { it.className.startsWith("Gradle Test Executor") && it.testName == "suite" && it.resultType == "SUCCESS" && it.type == "SUITE" } == numberOfResults
 
         where:
         suitesEnabled || numberOfResults
