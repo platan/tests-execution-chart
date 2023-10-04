@@ -54,7 +54,7 @@
         }
     </style>
     <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.esm.min.mjs';
+        import mermaid from '@MERMAID_SRC@';
         const graphData = `@GRAPH_PLACEHOLDER@`
         const darkModeEnabled = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const getTheme = (darkModeEnabled) => darkModeEnabled ? 'dark' : 'default'
