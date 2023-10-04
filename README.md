@@ -140,7 +140,7 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
                 config {
                     maxTextSize.set(110000)
                 }
-                src.set("https://https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js")
+                src.set("https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js")
             }
         }
         json {
