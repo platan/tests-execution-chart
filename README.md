@@ -252,7 +252,7 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-## 0.5.0 (4 October 2023)
+## 0.5.0
 
 ### Changed
 
