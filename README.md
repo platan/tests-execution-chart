@@ -120,7 +120,7 @@ Options:
 |------------------------------------------|---------|--------------------------------------------------------------------|------------------------------------------------------------------|
 | `formats.html.enabled`                   | boolean | Generate report in html format                                     | `true`                                                           |
 | `formats.html.script.embed`              | boolean | If true mermaid source will be downloaded and used locally in html | `false`                                                          |
-| `formats.html.script.src`                | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js` |
+| `formats.html.script.src`                | url     | Url to mermaid which should be used to generate html report        | `https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js`|
 | `formats.html.script.config.maxTextSize` | int     | Limit on the size of text used to generate diagrams                | `50000`                                                          |
 | `formats.json.enabled`                   | boolean | Generate report in json format                                     | `true`                                                           |
 | `formats.mermaid.enabled`                | boolean | Generate report in mermaid text format                             | `true`                                                           |
@@ -140,7 +140,7 @@ configure<io.github.platan.tests_execution_chart.CreateTestsExecutionReportExten
                 config {
                     maxTextSize.set(110000)
                 }
-                src.set("https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js")
+                src.set("https://https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js")
             }
         }
         json {
@@ -172,7 +172,7 @@ createTestsExecutionReport {
                 config {
                     maxTextSize = 110000
                 }
-                src = "https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"
+                src = "https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"
             }
         }
         json {
@@ -251,6 +251,12 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 # Changelog
 
 ## Unreleased
+
+## 0.5.0 (4 October 2023)
+
+### Changed
+
+- Mermaid library updated to version 10.5.0
 
 ## 0.4.0 (1 June 2023)
 
