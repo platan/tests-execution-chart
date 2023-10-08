@@ -7,7 +7,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Nested
 import javax.inject.Inject
 
-const val DEFAULT_MERMAID_SCRIPT_SRC = "https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"
+const val DEFAULT_MERMAID_SCRIPT_SRC = "https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"
 
 abstract class Script @Inject constructor(objectFactory: ObjectFactory) {
 
