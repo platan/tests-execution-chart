@@ -22,7 +22,7 @@ class TestExecutionMermaidDiagramFormatter {
                 val testNameWithDuration = "${it.testName} - ${it.endTime.minus(it.startTime)} ms"
                 diagramBuilder.addTask(
                     testNameWithDuration,
-                    taskFormat[it.type]?.get(it.resultType),
+                    requireNotNull(taskFormat[it.type]) { "No mapping for `${it.type}`." }[it.resultType],
                     it.startTime,
                     it.endTime
                 )
