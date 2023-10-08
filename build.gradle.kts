@@ -6,11 +6,11 @@ plugins {
     `maven-publish`
     groovy
     id("com.gradle.plugin-publish") version "1.2.1"
-    id("com.diffplug.spotless") version "6.21.0"
+    id("com.diffplug.spotless") version "6.22.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.4.0"
     kotlin("plugin.serialization") version "1.9.10"
-    id("pl.allegro.tech.build.axion-release") version "1.15.4"
+    id("pl.allegro.tech.build.axion-release") version "1.15.5"
     id("com.github.ben-manes.versions") version "0.48.0"
 }
 
