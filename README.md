@@ -203,6 +203,13 @@ createTestsExecutionReport {
 }
 ```
 
+## components.suites.enabled = true
+
+<picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".readme/example-html-report-suites-dark.png">
+      <img src=".readme/example-html-report-suites.png">
+</picture>
+
 # Troubleshooting
 
 > I see `Maximum text size in diagram exceeded` in an HTML report instead of a chart.
