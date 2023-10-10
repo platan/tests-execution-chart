@@ -14,7 +14,7 @@
 
 ```kotlin
 plugins {
-    id("io.github.platan.tests-execution-chart") version "0.5.0"
+    id("io.github.platan.tests-execution-chart") version "0.4.0"
 }
 ```
 
@@ -22,7 +22,7 @@ plugins {
 
 ```gradle
 plugins {
-    id "io.github.platan.tests-execution-chart" version "0.5.0"
+    id "io.github.platan.tests-execution-chart" version "0.4.0"
 }
 ```
 
