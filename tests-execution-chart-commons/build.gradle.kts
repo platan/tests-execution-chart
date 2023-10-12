@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.10"
     `maven-publish`
     id("org.jetbrains.kotlinx.kover") version "0.7.3"
+    signing
 }
 
 dependencies {
@@ -19,12 +20,37 @@ dependencies {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
     publications {
-        create<MavenPublication>("jar") {
+        create<MavenPublication>("mavenJava") {
             from(components["java"])
+
+            pom {
+                name.set("$groupId:$artifactId")
+                description.set("Visualise tests execution schedule")
+                url.set("https://github.com/platan/tests-execution-chart")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://github.com/platan/tests-execution-chart/blob/main/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("platan")
+                        name.set("Marcin Mielnicki")
+                        email.set("projects@platan.space")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/platan/tests-execution-chart.git")
+                    developerConnection.set("scm:git:ssh://github.com:platan/tests-execution-chart.git")
+                    url.set("https://github.com/platan/tests-execution-chart/tree/main")
+                }
+            }
         }
     }
     repositories {
@@ -48,4 +74,13 @@ tasks.koverXmlReport {
 }
 tasks.koverHtmlReport {
     dependsOn(tasks.test)
+}
+
+extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
+
+signing {
+    setRequired({
+        (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("publishToSonatype")
+    })
+    sign(publishing.publications["mavenJava"])
 }
