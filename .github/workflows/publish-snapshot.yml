@@ -22,13 +22,13 @@ jobs:
           distribution: 'temurin'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@342dbebe7272035434f9baccc29a816ec6dd2c7b
-      - name: Publish package
+      - name: Publish package to GitHub Packages
         uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
         with:
-          arguments: :tests-execution-chart-commons:publish -i
+          arguments: :tests-execution-chart-commons:publishMavenJavaPublicationToGitHubPackagesRepository -i
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish package
+      - name: Publish package to Sonatype
         uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
         with:
           arguments: :tests-execution-chart-commons:publishToSonatype -i
