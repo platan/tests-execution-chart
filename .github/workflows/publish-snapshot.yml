@@ -26,7 +26,7 @@ jobs:
         id: current-version
         run: |
           CURRENT_VERSION=$(./gradlew currentVersion -q -Prelease.quiet)
-          echo "currentVersion=CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "currentVersion=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
       - name: Publish package to GitHub Packages
         if: ${{ contains(steps.current-version.outputs.currentVersion, 'SNAPSHOT') }}
         uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
