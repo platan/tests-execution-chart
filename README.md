@@ -240,7 +240,9 @@ plugins {
 3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
 4. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
 
-# tests-execution-chart-commons
+# Modules
+
+## tests-execution-chart-commons
 
 [tests-execution-chart-commons](tests-execution-chart-commons) module contains common code which is used by the plugin. This library can be also used to build other tools.
 
