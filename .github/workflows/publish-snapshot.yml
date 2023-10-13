@@ -25,10 +25,11 @@ jobs:
       - name: Get current version
         id: current-version
         run: |
-          VERSION=$(./gradlew currentVersion -q -Prelease.quiet)
-          echo "currentVersion=$VERSION" >> "$GITHUB_OUTPUT"
+#         $VERSION should contain something like "Project version: 0.4.1-SNAPSHOT"
+          VERSION=$(./gradlew currentVersion -q | grep "Project version")
+          echo "currentVersionInfo=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Publish package to GitHub Packages
-        if: ${{ contains(steps.current-version.outputs.currentVersion, 'SNAPSHOT') }}
+        if: ${{ contains(steps.current-version.outputs.currentVersionInfo, 'SNAPSHOT') }}
         uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
         with:
           arguments: :tests-execution-chart-commons:publishMavenJavaPublicationToGitHubPackagesRepository -i
