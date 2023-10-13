@@ -240,6 +240,10 @@ plugins {
 3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
 4. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
 
+# tests-execution-chart-commons
+
+[tests-execution-chart-commons](tests-execution-chart-commons) module contains common code which is used by the plugin. This library can be also used to build other tools.
+
 # Motivation
 
 [JUnit](https://junit.org/junit5/docs/5.9.0/user-guide/#writing-tests-parallel-execution) and [Spock](https://spockframework.org/spock/docs/2.3/parallel_execution.html) support parallel execution. Both frameworks allow configuring execution mode for classes/specifications and methods/features. JUnit/Spock documentation illustrates how this configuration affects the execution schedule of tests.
