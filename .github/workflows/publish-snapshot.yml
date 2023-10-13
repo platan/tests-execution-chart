@@ -24,8 +24,8 @@ jobs:
         uses: gradle/wrapper-validation-action@342dbebe7272035434f9baccc29a816ec6dd2c7b
       - name: Get current version
         id: current-version
-        run: |
 #         $VERSION should contain something like "Project version: 0.4.1-SNAPSHOT"
+        run: |
           VERSION=$(./gradlew currentVersion -q | grep "Project version")
           echo "currentVersionInfo=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Publish package to GitHub Packages
