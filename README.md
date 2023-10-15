@@ -237,8 +237,11 @@ plugins {
 
 1. `./gradlew createRelease` (or `./gradlew createRelease -Prelease.versionIncrementer=incrementMinor`) - creates a new tag and updates examples in README (but does not commit changes in README)
 2. `git push origin release-[X.X.X]`
-3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
-4. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
+3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean :tests-execution-chart-commons:publishToSonatype closeSonatypeStagingRepository`
+4. Verify `tests-execution-chart-commons` module in staging repository
+5. Run `./gradlew clean releaseSonatypeStagingRepository`
+6. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
+7. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
 
 # Modules
 
