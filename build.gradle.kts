@@ -8,10 +8,11 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.1"
     id("com.diffplug.spotless") version "6.22.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
-    id("io.github.platan.tests-execution-chart") version "0.4.0"
+    id("io.github.platan.tests-execution-chart") version "0.5.0"
     kotlin("plugin.serialization") version "1.9.10"
     id("pl.allegro.tech.build.axion-release") version "1.15.5"
-    id("com.github.ben-manes.versions") version "0.48.0"
+    id("com.github.ben-manes.versions") version "0.49.0"
+    id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-1"
 }
 
 scmVersion {
@@ -121,6 +122,15 @@ publishing {
         maven {
             name = "localPluginRepository"
             url = uri("../local-plugin-repository")
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        create("sonatype") {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }

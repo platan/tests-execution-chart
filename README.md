@@ -14,7 +14,7 @@
 
 ```kotlin
 plugins {
-    id("io.github.platan.tests-execution-chart") version "0.4.0"
+    id("io.github.platan.tests-execution-chart") version "0.5.0"
 }
 ```
 
@@ -22,7 +22,7 @@ plugins {
 
 ```gradle
 plugins {
-    id "io.github.platan.tests-execution-chart" version "0.4.0"
+    id "io.github.platan.tests-execution-chart" version "0.5.0"
 }
 ```
 
@@ -255,8 +255,17 @@ plugins {
 
 1. `./gradlew createRelease` (or `./gradlew createRelease -Prelease.versionIncrementer=incrementMinor`) - creates a new tag and updates examples in README (but does not commit changes in README)
 2. `git push origin release-[X.X.X]`
-3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
-4. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
+3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean :tests-execution-chart-commons:publishToSonatype closeSonatypeStagingRepository`
+4. Verify `tests-execution-chart-commons` module in staging repository
+5. Run `./gradlew clean releaseSonatypeStagingRepository`
+6. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
+7. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
+
+# Modules
+
+## tests-execution-chart-commons
+
+[tests-execution-chart-commons](tests-execution-chart-commons) module contains common code which is used by the plugin. This library can be also used to build other tools.
 
 # Motivation
 
@@ -270,7 +279,7 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
-## 0.5.0
+## 0.5.0 (15 October 2023)
 
 ### Changed
 
