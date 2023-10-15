@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     id("org.jetbrains.kotlinx.kover") version "0.7.3"
     signing
+    id("io.github.platan.tests-execution-chart")
 }
 
 dependencies {
