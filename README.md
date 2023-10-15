@@ -261,6 +261,8 @@ Gradle can generate reports in JUnit XML format. But such reports cannot be used
 
 ## Unreleased
 
+## 0.5.0 (15 October 2023)
+
 ### Changed
 
 - Mermaid library updated to version 10.5.0
