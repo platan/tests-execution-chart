@@ -203,7 +203,9 @@ createTestsExecutionReport {
 }
 ```
 
-## components.suites.enabled = true
+## Option `components.suites.enabled`
+
+When enabled (set to `true`) it allows to add suites/classed to report. 
 
 <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".readme/example-html-report-suites-dark.png">
