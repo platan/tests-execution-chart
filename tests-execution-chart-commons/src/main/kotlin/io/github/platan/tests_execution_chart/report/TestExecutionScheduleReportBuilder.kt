@@ -11,8 +11,7 @@ class TestExecutionScheduleReportBuilder {
         startTime: Long,
         endTime: Long,
         resultType: String,
-        type: TimedTestResult.Type,
-        parentName: String?
+        type: TimedTestResult.Type
     ) {
         results.add(TimedTestResult(className, testName, startTime, endTime, resultType, type))
     }

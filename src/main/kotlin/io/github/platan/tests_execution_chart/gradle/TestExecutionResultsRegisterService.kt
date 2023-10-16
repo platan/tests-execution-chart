@@ -21,11 +21,10 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
             startTime: Long,
             endTime: Long,
             resultType: String,
-            type: TimedTestResult.Type,
-            parentName: String?
+            type: TimedTestResult.Type
         ) {
             val taskResults = results.getOrPut(task) { TestExecutionScheduleReportBuilder() }
-            taskResults.add(className, testName, startTime, endTime, resultType, type, parentName)
+            taskResults.add(className, testName, startTime, endTime, resultType, type)
         }
     }
 

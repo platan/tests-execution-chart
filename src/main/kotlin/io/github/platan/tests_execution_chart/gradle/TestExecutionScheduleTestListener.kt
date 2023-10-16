@@ -27,8 +27,7 @@ class TestExecutionScheduleTestListener(
                 result.startTime,
                 result.endTime,
                 result.resultType.toString(),
-                TimedTestResult.Type.SUITE,
-                suite.parent?.name
+                TimedTestResult.Type.SUITE
             )
         }
     }
@@ -44,8 +43,7 @@ class TestExecutionScheduleTestListener(
             testResult.startTime,
             testResult.endTime,
             testResult.resultType.toString(),
-            TimedTestResult.Type.TEST,
-            testDescriptor.parent?.name
+            TimedTestResult.Type.TEST
         )
     }
 }
