@@ -2,7 +2,6 @@
 
 package io.github.platan.tests_execution_chart
 
-import io.github.platan.tests_execution_chart.gradle.config.formats.DEFAULT_MERMAID_SCRIPT_SRC
 import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.ReportCreator
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
@@ -32,7 +31,7 @@ fun main(args: Array<String>) {
     val input by parser.option(ArgType.String, fullName = "input", description = "Input file in JSON format").required()
     val outputDir by parser.option(ArgType.String, fullName = "output-dir").required()
     val mermaidScriptSrc by parser.option(ArgType.String, fullName = "mermaid-script-src")
-        .default(DEFAULT_MERMAID_SCRIPT_SRC)
+        .default(HtmlConfig.Script.getSrcDefault())
     val embed by parser.option(ArgType.Boolean, fullName = "embed-mermaid-script").default(false)
     val maxTextSize by parser.option(ArgType.Int, fullName = "mermaid-max-text-size").default(50_000)
     val taskName by parser.option(ArgType.String, fullName = "task-name").default("test")
