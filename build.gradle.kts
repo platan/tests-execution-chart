@@ -106,7 +106,7 @@ dependencies {
         exclude(group = "org.codehaus.groovy")
     }
     functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.6")
+    functionalTestImplementation("com.github.ajalt.clikt:clikt:4.2.1")
 }
 
 publishing {
