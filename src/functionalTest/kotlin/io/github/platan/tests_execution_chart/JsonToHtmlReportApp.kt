@@ -40,25 +40,25 @@ private class CommandLineParser : CliktCommand() {
 
 @OptIn(ExperimentalSerializationApi::class)
 fun main(args: Array<String>) {
-    val reportBuilder = CommandLineParser()
-    reportBuilder.main(args)
+    val commandLineParser = CommandLineParser()
+    commandLineParser.main(args)
 
     val outputLocation = "html-report"
-    val report = json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream(reportBuilder.input))
+    val report = json.decodeFromStream<TestExecutionScheduleReport>(FileInputStream(commandLineParser.input))
     val reportConfig = ReportConfig(
         listOf(
             HtmlConfig(
                 true,
                 outputLocation,
                 HtmlConfig.Script(
-                    reportBuilder.mermaidScriptSrc,
-                    reportBuilder.embed,
-                    HtmlConfig.Script.Options(reportBuilder.maxTextSize)
+                    commandLineParser.mermaidScriptSrc,
+                    commandLineParser.embed,
+                    HtmlConfig.Script.Options(commandLineParser.maxTextSize)
                 )
             ),
         ),
         ReportConfig.Marks(),
         false,
     )
-    ReportCreator(logger).createReports(report, reportConfig, File(reportBuilder.outputDir), reportBuilder.taskName)
+    ReportCreator(logger).createReports(report, reportConfig, File(commandLineParser.outputDir), commandLineParser.taskName)
 }
