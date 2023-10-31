@@ -7,7 +7,9 @@ import java.io.File
 import java.util.*
 
 
-class ReportCreator(private val logger: Logger) {
+class ReportCreator(private val logger: Logger, private val availableReporters: Iterable<GanttDiagramReporter<*>>) {
+
+    constructor(logger: Logger) : this(logger, ServiceLoader.load(GanttDiagramReporter::class.java))
 
     fun createReports(
         results: TestExecutionScheduleReport,
@@ -17,16 +19,17 @@ class ReportCreator(private val logger: Logger) {
     ) {
         val adjustedResults = ReportConfigurator().configure(results, reportConfig)
         logger.lifecycle("Tests execution schedule report for task '$taskName'")
-        val availableReporters = ServiceLoader.load(GanttDiagramReporter::class.java)
-        val configsByType = reportConfig.formatsList.groupBy { it.javaClass }
+        val configsByType = reportConfig.formatsList.associateBy { it.javaClass }
         val enabledReporters = availableReporters.filter { reporter ->
-            // TODO ask reporter if it's enabled
-            configsByType.containsKey(reporter.getConfigType()) && configsByType[reporter.getConfigType()]!!.first().enabled
-        }
-        enabledReporters.forEach { reporter ->
-            val configuration = configsByType[reporter.getConfigType()]!!.first()
-            reporter.setConfiguration(configuration)
-            reporter.logger = logger
+            val config = configsByType[reporter.getConfigType()]
+            if (config == null) {
+                false
+            } else {
+                reporter.setConfiguration(config)
+                reporter.logger = logger
+                // TODO ask reporter if it's enabled
+                config.enabled
+            }
         }
         enabledReporters.forEach { reporter ->
             reporter.report(adjustedResults, buildDir, taskName)
