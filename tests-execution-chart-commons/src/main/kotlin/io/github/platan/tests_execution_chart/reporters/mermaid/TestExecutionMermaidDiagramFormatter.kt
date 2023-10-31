@@ -2,10 +2,11 @@ package io.github.platan.tests_execution_chart.reporters.mermaid
 
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.report.data.TimedTestResult
+import io.github.platan.tests_execution_chart.reporters.TestExecutionReportFormatter
 import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagram
 import io.github.platan.tests_execution_chart.reporters.mermaid.core.MermaidGanttDiagramFormatter
 
-class TestExecutionMermaidDiagramFormatter {
+class TestExecutionMermaidDiagramFormatter : TestExecutionReportFormatter {
 
     companion object {
         val taskFormat: Map<TimedTestResult.Type, Map<String, String>> = mapOf(
@@ -14,7 +15,7 @@ class TestExecutionMermaidDiagramFormatter {
         )
     }
 
-    fun format(report: TestExecutionScheduleReport): String {
+    override fun format(report: TestExecutionScheduleReport): String {
         val diagramBuilder = MermaidGanttDiagram.MermaidGanttDiagramBuilder()
         report.results.groupBy { result -> result.className }.forEach { (className, results) ->
             diagramBuilder.addSection(className.orEmpty())
