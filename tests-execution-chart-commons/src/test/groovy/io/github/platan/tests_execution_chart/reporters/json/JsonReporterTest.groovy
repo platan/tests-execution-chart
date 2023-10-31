@@ -4,14 +4,19 @@ import io.github.platan.tests_execution_chart.report.data.Mark
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.report.data.TimedTestResult
 import spock.lang.Specification
+import spock.lang.TempDir
+
 import java.time.Instant
 
 import static io.github.platan.tests_execution_chart.report.data.TimedTestResult.Type.TEST
 
 class JsonReporterTest extends Specification {
+
+    @TempDir
+    File baseDir
+
     def "should generate report in json"() {
         given:
-        def pathName = "./test"
         def configOutputLocation = "reports/tests-execution/json"
         def report = new TestExecutionScheduleReport([
                 new TimedTestResult('class', 'test', toEpochMilli('2023-03-10T19:00:02Z'), toEpochMilli('2023-03-10T19:00:05Z'), 'passed', TEST)
@@ -21,11 +26,11 @@ class JsonReporterTest extends Specification {
         }
 
         when:
-        reporter.report(report, new File(pathName), "taskname")
+        reporter.report(report, baseDir, "taskname")
 
         then:
-        def file = new File("""${pathName}/${configOutputLocation}/taskname.json""")
-        file.getText("UTF-8") ==
+        def reportFile = new File(baseDir, "$configOutputLocation/taskname.json")
+        reportFile.text ==
                 """{
                 |    "results": [
                 |        {
