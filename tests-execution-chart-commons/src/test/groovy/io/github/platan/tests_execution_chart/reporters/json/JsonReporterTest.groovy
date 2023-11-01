@@ -1,8 +1,6 @@
 package io.github.platan.tests_execution_chart.reporters.json
 
-import io.github.platan.tests_execution_chart.report.data.Mark
-import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
-import io.github.platan.tests_execution_chart.report.data.TimedTestResult
+import io.github.platan.tests_execution_chart.report.TestExecutionScheduleReportBuilder
 import spock.lang.Specification
 import spock.lang.TempDir
 
@@ -18,9 +16,9 @@ class JsonReporterTest extends Specification {
     def "should generate report in json"() {
         given:
         def configOutputLocation = "my-output-location"
-        def report = new TestExecutionScheduleReport([
-                new TimedTestResult('class', 'test', toEpochMilli('2023-03-10T19:00:02Z'), toEpochMilli('2023-03-10T19:00:05Z'), 'passed', TEST)
-        ], [new Mark('mark1', toEpochMilli('2023-03-10T19:00:05Z'))])
+        def report = new TestExecutionScheduleReportBuilder()
+                .addResult('class', 'test', toEpochMilli('2023-03-10T19:00:02Z'), toEpochMilli('2023-03-10T19:00:05Z'), 'passed', TEST)
+                .addMark('mark1', toEpochMilli('2023-03-10T19:00:05Z')).build()
         def reporter = new JsonReporter().tap {
             it.setConfiguration(new JsonConfig(true, configOutputLocation))
         }
