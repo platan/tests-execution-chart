@@ -3,6 +3,7 @@ package io.github.platan.tests_execution_chart.reporters.json
 import io.github.platan.tests_execution_chart.report.ReportConfig
 import io.github.platan.tests_execution_chart.report.data.TestExecutionScheduleReport
 import io.github.platan.tests_execution_chart.reporters.GanttDiagramReporter
+import io.github.platan.tests_execution_chart.reporters.SingleFileReportWriter
 import java.io.File
 
 class JsonReporter : GanttDiagramReporter<JsonConfig>() {
@@ -13,7 +14,7 @@ class JsonReporter : GanttDiagramReporter<JsonConfig>() {
         taskName: String
     ) {
         val jsonReport = JsonTestExecutionReportFormatter().format(report)
-        val reportFile = save(jsonReport, taskName, baseDir, config.outputLocation, "json")
+        val reportFile = SingleFileReportWriter().save(jsonReport, taskName, baseDir, config.outputLocation, "json")
         logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }
 

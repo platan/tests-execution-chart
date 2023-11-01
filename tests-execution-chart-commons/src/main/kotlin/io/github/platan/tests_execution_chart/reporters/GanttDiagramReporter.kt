@@ -15,25 +15,6 @@ abstract class GanttDiagramReporter<T : ReportConfig.Format> {
     }
 
     abstract fun report(report: TestExecutionScheduleReport, baseDir: File, taskName: String)
-    protected fun save(
-        report: String,
-        taskName: String,
-        baseDir: File,
-        location: String,
-        extension: String
-    ): File {
-        val reportsDir = prepareReportsDir(baseDir, location)
-        val reportFile = File(reportsDir, "$taskName.$extension")
-        reportFile.createNewFile()
-        reportFile.writeText(report)
-        return reportFile
-    }
-
-    fun prepareReportsDir(baseDir: File, location: String): File {
-        val reportsDir = File(baseDir, location)
-        reportsDir.mkdirs()
-        return reportsDir
-    }
 
     abstract fun getConfigType(): Class<out ReportConfig.Format>
 }
