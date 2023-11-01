@@ -30,6 +30,7 @@ class HtmlGanttDiagramReporterTest extends Specification {
         then:
         def reportContent = new File(baseDir, "$configOutputLocation/my-task.html").text
         reportContent.contains '<script src="mermaid.min.js"></script>'
+        new File(baseDir, "$configOutputLocation/mermaid.min.js").exists()
     }
 
     def "should not embed script file"() {
@@ -45,5 +46,6 @@ class HtmlGanttDiagramReporterTest extends Specification {
         then:
         def reportContent = new File(baseDir, "$configOutputLocation/my-task.html").text
         reportContent.contains """<script src="$scriptSource"></script>"""
+        !new File(baseDir, "$configOutputLocation/mermaid.min.js").exists()
     }
 }
