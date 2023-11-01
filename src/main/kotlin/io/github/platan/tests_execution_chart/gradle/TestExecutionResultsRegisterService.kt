@@ -23,8 +23,8 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
             resultType: String,
             type: TimedTestResult.Type
         ) {
-            val taskResults = results.getOrPut(task) { TestExecutionScheduleReportBuilder() }
-            taskResults.add(className, testName, startTime, endTime, resultType, type)
+            val reportBuilder = results.getOrPut(task) { TestExecutionScheduleReportBuilder() }
+            reportBuilder.addResult(className, testName, startTime, endTime, resultType, type)
         }
     }
 
@@ -35,6 +35,6 @@ abstract class TestExecutionResultsRegisterService : BuildService<BuildServicePa
     fun getResults(module: Path?): Map<Test, TestExecutionScheduleReport> {
         val reportBuilders =
             if (module == null) register.results else register.results.filterKeys { it.identityPath.parent == module }
-        return reportBuilders.mapValues { it.value.getResults() }
+        return reportBuilders.mapValues { it.value.build() }
     }
 }
