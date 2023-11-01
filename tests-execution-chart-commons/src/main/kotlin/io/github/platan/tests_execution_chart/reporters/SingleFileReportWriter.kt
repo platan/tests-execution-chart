@@ -13,7 +13,6 @@ class SingleFileReportWriter {
     ): File {
         val reportsDir = prepareReportsDir(baseDir, location)
         val reportFile = File(reportsDir, "$taskName.$extension")
-        reportFile.createNewFile()
         reportFile.writeText(report)
         return reportFile
     }
