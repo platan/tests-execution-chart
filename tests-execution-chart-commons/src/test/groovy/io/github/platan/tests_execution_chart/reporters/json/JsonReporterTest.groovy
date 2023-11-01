@@ -17,7 +17,7 @@ class JsonReporterTest extends Specification {
 
     def "should generate report in json"() {
         given:
-        def configOutputLocation = "reports/tests-execution/json"
+        def configOutputLocation = "my-output-location"
         def report = new TestExecutionScheduleReport([
                 new TimedTestResult('class', 'test', toEpochMilli('2023-03-10T19:00:02Z'), toEpochMilli('2023-03-10T19:00:05Z'), 'passed', TEST)
         ], [new Mark('mark1', toEpochMilli('2023-03-10T19:00:05Z'))])
