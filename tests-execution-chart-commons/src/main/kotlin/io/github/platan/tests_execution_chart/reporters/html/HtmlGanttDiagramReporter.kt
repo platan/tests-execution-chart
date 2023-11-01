@@ -26,7 +26,7 @@ class HtmlGanttDiagramReporter :
         }
         val maxTextSize = config.script.options.maxTextSize
 
-        val htmlReport = HtmlGanttDiagramFormatter().formatHtml(report, scriptSrc, maxTextSize)
+        val htmlReport = HtmlGanttDiagramFormatter().format(report, scriptSrc, maxTextSize)
         val reportFile = SingleFileReportWriter().save(htmlReport, taskName, baseDir, config.outputLocation, "html")
         logger.lifecycle("Tests execution schedule report saved to ${reportFile.absolutePath} file.")
     }

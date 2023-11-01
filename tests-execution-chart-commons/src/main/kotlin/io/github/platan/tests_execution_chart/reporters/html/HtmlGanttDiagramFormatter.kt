@@ -12,7 +12,7 @@ private const val TABLE_SRC_PLACEHOLDER = "@TABLE@"
 
 class HtmlGanttDiagramFormatter {
 
-    fun formatHtml(
+    fun format(
         report: TestExecutionScheduleReport,
         scriptSrc: String,
         maxTextSize: Int
