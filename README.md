@@ -5,7 +5,7 @@
 **Gradle plugin that visualises tests execution schedule**
 
 [![build status](https://img.shields.io/github/actions/workflow/status/platan/tests-execution-chart/ci.yml?branch=main)](https://github.com/platan/tests-execution-chart/actions/workflows/ci.yml)
-![Codecov](https://img.shields.io/codecov/c/github/platan/tests-execution-chart)
+[![Codecov](https://img.shields.io/codecov/c/github/platan/tests-execution-chart)](https://app.codecov.io/gh/platan/tests-execution-chart)
 [![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/io.github.platan.tests-execution-chart)](https://plugins.gradle.org/plugin/io.github.platan.tests-execution-chart)
 [![This project is using Percy.io for visual regression testing.](https://img.shields.io/badge/visual%20testing-percy-9E66BF?logo=percy&logoColor=white)](https://percy.io/e8832041/tests-execution-chart)
 
