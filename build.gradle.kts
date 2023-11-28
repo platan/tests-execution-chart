@@ -9,7 +9,7 @@ plugins {
     id("com.diffplug.spotless") version "6.22.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.6.0"
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.21"
     id("pl.allegro.tech.build.axion-release") version "1.15.5"
     id("com.github.ben-manes.versions") version "0.50.0"
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-1"
