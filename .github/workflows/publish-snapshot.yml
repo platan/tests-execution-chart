@@ -30,7 +30,7 @@ jobs:
           echo "currentVersionInfo=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Publish package to Sonatype
         if: ${{ contains(steps.current-version.outputs.currentVersionInfo, 'SNAPSHOT') }}
-        uses: gradle/gradle-build-action@a8f75513eafdebd8141bd1cd4e30fcd194af8dfa
+        uses: gradle/gradle-build-action@585b565652cefbba63202a7f927df0ff99f34001
         with:
           arguments: :tests-execution-chart-commons:publishToSonatype -i
         env:

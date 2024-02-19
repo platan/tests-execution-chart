@@ -22,7 +22,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/gradle-build-action@v3.1.0
       with:
         arguments: build
     - name: Upload coverage reports to Codecov
@@ -34,7 +34,7 @@ jobs:
     - name: Check reports were created
       run: ./test-projects.sh checkReports
     - name: Create HTML report for regression tests
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/gradle-build-action@v3.1.0
       with:
         arguments: createRegressionHtmlReport
     - uses: actions/setup-node@v4
@@ -62,7 +62,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/gradle-build-action@v3.1.0
       with:
         arguments: build -i
     - name: Create tests execution report for all test projects
@@ -70,6 +70,6 @@ jobs:
     - name: Check reports were created
       run: ./test-projects.ps1 checkReports
     - name: Create HTML report for regression tests
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/gradle-build-action@v3.1.0
       with:
         arguments: createRegressionHtmlReport
