@@ -23,10 +23,8 @@ class JsonTestExecutionReportFormatterTest extends Specification {
         then:
         result ==
                 """{
-                |    "results": [
-                |    ],
-                |    "marks": [
-                |    ]
+                |    "results": [],
+                |    "marks": []
                 |}""".stripMargin()
     }
 
