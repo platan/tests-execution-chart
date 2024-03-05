@@ -66,7 +66,7 @@ dependencies {
     implementation(gradleApi())
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
-    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.20"))
+    testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.21"))
     testImplementation("org.codehaus.groovy:groovy")
     testImplementation(platform("org.spockframework:spock-bom:2.4-M2-groovy-3.0"))
     testImplementation("org.spockframework:spock-core")
