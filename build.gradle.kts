@@ -12,7 +12,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.22"
     id("pl.allegro.tech.build.axion-release") version "1.17.0"
     id("com.github.ben-manes.versions") version "0.51.0"
-    id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-1"
+    id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-2"
 }
 
 scmVersion {
