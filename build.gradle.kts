@@ -157,3 +157,12 @@ tasks.register<JavaExec>("createRegressionHtmlReport") {
     mainClass.set("io.github.platan.tests_execution_chart.JsonToHtmlReportApp")
     setArgsString("--input ./src/functionalTest/resources/report-visual-regression.json --output-dir build")
 }
+
+wrapperUpgrade {
+    gradle {
+        register("tests-execution-chart") {
+            repo.set("platan/tests-execution-chart")
+            baseBranch.set("main")
+        }
+    }
+}
