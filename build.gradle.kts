@@ -162,7 +162,7 @@ wrapperUpgrade {
     gradle {
         register("tests-execution-chart") {
             repo.set("platan/tests-execution-chart")
-            baseBranch.set("main")
+            baseBranch.set("gradle-downgrade-test")
         }
     }
 }
