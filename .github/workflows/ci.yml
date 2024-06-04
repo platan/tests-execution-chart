@@ -40,7 +40,7 @@ jobs:
         arguments: createRegressionHtmlReport
     - uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: 20
     - name: Install dependencies
       run: npm ci
       working-directory: src/visual-regression
