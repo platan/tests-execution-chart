@@ -8,9 +8,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@percy/cli": "^1.28.7",
-    "@percy/playwright": "^1.0.5",
-    "@playwright/test": "^1.44.1",
-    "serve": "^14.2.3"
+    "@percy/cli": "^1.21.0",
+    "@percy/playwright": "^1.0.4",
+    "@playwright/test": "^1.31.2",
+    "serve": "^14.2.0"
   }
 }
