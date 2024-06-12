@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0"
     kotlin("plugin.serialization") version "1.9.24"
     `maven-publish`
     id("org.jetbrains.kotlinx.kover") version "0.8.1"
