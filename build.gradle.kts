@@ -65,7 +65,7 @@ dependencies {
     implementation(project(":tests-execution-chart-commons"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation(gradleApi())
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.21"))
     testImplementation("org.codehaus.groovy:groovy")
@@ -106,7 +106,7 @@ dependencies {
     "functionalTestImplementation"("org.spockframework:spock-core:2.3-groovy-3.0") {
         exclude(group = "org.codehaus.groovy")
     }
-    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
     functionalTestImplementation("com.github.ajalt.clikt:clikt:4.4.0")
 }
 
