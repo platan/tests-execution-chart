@@ -7,6 +7,8 @@ updates:
     ignore:
       - dependency-name: "org.spockframework:spock-bom"
         versions: ["2.x-groovy-4.x", "2.x-x-groovy-4.x"]
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
