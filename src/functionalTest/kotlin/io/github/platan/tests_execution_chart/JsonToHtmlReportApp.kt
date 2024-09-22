@@ -3,6 +3,7 @@
 package io.github.platan.tests_execution_chart
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
@@ -60,5 +61,10 @@ fun main(args: Array<String>) {
         ReportConfig.Marks(),
         false,
     )
-    ReportCreator(logger).createReports(report, reportConfig, File(commandLineParser.outputDir), commandLineParser.taskName)
+    ReportCreator(logger).createReports(
+        report,
+        reportConfig,
+        File(commandLineParser.outputDir),
+        commandLineParser.taskName
+    )
 }
