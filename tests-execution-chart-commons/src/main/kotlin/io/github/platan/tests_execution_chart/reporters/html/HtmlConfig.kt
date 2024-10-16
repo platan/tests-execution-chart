@@ -8,7 +8,7 @@ data class HtmlConfig(override val enabled: Boolean, override val outputLocation
 
         companion object {
             private const val DEFAULT_MERMAID_SCRIPT_SRC =
-                "https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"
+                "https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"
 
             @JvmStatic
             fun getSrcDefault(): String = DEFAULT_MERMAID_SCRIPT_SRC
