@@ -256,13 +256,14 @@ plugins {
 
 # Release
 
-1. `./gradlew createRelease` (or `./gradlew createRelease -Prelease.versionIncrementer=incrementMinor`) - creates a new tag and updates examples in README (but does not commit changes in README)
+1. `./gradlew createRelease -Prelease.versionIncrementer=incrementPatch/incrementMinor/incrementMinor` - creates a new tag and updates examples in README (but does not commit changes in README)
 2. `git push origin release-[X.X.X]`
-3. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean :tests-execution-chart-commons:publishToSonatype closeSonatypeStagingRepository`
-4. Verify `tests-execution-chart-commons` module in staging repository
-5. Run `./gradlew clean releaseSonatypeStagingRepository`
-6. Prepare `~/.gradle/gradle.properties` and run `./gradlew clean build publishPlugins`
+3. Prepare `~/.gradle/gradle.properties` (`gradle.publish.key`, `gradle.publish.secret`) and run `./gradlew clean :tests-execution-chart-commons:publishToSonatype closeSonatypeStagingRepository`
+4. Verify `tests-execution-chart-commons` module in staging repository (https://s01.oss.sonatype.org)
+5. Run `./gradlew findSonatypeStagingRepository releaseSonatypeStagingRepository`
+6. Prepare `~/.gradle/gradle.properties` (`sonatypeUsername`, `sonatypePassword`, `signing.keyId`, `signing.password`, `signing.secretKeyRingFile`) and run `./gradlew clean build publishPlugins`
 7. Edit Changelog in README.md and `git commit -m "Document release [X.X.X]"`
+8. Update `io.github.platan.tests-execution-chart` plugin version in this project
 
 # Modules
 
