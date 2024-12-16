@@ -2,7 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
     `maven-publish`
-    id("org.jetbrains.kotlinx.kover") version "0.8.3"
+    id("org.jetbrains.kotlinx.kover") version "0.9.0"
     signing
     id("io.github.platan.tests-execution-chart")
 }
