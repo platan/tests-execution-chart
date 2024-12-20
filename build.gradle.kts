@@ -1,7 +1,7 @@
 import pl.allegro.tech.build.axion.release.domain.hooks.HookContext
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.0"
+    id("org.jetbrains.kotlin.jvm") version "2.1.0"
     `java-gradle-plugin`
     `maven-publish`
     groovy
@@ -9,11 +9,11 @@ plugins {
     id("com.diffplug.spotless") version "6.25.0"
     id("com.github.jakemarsden.git-hooks") version "0.0.2"
     id("io.github.platan.tests-execution-chart") version "0.6.1"
-    kotlin("plugin.serialization") version "2.0.0"
+    kotlin("plugin.serialization") version "2.1.0"
     id("pl.allegro.tech.build.axion-release") version "1.18.2"
     id("com.github.ben-manes.versions") version "0.51.0"
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-1"
-    id("org.gradle.wrapper-upgrade") version "0.11.4"
+    id("org.gradle.wrapper-upgrade") version "0.12"
 }
 
 scmVersion {

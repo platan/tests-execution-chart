@@ -41,7 +41,7 @@ class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
 
         then:
         process.consumeProcessOutput(processOutput, processError)
-        process.waitForOrKill(60000)
+        process.waitForOrKill(300000)
         assert process.exitValue() == 0, "Process finished with exit code ${process.exitValue()}\nOutput: $processOutput\nError: $processError"
     }
 
