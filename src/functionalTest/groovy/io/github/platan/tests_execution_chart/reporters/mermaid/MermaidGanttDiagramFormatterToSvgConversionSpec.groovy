@@ -37,7 +37,7 @@ class MermaidGanttDiagramFormatterToSvgConversionSpec extends Specification {
         inputFile.text = mermaid
 
         when:
-        def process = "${getCommand("npx")} -p @mermaid-js/mermaid-cli mmdc -i $inputPath -o $outputPath".execute()
+        def process = "${getCommand("npx")} -p @mermaid-js/mermaid-cli mmdc -p puppeteer-config.json -i $inputPath -o $outputPath".execute()
 
         then:
         process.consumeProcessOutput(processOutput, processError)
