@@ -10,7 +10,7 @@ plugins {
 dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.commons:commons-text:1.13.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.22"))
     testImplementation("org.codehaus.groovy:groovy")
