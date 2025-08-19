@@ -1,6 +1,6 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
-    kotlin("plugin.serialization") version "2.1.0"
+    kotlin("plugin.serialization") version "2.2.10"
     `maven-publish`
     id("org.jetbrains.kotlinx.kover") version "0.9.0"
     signing
@@ -9,8 +9,8 @@ plugins {
 
 dependencies {
     api("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.apache.commons:commons-text:1.13.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation("org.apache.commons:commons-text:1.14.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
     testImplementation(platform("org.codehaus.groovy:groovy-bom:3.0.22"))
     testImplementation("org.codehaus.groovy:groovy")
