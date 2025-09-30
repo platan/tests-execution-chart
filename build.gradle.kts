@@ -11,7 +11,7 @@ plugins {
     id("io.github.platan.tests-execution-chart") version "0.6.1"
     kotlin("plugin.serialization") version "2.2.10"
     id("pl.allegro.tech.build.axion-release") version "1.19.1"
-    id("com.github.ben-manes.versions") version "0.52.0"
+    id("com.github.ben-manes.versions") version "0.53.0"
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-1"
     id("org.gradle.wrapper-upgrade") version "0.12"
 }
