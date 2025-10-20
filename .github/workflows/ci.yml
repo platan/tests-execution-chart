@@ -41,7 +41,7 @@ jobs:
       uses: gradle/gradle-build-action@v3
       with:
         arguments: createRegressionHtmlReport
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@v6
       with:
         node-version: 20
     - name: Install dependencies
