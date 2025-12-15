@@ -103,7 +103,7 @@ gradlePlugin {
 }
 
 dependencies {
-    "functionalTestImplementation"("org.spockframework:spock-core:2.3-groovy-3.0") {
+    "functionalTestImplementation"("org.spockframework:spock-core:2.4-groovy-5.0") {
         exclude(group = "org.codehaus.groovy")
     }
     functionalTestImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
